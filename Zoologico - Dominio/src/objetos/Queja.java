@@ -8,6 +8,7 @@ import org.bson.types.ObjectId;
 //Las quejas se almacenan en la collección de Itinerarios como un documento anidado
 public class Queja {
     private ObjectId id;
+    private ObjectId idItinerario;
     private LocalDate fecha;
     private LocalTime hora;
     private String queja;

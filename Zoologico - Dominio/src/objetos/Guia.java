@@ -16,12 +16,12 @@ public class Guia extends Empleado {
         super(id);
     }
 
-    public Guia(List<ObjectId> itinerarioActual, String nombre, String direccion, Long telefono, Date fechaIngreso) {
+    public Guia(List<ObjectId> itinerarioActual, String nombre, String direccion, String telefono, Date fechaIngreso) {
         super(nombre, direccion, telefono, fechaIngreso);
         this.itinerarioActual = itinerarioActual;
     }
 
-    public Guia(List<ObjectId> itinerarioActual, ObjectId id, String nombre, String direccion, Long telefono, Date fechaIngreso) {
+    public Guia(List<ObjectId> itinerarioActual, ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
         super(id, nombre, direccion, telefono, fechaIngreso);
         this.itinerarioActual = itinerarioActual;
     }

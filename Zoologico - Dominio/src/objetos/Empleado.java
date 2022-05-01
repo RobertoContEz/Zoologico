@@ -10,7 +10,7 @@ public class Empleado {
     private ObjectId id;
     private String nombre;
     private String direccion;
-    private Long telefono;
+    private String telefono;
     private Date fechaIngreso;
 
     public Empleado() {
@@ -20,14 +20,14 @@ public class Empleado {
         this.id = id;
     }
 
-    public Empleado(String nombre, String direccion, Long telefono, Date fechaIngreso) {
+    public Empleado(String nombre, String direccion, String telefono, Date fechaIngreso) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.fechaIngreso = fechaIngreso;
     }
 
-    public Empleado(ObjectId id, String nombre, String direccion, Long telefono, Date fechaIngreso) {
+    public Empleado(ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -59,11 +59,11 @@ public class Empleado {
         this.direccion = direccion;
     }
 
-    public Long getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Long telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

@@ -6,7 +6,7 @@ import java.util.Objects;
 import org.bson.types.ObjectId;
 
 //Collección el la BD: Habitads
-public class Habitad {
+public class Habitat {
     private ObjectId id;
     private String nombre;
     private String tipoClima;
@@ -71,7 +71,7 @@ public class Habitad {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Habitad other = (Habitad) obj;
+        final Habitat other = (Habitat) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

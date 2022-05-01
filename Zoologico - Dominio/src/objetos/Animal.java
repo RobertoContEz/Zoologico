@@ -4,7 +4,7 @@ package objetos;
 import java.util.Objects;
 import org.bson.types.ObjectId;
 
-//Collección el la BD: Animales
+//Los animales se almacenan en la collección de Especies como un documento anidado
 public class Animal {
     private ObjectId id;
     private String nombre;

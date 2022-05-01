@@ -19,7 +19,7 @@ public class Cuidador extends Empleado{
         super(id);
     }
 
-    public Cuidador(List<ObjectId> especiesExperto, List<ObjectId> especiesBasicas, List<ObjectId> especiesActuales, List<ObjectId> listadoDeEspeciesCuidadas, String nombre, String direccion, Long telefono, Date fechaIngreso) {
+    public Cuidador(List<ObjectId> especiesExperto, List<ObjectId> especiesBasicas, List<ObjectId> especiesActuales, List<ObjectId> listadoDeEspeciesCuidadas, String nombre, String direccion, String telefono, Date fechaIngreso) {
         super(nombre, direccion, telefono, fechaIngreso);
         this.especiesExperto = especiesExperto;
         this.especiesBasicas = especiesBasicas;
@@ -27,7 +27,7 @@ public class Cuidador extends Empleado{
         this.listadoDeEspeciesCuidadas = listadoDeEspeciesCuidadas;
     }
 
-    public Cuidador(List<ObjectId> especiesExperto, List<ObjectId> especiesBasicas, List<ObjectId> especiesActuales, List<ObjectId> listadoDeEspeciesCuidadas, ObjectId id, String nombre, String direccion, Long telefono, Date fechaIngreso) {
+    public Cuidador(List<ObjectId> especiesExperto, List<ObjectId> especiesBasicas, List<ObjectId> especiesActuales, List<ObjectId> listadoDeEspeciesCuidadas, ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
         super(id, nombre, direccion, telefono, fechaIngreso);
         this.especiesExperto = especiesExperto;
         this.especiesBasicas = especiesBasicas;

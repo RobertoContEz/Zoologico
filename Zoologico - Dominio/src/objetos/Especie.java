@@ -1,6 +1,7 @@
 
 package objetos;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.bson.types.ObjectId;
@@ -11,9 +12,10 @@ public class Especie {
     private String nombreEspanol;
     private String nombreCientifico;
     private String descripcionGeneral;
-    private List<ObjectId> habitadsDondePuedeVivir;
+    private List<ObjectId> habitatsDondePuedeVivir;
     private ObjectId idZona;
     private ObjectId idCuidador;
+    private List<Animal> animales;
 
     public Especie() {
     }
@@ -22,23 +24,25 @@ public class Especie {
         this.id = id;
     }
 
-    public Especie(String nombreEspanol, String nombreCientifico, String descripcionGeneral, List<ObjectId> habitadsDondePuedeVivir, ObjectId idZona, ObjectId idCuidador) {
+    public Especie(String nombreEspanol, String nombreCientifico, String descripcionGeneral, List<ObjectId> habitatsDondePuedeVivir, ObjectId idZona, ObjectId idCuidador, List<Animal> animales) {
         this.nombreEspanol = nombreEspanol;
         this.nombreCientifico = nombreCientifico;
         this.descripcionGeneral = descripcionGeneral;
-        this.habitadsDondePuedeVivir = habitadsDondePuedeVivir;
+        this.habitatsDondePuedeVivir = habitatsDondePuedeVivir;
         this.idZona = idZona;
         this.idCuidador = idCuidador;
+        this.animales = animales;
     }
 
-    public Especie(ObjectId id, String nombreEspanol, String nombreCientifico, String descripcionGeneral, List<ObjectId> habitadsDondePuedeVivir, ObjectId idZona, ObjectId idCuidador) {
+    public Especie(ObjectId id, String nombreEspanol, String nombreCientifico, String descripcionGeneral, List<ObjectId> habitatsDondePuedeVivir, ObjectId idZona, ObjectId idCuidador, List<Animal> animales) {
         this.id = id;
         this.nombreEspanol = nombreEspanol;
         this.nombreCientifico = nombreCientifico;
         this.descripcionGeneral = descripcionGeneral;
-        this.habitadsDondePuedeVivir = habitadsDondePuedeVivir;
+        this.habitatsDondePuedeVivir = habitatsDondePuedeVivir;
         this.idZona = idZona;
         this.idCuidador = idCuidador;
+        this.animales = animales;
     }
 
     public ObjectId getId() {
@@ -73,12 +77,12 @@ public class Especie {
         this.descripcionGeneral = descripcionGeneral;
     }
 
-    public List<ObjectId> getHabitadsDondePuedeVivir() {
-        return habitadsDondePuedeVivir;
+    public List<ObjectId> getHabitatsDondePuedeVivir() {
+        return habitatsDondePuedeVivir;
     }
 
-    public void setHabitadsDondePuedeVivir(List<ObjectId> habitadsDondePuedeVivir) {
-        this.habitadsDondePuedeVivir = habitadsDondePuedeVivir;
+    public void setHabitatsDondePuedeVivir(List<ObjectId> habitatsDondePuedeVivir) {
+        this.habitatsDondePuedeVivir = habitatsDondePuedeVivir;
     }
 
     public String getNombreEspanol() {
@@ -105,6 +109,14 @@ public class Especie {
         this.idCuidador = idCuidador;
     }
 
+    public List<Animal> getAnimales() {
+        return animales;
+    }
+
+    public void setAnimales(List<Animal> animales) {
+        this.animales = animales;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -112,6 +124,11 @@ public class Especie {
         return hash;
     }
 
+    public void agregaAnimal(Animal animal) {
+        if(animales==null) animales = new ArrayList();
+        animales.add(animal);
+    }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -132,6 +149,6 @@ public class Especie {
 
     @Override
     public String toString() {
-        return "Especie{" + "id=" + id + ", nombreEspanol=" + nombreEspanol + ", nombreCientifico=" + nombreCientifico + ", descripcionGeneral=" + descripcionGeneral + ", habitadsDondePuedeVivir=" + habitadsDondePuedeVivir + ", idZona=" + idZona + ", idCuidador=" + idCuidador + '}';
+        return "Especie{" + "id=" + id + ", nombreEspanol=" + nombreEspanol + ", nombreCientifico=" + nombreCientifico + ", descripcionGeneral=" + descripcionGeneral + ", habitadsDondePuedeVivir=" + habitatsDondePuedeVivir + ", idZona=" + idZona + ", idCuidador=" + idCuidador + '}';
     }
 }
