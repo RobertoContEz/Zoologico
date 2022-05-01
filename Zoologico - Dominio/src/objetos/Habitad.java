@@ -2,18 +2,23 @@
 package objetos;
 
 import java.util.List;
+import java.util.Objects;
+import org.bson.types.ObjectId;
 
+//Collección el la BD: Habitads
 public class Habitad {
+    private ObjectId id;
     private String nombre;
-    private Clima tipoClima;
-    private Vegetacion tipoVegetacion;
-    private List<Continente> continentesDondeSeEncuentra;
+    private String tipoClima;
+    private String tipoVegetacion;
+    private List<String> continentesDondeSeEncuentra;
 
-    public Habitad(String nombre, Clima tipoClima, Vegetacion tipoVegetacion, List<Continente> continentesDondeSeEncuentra) {
-        this.nombre = nombre;
-        this.tipoClima = tipoClima;
-        this.tipoVegetacion = tipoVegetacion;
-        this.continentesDondeSeEncuentra = continentesDondeSeEncuentra;
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -24,29 +29,59 @@ public class Habitad {
         this.nombre = nombre;
     }
 
-    public Clima getTipoClima() {
+    public String getTipoClima() {
         return tipoClima;
     }
 
-    public void setTipoClima(Clima tipoClima) {
+    public void setTipoClima(String tipoClima) {
         this.tipoClima = tipoClima;
     }
 
-    public Vegetacion getTipoVegetacion() {
+    public String getTipoVegetacion() {
         return tipoVegetacion;
     }
 
-    public void setTipoVegetacion(Vegetacion tipoVegetacion) {
+    public void setTipoVegetacion(String tipoVegetacion) {
         this.tipoVegetacion = tipoVegetacion;
     }
 
-    public List<Continente> getContinentesDondeSeEncuentra() {
+    public List<String> getContinentesDondeSeEncuentra() {
         return continentesDondeSeEncuentra;
     }
 
-    public void setContinentesDondeSeEncuentra(List<Continente> continentesDondeSeEncuentra) {
+    public void setContinentesDondeSeEncuentra(List<String> continentesDondeSeEncuentra) {
         this.continentesDondeSeEncuentra = continentesDondeSeEncuentra;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Habitad other = (Habitad) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Habitad{" + "id=" + id + ", nombre=" + nombre + ", tipoClima=" + tipoClima + ", tipoVegetacion=" + tipoVegetacion + ", continentesDondeSeEncuentra=" + continentesDondeSeEncuentra + '}';
+    }
+
     
 }

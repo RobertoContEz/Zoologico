@@ -3,30 +3,26 @@ package objetos;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import org.bson.types.ObjectId;
 
+//Las quejas se almacenan en la collección de Itinerarios como un documento anidado
 public class Queja {
-    private Itinerario itinerario;
+    private ObjectId id;
     private LocalDate fecha;
     private LocalTime hora;
     private String queja;
     private String correo;
     private String telefono;
 
-    public Queja(Itinerario itinerario, LocalDate fecha, LocalTime hora, String queja, String correo, String telefono) {
-        this.itinerario = itinerario;
-        this.fecha = fecha;
-        this.hora = hora;
-        this.queja = queja;
-        this.correo = correo;
-        this.telefono = telefono;
+    public Queja() {
     }
 
-    public Itinerario getItinerario() {
-        return itinerario;
+    public ObjectId getId() {
+        return id;
     }
 
-    public void setItinerario(Itinerario itinerario) {
-        this.itinerario = itinerario;
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public LocalDate getFecha() {
