@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.util.List;
 import objetos.Animal;
 import org.bson.types.ObjectId;
 
@@ -11,5 +12,5 @@ public interface IPersistenciaAnimal {
     public boolean actualizar(Animal animal);
     public boolean eliminar(ObjectId id);
     public Animal consultar(ObjectId id);
-    public Animal consultarTodos();
+    public List<Animal> consultarTodos();
 }

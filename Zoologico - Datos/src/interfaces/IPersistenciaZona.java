@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.util.List;
 import objetos.Zona;
 import org.bson.types.ObjectId;
 
@@ -11,5 +12,5 @@ public interface IPersistenciaZona {
     public boolean actualizar(Zona zona);
     public boolean eliminar(ObjectId id);
     public Zona consultar(ObjectId id);
-    public Zona consultarTodos();
+    public List<Zona> consultarTodos();
 }

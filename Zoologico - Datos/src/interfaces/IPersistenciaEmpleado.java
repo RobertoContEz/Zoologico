@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.util.List;
 import objetos.Empleado;
 import org.bson.types.ObjectId;
 
@@ -11,5 +12,5 @@ public interface IPersistenciaEmpleado {
     public boolean actualizar(Empleado empleado);
     public boolean eliminar(ObjectId id);
     public Empleado consultar(ObjectId id);
-    public Empleado consultarTodos();
+    public List<Empleado> consultarTodos();
 }

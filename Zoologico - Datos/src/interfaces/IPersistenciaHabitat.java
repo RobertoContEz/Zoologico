@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.util.List;
 import objetos.Habitat;
 import org.bson.types.ObjectId;
 
@@ -11,5 +12,5 @@ public interface IPersistenciaHabitat {
     public boolean actualizar(Habitat habitat);
     public boolean eliminar(ObjectId id);
     public Habitat consultar(ObjectId id);
-    public Habitat consultarTodos();
+    public List<Habitat> consultarTodos();
 }

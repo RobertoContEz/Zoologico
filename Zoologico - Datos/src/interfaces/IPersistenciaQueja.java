@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.util.List;
 import objetos.Queja;
 import org.bson.types.ObjectId;
 
@@ -11,5 +12,5 @@ public interface IPersistenciaQueja {
     public boolean actualizar(Queja queja);
     public boolean eliminar(ObjectId id);
     public Queja consultar(ObjectId id);
-    public Queja consultarTodos();
+    public List<Queja> consultarTodos();
 }

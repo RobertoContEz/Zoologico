@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.util.List;
 import objetos.Especie;
 import org.bson.types.ObjectId;
 
@@ -11,5 +12,5 @@ public interface IPersistenciaEspecie {
     public boolean actualizar(Especie especie);
     public boolean eliminar(ObjectId id);
     public Especie consultar(ObjectId id);
-    public Especie consultarTodos();
+    public List<Especie> consultarTodos();
 }

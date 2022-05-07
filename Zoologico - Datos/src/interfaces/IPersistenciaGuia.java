@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.util.List;
 import objetos.Guia;
 import org.bson.types.ObjectId;
 
@@ -11,5 +12,5 @@ public interface IPersistenciaGuia {
     public boolean actualizar(Guia guia);
     public boolean eliminar(ObjectId id);
     public Guia consultar(ObjectId id);
-    public Guia consultarTodos();
+    public List<Guia> consultarTodos();
 }
