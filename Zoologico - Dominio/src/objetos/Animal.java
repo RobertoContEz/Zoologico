@@ -1,15 +1,18 @@
-
 package objetos;
 
 import java.util.Objects;
 import org.bson.types.ObjectId;
 
 /**
- * Esta clase representa a los especímenes animales del zoológico.
- * Una abstracción de esta clase contiene todos los datos relevantes del animal.
- * En la base de datos, los animales se almacenan en la collección de Especies como un documento anidado.
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
+ * 
+ * Esta clase representa a los especímenes animales del zoológico. Una
+ * abstracción de esta clase contiene todos los datos relevantes del animal. En
+ * la base de datos, los animales se almacenan en la collección de Especies como
+ * un documento anidado.
  */
 public class Animal {
+
     private ObjectId id;
     private String nombre;
     private char sexo;
@@ -24,6 +27,7 @@ public class Animal {
 
     /**
      * Inicializa el animal con el id.
+     *
      * @param id Id del animal.
      */
     public Animal(ObjectId id) {
@@ -32,6 +36,7 @@ public class Animal {
 
     /**
      * Inicializa el animal con todos los atributos a exepción del id.
+     *
      * @param nombre Nombre del animal.
      * @param sexo Caracter que representa el sexo del animal.
      * @param edad Edad en años del animal.
@@ -46,6 +51,7 @@ public class Animal {
 
     /**
      * Inicializa el animal con todos los atributos.
+     *
      * @param id Id del animal.
      * @param nombre Nombre del animal.
      * @param sexo Caracter que representa el sexo del animal.
@@ -62,6 +68,7 @@ public class Animal {
 
     /**
      * Devuelve el id del animal.
+     *
      * @return el id del animal.
      */
     public ObjectId getId() {
@@ -70,6 +77,7 @@ public class Animal {
 
     /**
      * Establece el id del animal.
+     *
      * @param id el nuevo id del animal.
      */
     public void setId(ObjectId id) {
@@ -78,6 +86,7 @@ public class Animal {
 
     /**
      * Devuelve el nombre del animal.
+     *
      * @return el nombre del animal.
      */
     public String getNombre() {
@@ -86,6 +95,7 @@ public class Animal {
 
     /**
      * Establece el nombre del animal.
+     *
      * @param nombre el nuevo nombre del animal.
      */
     public void setNombre(String nombre) {
@@ -94,6 +104,7 @@ public class Animal {
 
     /**
      * Devuelve el sexo del animal.
+     *
      * @return el caracter representante del sexo del animal.
      */
     public char getSexo() {
@@ -102,6 +113,7 @@ public class Animal {
 
     /**
      * Establece el sexo del animal.
+     *
      * @param sexo el caracter representante del sexo del animal.
      */
     public void setSexo(char sexo) {
@@ -110,6 +122,7 @@ public class Animal {
 
     /**
      * Devuelve la edad del animal.
+     *
      * @return la edad en años del animal.
      */
     public int getEdad() {
@@ -118,6 +131,7 @@ public class Animal {
 
     /**
      * Establece la edad del animal.
+     *
      * @param edad la nueva edad en años del animal.
      */
     public void setEdad(int edad) {
@@ -126,6 +140,7 @@ public class Animal {
 
     /**
      * Devuelve la id de la especie del animal.
+     *
      * @return la id de la especie del animal.
      */
     public ObjectId getIdEspecie() {
@@ -134,6 +149,7 @@ public class Animal {
 
     /**
      * Establece la id de la especie del animal.
+     *
      * @param idEspecie la nueva id de la especie del animal.
      */
     public void setIdEspecie(ObjectId idEspecie) {

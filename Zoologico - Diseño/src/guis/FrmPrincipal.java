@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package guis;
 
 import java.awt.Graphics;
@@ -11,7 +7,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author edw_v
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
  */
 public class FrmPrincipal extends javax.swing.JFrame {
 

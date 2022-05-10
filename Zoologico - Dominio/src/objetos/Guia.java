@@ -1,4 +1,3 @@
-
 package objetos;
 
 import java.util.Date;
@@ -6,11 +5,14 @@ import java.util.List;
 import org.bson.types.ObjectId;
 
 /**
- * Esta clase representa a los empleados guias del zoológico.
- * Una abstracción de esta clase contiene todos los datos relevantes del guía.
- * En la base de datos, los guias se almacenan en la collección de guías.
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
+ * 
+ * Esta clase representa a los empleados guias del zoológico. Una abstracción de
+ * esta clase contiene todos los datos relevantes del guía. En la base de datos,
+ * los guias se almacenan en la collección de guías.
  */
 public class Guia extends Empleado {
+
     private List<ObjectId> itinerarioActual;
 
     /**
@@ -18,9 +20,10 @@ public class Guia extends Empleado {
      */
     public Guia() {
     }
-    
+
     /**
      * Inicializa el guía con el id.
+     *
      * @param id Id del guía.
      */
     public Guia(ObjectId id) {
@@ -29,10 +32,12 @@ public class Guia extends Empleado {
 
     /**
      * Inicializa el guía con todos los atributos a exepción del id.
-     * @param itinerarioActual Lista de los ids de los itinerarios actuales del guía.
+     *
+     * @param itinerarioActual Lista de los ids de los itinerarios actuales del
+     * guía.
      * @param nombre Nombre del guía.
      * @param direccion Domicilio del guía.
-     * @param telefono Teléfono del guía. 
+     * @param telefono Teléfono del guía.
      * @param fechaIngreso Fecha de ingreso del guía como guía.
      */
     public Guia(List<ObjectId> itinerarioActual, String nombre, String direccion, String telefono, Date fechaIngreso) {
@@ -42,11 +47,13 @@ public class Guia extends Empleado {
 
     /**
      * Inicializa el guía con todos los atributos.
-     * @param itinerarioActual Lista de los ids de los itinerarios actuales del guía.
+     *
+     * @param itinerarioActual Lista de los ids de los itinerarios actuales del
+     * guía.
      * @param id Id del guía.
      * @param nombre Nombre del guía.
      * @param direccion Domicilio del guía.
-     * @param telefono Teléfono del guía. 
+     * @param telefono Teléfono del guía.
      * @param fechaIngreso Fecha de ingreso del guía.
      */
     public Guia(List<ObjectId> itinerarioActual, ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
@@ -56,6 +63,7 @@ public class Guia extends Empleado {
 
     /**
      * Devuelve la lista de los ids de los itinerarios actuales del guía.
+     *
      * @return la lista de los ids de los itinerarios actuales del guía
      */
     public List<ObjectId> getItinerarioActual() {
@@ -64,7 +72,9 @@ public class Guia extends Empleado {
 
     /**
      * Establece la lista de los ids de los itinerarios actuales del guía.
-     * @param itinerarioActual la lista de los ids de los itinerarios actuales del guía
+     *
+     * @param itinerarioActual la lista de los ids de los itinerarios actuales
+     * del guía
      */
     public void setItinerarioActual(List<ObjectId> itinerarioActual) {
         this.itinerarioActual = itinerarioActual;
@@ -72,8 +82,7 @@ public class Guia extends Empleado {
 
     @Override
     public String toString() {
-        return super.toString()+" Guia{" + "itinerarioActual=" + itinerarioActual + '}';
+        return super.toString() + " Guia{" + "itinerarioActual=" + itinerarioActual + '}';
     }
-    
-    
+
 }

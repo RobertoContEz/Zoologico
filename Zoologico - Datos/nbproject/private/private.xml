@@ -2,16 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/interfaces/IPersistenciaHabitat.java</file>
-            <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/interfaces/IPersistenciaEspecie.java</file>
-            <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/interfaces/IPersistenciaEmpleado.java</file>
-            <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/interfaces/IPersistenciaZona.java</file>
-            <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/interfaces/IPersistenciaAnimal.java</file>
-            <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/interfaces/IPersistenciaGuia.java</file>
-            <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/interfaces/IPersistenciaQueja.java</file>
-            <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/interfaces/IPersistenciaItinerario.java</file>
-            <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/interfaces/IPersistenciaCuidador.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

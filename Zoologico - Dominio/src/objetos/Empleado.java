@@ -1,4 +1,3 @@
-
 package objetos;
 
 import java.util.Date;
@@ -6,11 +5,14 @@ import java.util.Objects;
 import org.bson.types.ObjectId;
 
 /**
- * Esta clase representa a los empleados del zoológico.
- * Una abstracción de esta clase contiene todos los datos relevantes del empleado.
- * En la base de datos, los empleados se almacenan en la collección de Empleados.
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
+ * 
+ * Esta clase representa a los empleados del zoológico. Una abstracción de esta
+ * clase contiene todos los datos relevantes del empleado. En la base de datos,
+ * los empleados se almacenan en la collección de Empleados.
  */
 public class Empleado {
+
     private ObjectId id;
     private String nombre;
     private String direccion;
@@ -25,6 +27,7 @@ public class Empleado {
 
     /**
      * Inicializa el empleado con el id.
+     *
      * @param id Id del empleado.
      */
     public Empleado(ObjectId id) {
@@ -33,9 +36,10 @@ public class Empleado {
 
     /**
      * Inicializa el empleado con todos los atributos a exepción del id.
+     *
      * @param nombre Nombre del empleado.
      * @param direccion Domicilio del empleado.
-     * @param telefono Teléfono del empleado. 
+     * @param telefono Teléfono del empleado.
      * @param fechaIngreso Fecha de ingreso del empleado como empleado.
      */
     public Empleado(String nombre, String direccion, String telefono, Date fechaIngreso) {
@@ -47,10 +51,11 @@ public class Empleado {
 
     /**
      * Inicializa el empleado con todos los atributos.
+     *
      * @param id Id del empleado.
      * @param nombre Nombre del empleado.
      * @param direccion Domicilio del empleado.
-     * @param telefono Teléfono del empleado. 
+     * @param telefono Teléfono del empleado.
      * @param fechaIngreso Fecha de ingreso del empleado.
      */
     public Empleado(ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
@@ -63,6 +68,7 @@ public class Empleado {
 
     /**
      * Devuelve el id del empleado.
+     *
      * @return el id del empleado
      */
     public ObjectId getId() {
@@ -71,6 +77,7 @@ public class Empleado {
 
     /**
      * Establece el id del empleado.
+     *
      * @param id el id del empleado
      */
     public void setId(ObjectId id) {
@@ -79,6 +86,7 @@ public class Empleado {
 
     /**
      * Devuelve el nombre del empleado.
+     *
      * @return el nombre del empleado
      */
     public String getNombre() {
@@ -87,6 +95,7 @@ public class Empleado {
 
     /**
      * Establece el nombre del empleado.
+     *
      * @param nombre el nombre del empleado
      */
     public void setNombre(String nombre) {
@@ -95,6 +104,7 @@ public class Empleado {
 
     /**
      * Devuelve la dirección del empleado.
+     *
      * @return la dirección del empleado
      */
     public String getDireccion() {
@@ -103,6 +113,7 @@ public class Empleado {
 
     /**
      * Establece la dirección del empleado.
+     *
      * @param direccion la dirección del empleado
      */
     public void setDireccion(String direccion) {
@@ -111,6 +122,7 @@ public class Empleado {
 
     /**
      * Devuelve el teléfono del empleado.
+     *
      * @return el teléfono del empleado
      */
     public String getTelefono() {
@@ -119,6 +131,7 @@ public class Empleado {
 
     /**
      * Establece el teléfono del empleado.
+     *
      * @param telefono el teléfono del empleado
      */
     public void setTelefono(String telefono) {
@@ -127,6 +140,7 @@ public class Empleado {
 
     /**
      * Devuelve la fecha de ingreso del empleado.
+     *
      * @return la fecha de ingreso del empleado
      */
     public Date getFechaIngreso() {
@@ -135,6 +149,7 @@ public class Empleado {
 
     /**
      * Establece la fecha de ingreso del empleado.
+     *
      * @param fechaIngreso la fecha de ingreso del empleado
      */
     public void setFechaIngreso(Date fechaIngreso) {
@@ -170,6 +185,5 @@ public class Empleado {
     public String toString() {
         return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", fechaIngreso=" + fechaIngreso + '}';
     }
-    
-    
+
 }

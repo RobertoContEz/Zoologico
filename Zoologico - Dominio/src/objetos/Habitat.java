@@ -1,4 +1,3 @@
-
 package objetos;
 
 import java.util.List;
@@ -6,12 +5,16 @@ import java.util.Objects;
 import org.bson.types.ObjectId;
 
 /**
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
+ * 
  * Esta clase representa a los distintos tipos de hábitats naturales del mundo.
- * Se almacenan para representar en el sistema información útil para la gestión de los animales del zoológico.
- * Una abstracción de esta clase contiene todos los datos relevantes del tipo de hábitat.
- * En la base de datos, los hábitats se almacenan en la collección de Hábitats.
+ * Se almacenan para representar en el sistema información útil para la gestión
+ * de los animales del zoológico. Una abstracción de esta clase contiene todos
+ * los datos relevantes del tipo de hábitat. En la base de datos, los hábitats
+ * se almacenan en la collección de Hábitats.
  */
 public class Habitat {
+
     private ObjectId id;
     private String nombre;
     private String tipoClima;
@@ -26,6 +29,7 @@ public class Habitat {
 
     /**
      * Inicializa el hábitad con el id.
+     *
      * @param id Id del habitad
      */
     public Habitat(ObjectId id) {
@@ -34,10 +38,12 @@ public class Habitat {
 
     /**
      * Inicializa el hábitat con todos los atributos a exepción del id.
+     *
      * @param nombre el nombre del hábitat
      * @param tipoClima el tipo de clima del hábitat
      * @param tipoVegetacion el tipo de vegetación del hábitat
-     * @param continentesDondeSeEncuentra la lista de los nombres de los continentes donde se encuentra el hábitat
+     * @param continentesDondeSeEncuentra la lista de los nombres de los
+     * continentes donde se encuentra el hábitat
      */
     public Habitat(String nombre, String tipoClima, String tipoVegetacion, List<String> continentesDondeSeEncuentra) {
         this.nombre = nombre;
@@ -48,11 +54,13 @@ public class Habitat {
 
     /**
      * Inicializa el hábitat con todos los atributos.
+     *
      * @param id el id del hábitat
      * @param nombre el nombre del hábitat
      * @param tipoClima el tipo de clima del hábitat
      * @param tipoVegetacion el tipo de vegetación del hábitat
-     * @param continentesDondeSeEncuentra la lista de los nombres de los continentes donde se encuentra el hábitat
+     * @param continentesDondeSeEncuentra la lista de los nombres de los
+     * continentes donde se encuentra el hábitat
      */
     public Habitat(ObjectId id, String nombre, String tipoClima, String tipoVegetacion, List<String> continentesDondeSeEncuentra) {
         this.id = id;
@@ -64,6 +72,7 @@ public class Habitat {
 
     /**
      * Devuelve el id del hábitat.
+     *
      * @return el id del hábitat
      */
     public ObjectId getId() {
@@ -72,6 +81,7 @@ public class Habitat {
 
     /**
      * Establece el id del hábitat.
+     *
      * @param id el id del hábitat
      */
     public void setId(ObjectId id) {
@@ -80,6 +90,7 @@ public class Habitat {
 
     /**
      * Devuelve el nombre del hábitat.
+     *
      * @return el nombre del hábitat
      */
     public String getNombre() {
@@ -88,6 +99,7 @@ public class Habitat {
 
     /**
      * Establece el nombre del hábitat.
+     *
      * @param nombre el nombre del hábitat
      */
     public void setNombre(String nombre) {
@@ -96,6 +108,7 @@ public class Habitat {
 
     /**
      * Devuelve el tipo de clima del hábitat.
+     *
      * @return el tipo de clima del hábitat
      */
     public String getTipoClima() {
@@ -104,6 +117,7 @@ public class Habitat {
 
     /**
      * Establece el tipo de clima del hábitat.
+     *
      * @param tipoClima el tipo de clima del hábitat
      */
     public void setTipoClima(String tipoClima) {
@@ -112,6 +126,7 @@ public class Habitat {
 
     /**
      * Devuelve el tipo de vegetación del hábitat.
+     *
      * @return el tipo de vegetación del hábitat
      */
     public String getTipoVegetacion() {
@@ -120,6 +135,7 @@ public class Habitat {
 
     /**
      * Establece el tipo de vegetación del hábitat.
+     *
      * @param tipoVegetacion el tipo de vegetación del hábitat
      */
     public void setTipoVegetacion(String tipoVegetacion) {
@@ -127,16 +143,22 @@ public class Habitat {
     }
 
     /**
-     * Devuelve la lista de los nombres de los continentes donde se encuentra el hábitat.
-     * @return la lista de los nombres de los continentes donde se encuentra el hábitat
+     * Devuelve la lista de los nombres de los continentes donde se encuentra el
+     * hábitat.
+     *
+     * @return la lista de los nombres de los continentes donde se encuentra el
+     * hábitat
      */
     public List<String> getContinentesDondeSeEncuentra() {
         return continentesDondeSeEncuentra;
     }
 
     /**
-     * Establece la lista de los nombres de los continentes donde se encuentra el hábitat.
-     * @param continentesDondeSeEncuentra la lista de los nombres de los continentes donde se encuentra el hábitat
+     * Establece la lista de los nombres de los continentes donde se encuentra
+     * el hábitat.
+     *
+     * @param continentesDondeSeEncuentra la lista de los nombres de los
+     * continentes donde se encuentra el hábitat
      */
     public void setContinentesDondeSeEncuentra(List<String> continentesDondeSeEncuentra) {
         this.continentesDondeSeEncuentra = continentesDondeSeEncuentra;
@@ -172,5 +194,4 @@ public class Habitat {
         return "Habitad{" + "id=" + id + ", nombre=" + nombre + ", tipoClima=" + tipoClima + ", tipoVegetacion=" + tipoVegetacion + ", continentesDondeSeEncuentra=" + continentesDondeSeEncuentra + '}';
     }
 
-    
 }

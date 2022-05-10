@@ -1,12 +1,15 @@
-
 package objetos;
 
 import java.util.List;
 import java.util.Objects;
 import org.bson.types.ObjectId;
 
-//Collección el la BD: Zonas
+/**
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
+ * Collección el la BD: Zonas
+ */
 public class Zona {
+
     private ObjectId id;
     private String ubicacionActual;
     private String nombre;
@@ -21,6 +24,7 @@ public class Zona {
 
     /**
      * Inicializa la queja con el id.
+     *
      * @param id Id del guía.
      */
     public Zona(ObjectId id) {
@@ -29,10 +33,12 @@ public class Zona {
 
     /**
      * Inicializa la zona con todos los atributos a exepción del id.
+     *
      * @param ubicacionActual la descripción de la ubicación de la zona
      * @param nombre el nombre de la zona
      * @param extension la extensión de terreno de la zona, en metros cruadrados
-     * @param especiesQueTiene la lista de ids de las especies distintas que contiene la zona
+     * @param especiesQueTiene la lista de ids de las especies distintas que
+     * contiene la zona
      */
     public Zona(String ubicacionActual, String nombre, long extension, List<ObjectId> especiesQueTiene) {
         this.ubicacionActual = ubicacionActual;
@@ -43,11 +49,13 @@ public class Zona {
 
     /**
      * Inicializa la zona con todos los atributos.
+     *
      * @param id el id de la zona
      * @param ubicacionActual la descripción de la ubicación de la zona
      * @param nombre el nombre de la zona
      * @param extension la extensión de terreno de la zona, en metros cruadrados
-     * @param especiesQueTiene la lista de ids de las especies distintas que contiene la zona
+     * @param especiesQueTiene la lista de ids de las especies distintas que
+     * contiene la zona
      */
     public Zona(ObjectId id, String ubicacionActual, String nombre, long extension, List<ObjectId> especiesQueTiene) {
         this.id = id;
@@ -59,6 +67,7 @@ public class Zona {
 
     /**
      * Devuelve el id de la zona.
+     *
      * @return el id de la zona
      */
     public ObjectId getId() {
@@ -67,6 +76,7 @@ public class Zona {
 
     /**
      * Establece el id de la zona.
+     *
      * @param id el id de la zona
      */
     public void setId(ObjectId id) {
@@ -75,6 +85,7 @@ public class Zona {
 
     /**
      * Devuelve la descripción de la ubicación de la zona.
+     *
      * @return la descripción de la ubicación de la zona
      */
     public String getUbicacionActual() {
@@ -83,6 +94,7 @@ public class Zona {
 
     /**
      * Establece la descripción de la ubicación de la zona.
+     *
      * @param ubicacionActual la descripción de la ubicación de la zona
      */
     public void setUbicacionActual(String ubicacionActual) {
@@ -91,6 +103,7 @@ public class Zona {
 
     /**
      * Devuelve el nombre de la zona.
+     *
      * @return el nombre de la zona
      */
     public String getNombre() {
@@ -99,6 +112,7 @@ public class Zona {
 
     /**
      * Establece el nombre de la zona.
+     *
      * @param nombre el nombre de la zona
      */
     public void setNombre(String nombre) {
@@ -107,6 +121,7 @@ public class Zona {
 
     /**
      * Devuelve la extensión de terreno de la zona, en metros cruadrados.
+     *
      * @return la extensión de terreno de la zona, en metros cruadrados
      */
     public long getExtension() {
@@ -115,6 +130,7 @@ public class Zona {
 
     /**
      * Establece la extensión de terreno de la zona, en metros cruadrados.
+     *
      * @param extension la extensión de terreno de la zona, en metros cruadrados
      */
     public void setExtension(long extension) {
@@ -123,6 +139,7 @@ public class Zona {
 
     /**
      * Devuelve la lista de ids de las especies distintas que contiene la zona.
+     *
      * @return la lista de ids de las especies distintas que contiene la zona
      */
     public List<ObjectId> getEspeciesQueTiene() {
@@ -131,7 +148,9 @@ public class Zona {
 
     /**
      * Establece la lista de ids de las especies distintas que contiene la zona.
-     * @param especiesQueTiene la lista de ids de las especies distintas que contiene la zona
+     *
+     * @param especiesQueTiene la lista de ids de las especies distintas que
+     * contiene la zona
      */
     public void setEspeciesQueTiene(List<ObjectId> especiesQueTiene) {
         this.especiesQueTiene = especiesQueTiene;
