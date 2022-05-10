@@ -13,7 +13,7 @@ import org.bson.types.ObjectId;
  */
 public class Guia extends Empleado {
 
-    private List<ObjectId> itinerarioActual;
+    private List<ObjectId> itinerariosActuales;
 
     /**
      * Constructor por defecto.
@@ -33,22 +33,22 @@ public class Guia extends Empleado {
     /**
      * Inicializa el guía con todos los atributos a exepción del id.
      *
-     * @param itinerarioActual Lista de los ids de los itinerarios actuales del
+     * @param itinerariosActuales Lista de los ids de los itinerarios actuales del
      * guía.
      * @param nombre Nombre del guía.
      * @param direccion Domicilio del guía.
      * @param telefono Teléfono del guía.
      * @param fechaIngreso Fecha de ingreso del guía como guía.
      */
-    public Guia(List<ObjectId> itinerarioActual, String nombre, String direccion, String telefono, Date fechaIngreso) {
+    public Guia(List<ObjectId> itinerariosActuales, String nombre, String direccion, String telefono, Date fechaIngreso) {
         super(nombre, direccion, telefono, fechaIngreso);
-        this.itinerarioActual = itinerarioActual;
+        this.itinerariosActuales = itinerariosActuales;
     }
 
     /**
      * Inicializa el guía con todos los atributos.
      *
-     * @param itinerarioActual Lista de los ids de los itinerarios actuales del
+     * @param itinerariosActuales Lista de los ids de los itinerarios actuales del
      * guía.
      * @param id Id del guía.
      * @param nombre Nombre del guía.
@@ -56,9 +56,9 @@ public class Guia extends Empleado {
      * @param telefono Teléfono del guía.
      * @param fechaIngreso Fecha de ingreso del guía.
      */
-    public Guia(List<ObjectId> itinerarioActual, ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
+    public Guia(List<ObjectId> itinerariosActuales, ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
         super(id, nombre, direccion, telefono, fechaIngreso);
-        this.itinerarioActual = itinerarioActual;
+        this.itinerariosActuales = itinerariosActuales;
     }
 
     /**
@@ -66,8 +66,8 @@ public class Guia extends Empleado {
      *
      * @return la lista de los ids de los itinerarios actuales del guía
      */
-    public List<ObjectId> getItinerarioActual() {
-        return itinerarioActual;
+    public List<ObjectId> getItinerariosActuales() {
+        return itinerariosActuales;
     }
 
     /**
@@ -76,13 +76,13 @@ public class Guia extends Empleado {
      * @param itinerarioActual la lista de los ids de los itinerarios actuales
      * del guía
      */
-    public void setItinerarioActual(List<ObjectId> itinerarioActual) {
-        this.itinerarioActual = itinerarioActual;
+    public void setItinerariosActuales(List<ObjectId> itinerariosActuales) {
+        this.itinerariosActuales = itinerariosActuales;
     }
 
     @Override
     public String toString() {
-        return super.toString() + " Guia{" + "itinerarioActual=" + itinerarioActual + '}';
+        return super.toString() + " Guia{" + "itinerarioActual=" + itinerariosActuales + '}';
     }
 
 }
