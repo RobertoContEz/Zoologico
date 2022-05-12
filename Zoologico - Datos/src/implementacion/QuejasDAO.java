@@ -7,6 +7,7 @@ import interfaces.IConexionBD;
 import interfaces.IPersistenciaQueja;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.PersistenceException;
 import objetos.Queja;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -32,69 +33,98 @@ public class QuejasDAO implements IPersistenciaQueja {
 
     @Override
     public boolean agregar(Queja queja) {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
-        MongoCollection<Queja> coleccion = this.getCollection();
-        coleccion.insertOne(queja);
-        return true;
+        try {
+            // TODO: MANEJAR POSIBLES EXCEPCIONES...
+            MongoCollection<Queja> coleccion = this.getCollection();
+            coleccion.insertOne(queja);
+            return true;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return false;
+        }
     }
 
     @Override
     public boolean actualizar(Queja queja) {
-        if (queja.getId() == null) {
-            System.out.println("ID del Queja invalida");
-        } else {
-            MongoCollection<Queja> coleccion = this.getCollection();
-            Document filtro = new Document();
-            filtro.append("_id", queja.getId());
-
-            Document entidadActualizada = new Document();
-            entidadActualizada.append("$set", new Document("fecha", queja.getFecha())
-                    .append("hora", queja.getHora())
-                    .append("queja", queja.getQueja())
-                    .append("correo", queja.getCorreo())
-                    .append("telefono", queja.getTelefono())
-                    .append("idItinerario", queja.getIdItinerario())
-            );
-
-            UpdateResult resultado = coleccion.updateOne(filtro, entidadActualizada);
-
-            if (resultado.getModifiedCount() == 0) {
-                System.out.println("No se ha actualizado");
+        try {
+            if (queja.getId() == null) {
+                System.out.println("ID del Queja invalida");
             } else {
-                System.out.println("Se ha actualizado");
+                MongoCollection<Queja> coleccion = this.getCollection();
+                Document filtro = new Document();
+                filtro.append("_id", queja.getId());
+
+                Document entidadActualizada = new Document();
+                entidadActualizada.append("$set", new Document("fecha", queja.getFecha())
+                        .append("hora", queja.getHora())
+                        .append("queja", queja.getQueja())
+                        .append("correo", queja.getCorreo())
+                        .append("telefono", queja.getTelefono())
+                        .append("idItinerario", queja.getIdItinerario())
+                );
+
+                UpdateResult resultado = coleccion.updateOne(filtro, entidadActualizada);
+
+                if (resultado.getModifiedCount() == 0) {
+                    System.out.println("No se ha actualizado");
+                } else {
+                    System.out.println("Se ha actualizado");
+                }
             }
+            // TODO: MANEJAR POSIBLES EXCEPCIONES...
+            return true;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return false;
         }
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
-        return true;
     }
 
     @Override
     public boolean eliminar(ObjectId id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            MongoCollection<Queja> coleccion = this.getCollection();
+            Document filtro = new Document();
+            filtro.append("_id", id);
+            coleccion.deleteOne(filtro);
+            return true;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return false;
+        }
     }
 
     @Override
     public Queja consultar(ObjectId id) {
-        List<Queja> listaQuejas = new ArrayList<>();
-        MongoCollection<Queja> collection = this.getCollection();
-        Document filtro = new Document();
-        filtro.append("_id", id);
-        collection.find(filtro).into(listaQuejas);
-        if (listaQuejas.isEmpty()) {
+        try {
+            List<Queja> listaQuejas = new ArrayList<>();
+            MongoCollection<Queja> collection = this.getCollection();
+            Document filtro = new Document();
+            filtro.append("_id", id);
+            collection.find(filtro).into(listaQuejas);
+            if (listaQuejas.isEmpty()) {
+                return null;
+            } else {
+                // TODO: MANEJAR POSIBLES EXCEPCIONES...
+                return listaQuejas.get(0);
+            }
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
             return null;
-        } else {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
-            return listaQuejas.get(0);
         }
     }
 
     @Override
     public List<Queja> consultarTodos() {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
-        List<Queja> listaQuejas = new ArrayList<>();
-        MongoCollection<Queja> collection = this.getCollection();
-        collection.find().into(listaQuejas);
-        return listaQuejas;
+        try {
+            // TODO: MANEJAR POSIBLES EXCEPCIONES...
+            List<Queja> listaQuejas = new ArrayList<>();
+            MongoCollection<Queja> collection = this.getCollection();
+            collection.find().into(listaQuejas);
+            return listaQuejas;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
     }
 
 }

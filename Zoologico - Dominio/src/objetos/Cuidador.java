@@ -51,7 +51,7 @@ public class Cuidador extends Empleado {
      * @param fechaIngreso Fecha de ingreso del cuidador como empleado.
      */
     public Cuidador(List<ObjectId> especiesExperto, List<ObjectId> especiesBasicas, List<ObjectId> especiesActuales, List<ObjectId> listadoDeEspeciesCuidadas, String nombre, String direccion, String telefono, Date fechaIngreso) {
-        super(nombre, direccion, telefono, fechaIngreso);
+        super(nombre, direccion, telefono, fechaIngreso, "Cuidador");
         this.especiesExperto = especiesExperto;
         this.especiesBasicas = especiesBasicas;
         this.especiesActuales = especiesActuales;
@@ -76,7 +76,7 @@ public class Cuidador extends Empleado {
      * @param fechaIngreso Fecha de ingreso del cuidador como empleado.
      */
     public Cuidador(List<ObjectId> especiesExperto, List<ObjectId> especiesBasicas, List<ObjectId> especiesActuales, List<ObjectId> listadoDeEspeciesCuidadas, ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
-        super(id, nombre, direccion, telefono, fechaIngreso);
+        super(id, nombre, direccion, telefono, fechaIngreso, "Cuidador");
         this.especiesExperto = especiesExperto;
         this.especiesBasicas = especiesBasicas;
         this.especiesActuales = especiesActuales;

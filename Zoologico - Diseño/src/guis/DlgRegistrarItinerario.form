@@ -35,7 +35,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="122" max="32767" attributes="0"/>
+              <EmptySpace pref="94" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
@@ -116,32 +116,23 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="campoTextoNumeroVisitantes" max="32767" attributes="0"/>
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                      <Component id="campoTextoNombreItinerario" min="-2" pref="188" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                          </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="campoTextoNumeroVisitantes" min="-2" pref="132" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="campoTextoNombreItinerario" max="32767" attributes="0"/>
-                                          <Component id="campoTextoDuracionItinerario" min="-2" pref="188" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="campoTextoLongitudItinerario" min="-2" pref="188" max="-2" attributes="0"/>
                                       </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="campoTextoLongitudItinerario" min="-2" pref="188" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -150,6 +141,18 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="campoTextoDuracionItinerario" pref="188" max="32767" attributes="0"/>
+                                  <Component id="cmbGuia" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -167,7 +170,12 @@
                           <Component id="campoTextoNombreItinerario" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbGuia" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="campoTextoDuracionItinerario" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -182,7 +190,7 @@
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="campoTextoNumeroVisitantes" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -192,6 +200,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Buscar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarItinerarioActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="campoTextoNombreItinerario">
             </Component>
@@ -206,6 +217,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoTextoDuracionItinerario">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
@@ -213,6 +227,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoTextoLongitudItinerario">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
@@ -220,6 +237,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoTextoNumeroVisitantes">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
@@ -228,6 +248,26 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="DATOS GENERALES DEL RECORRIDO"/>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gu&#xed;a:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbGuia">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -256,15 +296,13 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="campoTextoHorarioLunes" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="campoTextoHorarioMartes" min="-2" pref="132" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="campoTextoHorarioMiercoles" max="32767" attributes="0"/>
-                              <Component id="campoTextoHorarioJueves" alignment="0" max="32767" attributes="0"/>
-                              <Component id="campoTextoHorarioViernes" alignment="0" max="32767" attributes="0"/>
-                              <Component id="campoTextoHorarioSabado" alignment="0" max="32767" attributes="0"/>
-                              <Component id="campoTextoHorarioDomingo" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="tiempoMie6" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="tiempoMie5" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="tiempoMie4" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="tiempoMie3" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="tiempoMie2" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="tiempoMie1" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Component id="tiempoMie" min="-2" pref="146" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -283,39 +321,39 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxLunes" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoTextoHorarioLunes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tiempoMie6" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxMartes" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoTextoHorarioMartes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tiempoMie5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxMiercoles" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoTextoHorarioMiercoles" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tiempoMie" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxJueves" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoTextoHorarioJueves" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tiempoMie1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxViernes" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoTextoHorarioViernes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tiempoMie2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxSabado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoTextoHorarioSabado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tiempoMie3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxDomingo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="campoTextoHorarioDomingo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tiempoMie4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -329,57 +367,67 @@
                 <Property name="text" type="java.lang.String" value="D&#xcd;AS DEL RECORRIDO"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="campoTextoHorarioLunes">
-            </Component>
-            <Component class="javax.swing.JTextField" name="campoTextoHorarioMartes">
-            </Component>
-            <Component class="javax.swing.JTextField" name="campoTextoHorarioMiercoles">
-            </Component>
-            <Component class="javax.swing.JTextField" name="campoTextoHorarioJueves">
-            </Component>
-            <Component class="javax.swing.JTextField" name="campoTextoHorarioViernes">
-            </Component>
-            <Component class="javax.swing.JTextField" name="campoTextoHorarioSabado">
-            </Component>
-            <Component class="javax.swing.JTextField" name="campoTextoHorarioDomingo">
-            </Component>
             <Component class="javax.swing.JCheckBox" name="checkBoxDomingo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Domingo"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="checkBoxSabado">
               <Properties>
                 <Property name="text" type="java.lang.String" value="S&#xe1;bado"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="checkBoxViernes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Viernes"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="checkBoxJueves">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Jueves"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="checkBoxMiercoles">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mi&#xe9;rcoles"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="checkBoxMartes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Martes"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="checkBoxLunes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lunes"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxLunesActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie">
+            </Component>
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie1">
+            </Component>
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie2">
+            </Component>
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie3">
+            </Component>
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie4">
+            </Component>
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie5">
+            </Component>
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie6">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -400,44 +448,26 @@
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="321" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona7" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona8" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBox7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox9" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBox10" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox11" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox12" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBox13" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox15" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox14" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona9" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jCheckBox16" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox17" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox18" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -448,30 +478,21 @@
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona6" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jCheckBox3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox18" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona7" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona9" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="15" max="32767" attributes="0"/>
                   </Group>
@@ -487,94 +508,58 @@
                 <Property name="text" type="java.lang.String" value="ZONAS DEL RECORRIDO"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+            <Component class="javax.swing.JCheckBox" name="ckbZona1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jCheckBox1"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+            <Component class="javax.swing.JCheckBox" name="ckbZona4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jCheckBox2"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+            <Component class="javax.swing.JCheckBox" name="ckbZona7">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jCheckBox3"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+            <Component class="javax.swing.JCheckBox" name="ckbZona2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jCheckBox4"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+            <Component class="javax.swing.JCheckBox" name="ckbZona5">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jCheckBox5"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox6">
+            <Component class="javax.swing.JCheckBox" name="ckbZona8">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jCheckBox6"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox7">
+            <Component class="javax.swing.JCheckBox" name="ckbZona3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jCheckBox7"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox8">
+            <Component class="javax.swing.JCheckBox" name="ckbZona6">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jCheckBox8"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox9">
+            <Component class="javax.swing.JCheckBox" name="ckbZona9">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jCheckBox9"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox10">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox10"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox11">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox11"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox12">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox12"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox13">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox13"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox14">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox14"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox15">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox15"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox16">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox16"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox17">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox17"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBox18">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox18"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -582,6 +567,7 @@
         <Component class="javax.swing.JButton" name="btnGuardarItinerario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelarItinerario">

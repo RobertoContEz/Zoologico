@@ -38,10 +38,10 @@ public class Guia extends Empleado {
      * @param nombre Nombre del guía.
      * @param direccion Domicilio del guía.
      * @param telefono Teléfono del guía.
-     * @param fechaIngreso Fecha de ingreso del guía como guía.
+     * @param fechaIngreso Fecha de ingreso del guía.
      */
     public Guia(List<ObjectId> itinerariosActuales, String nombre, String direccion, String telefono, Date fechaIngreso) {
-        super(nombre, direccion, telefono, fechaIngreso);
+        super(nombre, direccion, telefono, fechaIngreso, "Guía");
         this.itinerariosActuales = itinerariosActuales;
     }
 
@@ -57,7 +57,7 @@ public class Guia extends Empleado {
      * @param fechaIngreso Fecha de ingreso del guía.
      */
     public Guia(List<ObjectId> itinerariosActuales, ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
-        super(id, nombre, direccion, telefono, fechaIngreso);
+        super(id, nombre, direccion, telefono, fechaIngreso, "Guía");
         this.itinerariosActuales = itinerariosActuales;
     }
 
@@ -73,7 +73,7 @@ public class Guia extends Empleado {
     /**
      * Establece la lista de los ids de los itinerarios actuales del guía.
      *
-     * @param itinerarioActual la lista de los ids de los itinerarios actuales
+     * @param itinerariosActuales la lista de los ids de los itinerarios actuales
      * del guía
      */
     public void setItinerariosActuales(List<ObjectId> itinerariosActuales) {
@@ -82,7 +82,7 @@ public class Guia extends Empleado {
 
     @Override
     public String toString() {
-        return super.toString() + " Guia{" + "itinerarioActual=" + itinerariosActuales + '}';
+        return super.toString() + " Guia{" + "itinerariosActuales=" + itinerariosActuales + '}';
     }
 
 }

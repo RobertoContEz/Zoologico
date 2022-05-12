@@ -1,15 +1,24 @@
 package guis;
 
+import control.ControlRegistrarHabitat;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import objetos.Habitat;
 
 /**
  *
  * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
  */
 public class DlgRegistrarHabitat extends javax.swing.JDialog {
+    
+    private final ControlRegistrarHabitat control = new ControlRegistrarHabitat();
 
     FondoPanelHabitat fondo = new FondoPanelHabitat();
     
@@ -17,8 +26,71 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
         super(parent, modal);
         this.setContentPane(fondo);
         initComponents();
+        
+        this.climas = control.recuperaListaClimas();
+        this.vegetaciones = control.recuperaListaVegetaciones();
+        this.continentes = control.recuperaListaContinentes();
+        
+        inicializar();
+        
+        continentesAgregados = new ArrayList();
     }
 
+    private final List<String> climas;
+    private final List<String> vegetaciones;
+    private final List<String> continentes;
+    private List<String> continentesAgregados;
+    
+    private void inicializar() {
+        if(climas==null) {
+            JOptionPane.showMessageDialog(this, "Error recuperando los climas.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            comboBoxClima.removeAllItems();
+            comboBoxClima.addItem("Seleccione...");
+            for (String clima : climas) {
+                comboBoxClima.addItem(clima);
+            }
+        }
+        
+        
+        if(vegetaciones==null) {
+            JOptionPane.showMessageDialog(this, "Error recuperando los tipos de vegetación.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            comboBoxVegetacion.removeAllItems();
+            comboBoxVegetacion.addItem("Seleccione...");
+            for (String vegetacion : vegetaciones) {
+                comboBoxVegetacion.addItem(vegetacion);
+            }
+        }
+
+        
+        if(continentes==null) {
+            JOptionPane.showMessageDialog(this, "Error recuperando los continentes.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            DefaultTableModel modeloTabla = (DefaultTableModel) tablaContinentes.getModel();
+            modeloTabla.setRowCount(0);
+            for (String continente : continentes) {
+                Object[] fila = {
+                    continente
+                };
+
+                modeloTabla.addRow(fila);
+            }
+        }
+    }
+    
+    private void actualizarContinentes() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tablaContinentesAgregados.getModel();
+        modeloTabla.setRowCount(0);
+        for (String continente : continentesAgregados) {
+            Object[] fila = {
+                continente
+            };
+
+            modeloTabla.addRow(fila);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +135,7 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
         jLabel3.setText("Vegetación:");
 
         comboBoxClima.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxClima.setEnabled(false);
         comboBoxClima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxClimaActionPerformed(evt);
@@ -70,6 +143,7 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
         });
 
         comboBoxVegetacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxVegetacion.setEnabled(false);
         comboBoxVegetacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxVegetacionActionPerformed(evt);
@@ -112,14 +186,14 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
                     .addComponent(campoNombreHabitat))
                 .addGap(34, 34, 34)
                 .addComponent(btnVerificarNombre)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(campoNombreHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,6 +228,7 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnAgregarContinente.setText("Agregar");
+        btnAgregarContinente.setEnabled(false);
         btnAgregarContinente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarContinenteActionPerformed(evt);
@@ -161,6 +236,7 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
         });
 
         btnEliminarContinente.setText("Eliminar");
+        btnEliminarContinente.setEnabled(false);
         btnEliminarContinente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarContinenteActionPerformed(evt);
@@ -182,7 +258,15 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
             new String [] {
                 "Continentes"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaContinentes);
 
         tablaContinentesAgregados.setModel(new javax.swing.table.DefaultTableModel(
@@ -195,9 +279,17 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
                 {null}
             },
             new String [] {
-                "Continentes agregados"
+                "Continentes Agregados"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tablaContinentesAgregados);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -285,27 +377,27 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarHabitatActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnCancelarHabitatActionPerformed
 
     private void btnGuardarHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarHabitatActionPerformed
-        // TODO add your handling code here:
+        guardar();
     }//GEN-LAST:event_btnGuardarHabitatActionPerformed
 
     private void campoNombreHabitatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNombreHabitatActionPerformed
-        // TODO add your handling code here:
+        verificar();
     }//GEN-LAST:event_campoNombreHabitatActionPerformed
 
     private void btnVerificarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarNombreActionPerformed
-        // TODO add your handling code here:
+        verificar();
     }//GEN-LAST:event_btnVerificarNombreActionPerformed
 
     private void btnAgregarContinenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarContinenteActionPerformed
-        // TODO add your handling code here:
+        agregarContinente();
     }//GEN-LAST:event_btnAgregarContinenteActionPerformed
 
     private void btnEliminarContinenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarContinenteActionPerformed
-        // TODO add your handling code here:
+        eliminarContinente();
     }//GEN-LAST:event_btnEliminarContinenteActionPerformed
 
     private void comboBoxClimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxClimaActionPerformed
@@ -316,47 +408,97 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxVegetacionActionPerformed
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(DlgRegistrarHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(DlgRegistrarHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(DlgRegistrarHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(DlgRegistrarHabitat.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the dialog */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                DlgRegistrarHabitat dialog = new DlgRegistrarHabitat(new javax.swing.JFrame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    @Override
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                });
-//                dialog.setVisible(true);
-//            }
-//        });
-//    }
+    private boolean verificar() {
+        Habitat habitat = control.verificarExistencia(campoNombreHabitat.getText());
+        if(habitat!=null) {
+            comboBoxClima.setEnabled(false);
+            comboBoxVegetacion.setEnabled(false);
+            btnAgregarContinente.setEnabled(false);
+            btnEliminarContinente.setEnabled(false);
+            
+            List<String> listaContinentes = habitat.getContinentesDondeSeEncuentra();
+            String continentes = listaContinentes.get(0);
+            listaContinentes.remove(0);
+            for (String continente : listaContinentes) {
+                continentes = continentes+", "+continente; 
+            }
+            
+            JOptionPane.showMessageDialog(this, "El hábitat ya está registrado.\n"
+                    +"Nombre: "+habitat.getNombre()+"\n"
+                    +"Clima: "+habitat.getTipoClima()+"\n"
+                    +"Vegetación: "+habitat.getTipoVegetacion()+"\n"
+                    +"Continentes: "+continentes, 
+                    "Aviso", JOptionPane.WARNING_MESSAGE);
+        } else {
+            comboBoxClima.setEnabled(true);
+            comboBoxVegetacion.setEnabled(true);
+            btnAgregarContinente.setEnabled(true);
+            btnEliminarContinente.setEnabled(true);
+        }
+        
+        return habitat==null;
+    }
+    
+    private void agregarContinente() {
+        int indiceFila = tablaContinentes.getSelectedRow();
+        if (indiceFila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un continente de la lista de continentes para agregarlo.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        } else {
+            continentesAgregados.add(continentes.get(indiceFila));
+            continentesAgregados = new ArrayList(new HashSet(continentesAgregados));
+            actualizarContinentes();
+        }
+    }
+    
+    private void eliminarContinente() {
+        int indiceFila = tablaContinentesAgregados.getSelectedRow();
+        if (indiceFila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un continente de la lista de continentes agregados para eliminarlos.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        } else {
+            continentesAgregados.remove(indiceFila);
+            actualizarContinentes();
+        }
+    }
+    
+    private boolean validar() {
+        boolean valido = true;
+        String errores = "";
+        if(campoNombreHabitat.getText().equals("")) {
+            errores = errores + (errores.equals("")?"":"\n") + "Introduzca el nombre del hábitat.";
+            valido = false;
+        }
+        if(comboBoxClima.getSelectedIndex()==0) {
+            errores = errores + (errores.equals("")?"":"\n") + "Seleccione un tipo de clima.";
+            valido = false;
+        }
+        if(comboBoxVegetacion.getSelectedIndex()==0) {
+            errores = errores + (errores.equals("")?"":"\n") + "Seleccione un tipo de vegetación.";
+            valido = false;
+        }
+        if(continentesAgregados.isEmpty()) {
+            errores = errores + (errores.equals("")?"":"\n") + "Seleccione al menos un continente.";
+            valido = false;
+        }
+        
+        if(!valido) JOptionPane.showMessageDialog(this, "Los siguientes campos están sin llenar: \n"+errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+        
+        return valido;
+    }
+    
+    private void guardar() {
+        if(verificar()&&validar()) {
+            Habitat habitat = new Habitat();
+            habitat.setNombre(campoNombreHabitat.getText());
+            habitat.setTipoClima(climas.get(comboBoxClima.getSelectedIndex()-1));
+            habitat.setTipoVegetacion(climas.get(comboBoxVegetacion.getSelectedIndex()-1));
+            habitat.setContinentesDondeSeEncuentra(continentesAgregados);
+            if(control.guardar(habitat)) {
+                JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se ha podido guardar el hábitat.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarContinente;
@@ -380,7 +522,7 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
     private javax.swing.JTable tablaContinentes;
     private javax.swing.JTable tablaContinentesAgregados;
     // End of variables declaration//GEN-END:variables
-class FondoPanelHabitat extends JPanel {
+    class FondoPanelHabitat extends JPanel {
 
         private Image imagen;
 

@@ -18,6 +18,7 @@ public class Empleado {
     private String direccion;
     private String telefono;
     private Date fechaIngreso;
+    private String tipo;
 
     /**
      * Constructor por defecto.
@@ -41,12 +42,14 @@ public class Empleado {
      * @param direccion Domicilio del empleado.
      * @param telefono Teléfono del empleado.
      * @param fechaIngreso Fecha de ingreso del empleado como empleado.
+     * @param tipo El tipo de empleado (Ej: Guía, Cuidador, Cajero, etc)
      */
-    public Empleado(String nombre, String direccion, String telefono, Date fechaIngreso) {
+    public Empleado(String nombre, String direccion, String telefono, Date fechaIngreso, String tipo) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.fechaIngreso = fechaIngreso;
+        this.tipo = tipo;
     }
 
     /**
@@ -57,13 +60,15 @@ public class Empleado {
      * @param direccion Domicilio del empleado.
      * @param telefono Teléfono del empleado.
      * @param fechaIngreso Fecha de ingreso del empleado.
+     * @param tipo El tipo de empleado (Ej: Guía, Cuidador, Cajero, etc)
      */
-    public Empleado(ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
+    public Empleado(ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso, String tipo) {
         this.id = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.fechaIngreso = fechaIngreso;
+        this.tipo = tipo;
     }
 
     /**
@@ -156,6 +161,24 @@ public class Empleado {
         this.fechaIngreso = fechaIngreso;
     }
 
+    /**
+     * Devuelve el tipo de empleado.
+     * 
+     * @return el tipo de empleado
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * Establece el tipo de empleado.
+     * 
+     * @param tipo el tipo de empleado
+     */
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -183,7 +206,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", fechaIngreso=" + fechaIngreso + '}';
+        return "Empleado{" + "id=" + id + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", fechaIngreso=" + fechaIngreso + ", tipo=" + tipo + '}';
     }
 
 }

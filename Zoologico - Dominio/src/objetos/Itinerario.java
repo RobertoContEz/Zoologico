@@ -19,12 +19,10 @@ public class Itinerario {
     private String nombre;
     private List<ObjectId> idsZonasVisitadas;
     private int duracionDelRecorrido;
-    private List<String> diasDelRecorrido;
-    private List<LocalTime> horasALasQueInicia;
+    private List<LocalTime> diasYHoras;
     private long longitud;
     private int numeroMaximoVisitantes;
     private int numeroEspeciesVisitadas;
-    private List<Queja> quejas;
 
     /**
      * Constructor por defecto.
@@ -47,28 +45,23 @@ public class Itinerario {
      * @param nombre el nombre del recorrido
      * @param idsZonasVisitadas la lista de los ids de las zonas visitadas en el
      * recorrido
-     * @param duracionDelRecorrido la duración en horas del recorrido
-     * @param diasDelRecorrido la lista de los días de la semana en los que se
-     * ofrece el recorrido
-     * @param horasALasQueInicia la lista de horas día a las que puede inicial
-     * el recorrido
+     * @param duracionDelRecorrido la duración en minutos del recorrido
+     * @param diasYHoras la lista de horas y los días de la semana a las que 
+     * puede iniciar el recorrido.
      * @param longitud la longitud de metros del recorrido
      * @param numeroMaximoVisitantes la máxima cantidad de visitantes
      * autorizados por recorrido
      * @param numeroEspeciesVisitadas el número de especies visitadas en el
      * recorrido
-     * @param quejas la lista de quejas enviadas sobre el recorrido
      */
-    public Itinerario(String nombre, List<ObjectId> idsZonasVisitadas, int duracionDelRecorrido, List<String> diasDelRecorrido, List<LocalTime> horasALasQueInicia, long longitud, int numeroMaximoVisitantes, int numeroEspeciesVisitadas, List<Queja> quejas) {
+    public Itinerario(String nombre, List<ObjectId> idsZonasVisitadas, int duracionDelRecorrido, List<LocalTime> diasYHoras, long longitud, int numeroMaximoVisitantes, int numeroEspeciesVisitadas) {
         this.nombre = nombre;
         this.idsZonasVisitadas = idsZonasVisitadas;
         this.duracionDelRecorrido = duracionDelRecorrido;
-        this.diasDelRecorrido = diasDelRecorrido;
-        this.horasALasQueInicia = horasALasQueInicia;
+        this.diasYHoras = diasYHoras;
         this.longitud = longitud;
         this.numeroMaximoVisitantes = numeroMaximoVisitantes;
         this.numeroEspeciesVisitadas = numeroEspeciesVisitadas;
-        this.quejas = quejas;
     }
 
     /**
@@ -78,29 +71,24 @@ public class Itinerario {
      * @param nombre el nombre del recorrido
      * @param idsZonasVisitadas la lista de los ids de las zonas visitadas en el
      * recorrido
-     * @param duracionDelRecorrido la duración en horas del recorrido
-     * @param diasDelRecorrido la lista de los días de la semana en los que se
-     * ofrece el recorrido
-     * @param horasALasQueInicia la lista de horas día a las que puede inicial
-     * el recorrido
+     * @param duracionDelRecorrido la duración en minutos del recorrido
+     * @param diasYHoras la lista de horas y los días de la semana a las que 
+     * puede iniciar el recorrido.
      * @param longitud la longitud en metros del recorrido
      * @param numeroMaximoVisitantes la máxima cantidad de visitantes
      * autorizados por recorrido
      * @param numeroEspeciesVisitadas el número de especies visitadas en el
      * recorrido
-     * @param quejas la lista de quejas enviadas sobre el recorrido
      */
-    public Itinerario(ObjectId id, String nombre, List<ObjectId> idsZonasVisitadas, int duracionDelRecorrido, List<String> diasDelRecorrido, List<LocalTime> horasALasQueInicia, long longitud, int numeroMaximoVisitantes, int numeroEspeciesVisitadas, List<Queja> quejas) {
+    public Itinerario(ObjectId id, String nombre, List<ObjectId> idsZonasVisitadas, int duracionDelRecorrido, List<LocalTime> diasYHoras, long longitud, int numeroMaximoVisitantes, int numeroEspeciesVisitadas) {
         this.id = id;
         this.nombre = nombre;
         this.idsZonasVisitadas = idsZonasVisitadas;
         this.duracionDelRecorrido = duracionDelRecorrido;
-        this.diasDelRecorrido = diasDelRecorrido;
-        this.horasALasQueInicia = horasALasQueInicia;
+        this.diasYHoras = diasYHoras;
         this.longitud = longitud;
         this.numeroMaximoVisitantes = numeroMaximoVisitantes;
         this.numeroEspeciesVisitadas = numeroEspeciesVisitadas;
-        this.quejas = quejas;
     }
 
     /**
@@ -119,11 +107,6 @@ public class Itinerario {
      */
     public void setId(ObjectId id) {
         this.id = id;
-        if (quejas != null) {
-            for (Queja queja : quejas) {
-                queja.setIdItinerario(id);
-            }
-        }
     }
 
     /**
@@ -145,18 +128,18 @@ public class Itinerario {
     }
 
     /**
-     * Devuelve la duración en horas del recorrido.
+     * Devuelve la duración en minutos del recorrido.
      *
-     * @return la duración en horas del recorrido
+     * @return la duración en minutos del recorrido
      */
     public int getDuracionDelRecorrido() {
         return duracionDelRecorrido;
     }
 
     /**
-     * Establece la duración en horas del recorrido.
+     * Establece la duración en minutos del recorrido.
      *
-     * @param duracionDelRecorrido la duración en horas del recorrido
+     * @param duracionDelRecorrido la duración en minutos del recorrido
      */
     public void setDuracionDelRecorrido(int duracionDelRecorrido) {
         this.duracionDelRecorrido = duracionDelRecorrido;
@@ -182,44 +165,25 @@ public class Itinerario {
     }
 
     /**
-     * Devuelve la lista de los días de la semana en los que se ofrece el
-     * recorrido.
+     * Devuelve la lista de horas y los días de la semana a las que puede 
+     * iniciar el recorrido.
      *
-     * @return la lista de los días de la semana en los que se ofrece el
-     * recorrido
+     * @return la lista de horas y los días de la semana a las que puede iniciar
+     * el recorrido.
      */
-    public List<String> getDiasDelRecorrido() {
-        return diasDelRecorrido;
+    public List<LocalTime> getDiasYHoras() {
+        return diasYHoras;
     }
 
     /**
-     * Establece la lista de los días de la semana en los que se ofrece el
-     * recorrido.
+     * Establece la lista de horas y los días de la semana a las que puede 
+     * iniciar el recorrido.
      *
-     * @param diasDelRecorrido la lista de los días de la semana en los que se
-     * ofrece el recorrido
+     * @param diasYHoras la lista de horas y los días de la semana a las que 
+     * puede iniciar el recorrido.
      */
-    public void setDiasDelRecorrido(List<String> diasDelRecorrido) {
-        this.diasDelRecorrido = diasDelRecorrido;
-    }
-
-    /**
-     * Devuelve la lista de horas día a las que puede inicial el recorrido.
-     *
-     * @return la lista de horas día a las que puede inicial el recorrido
-     */
-    public List<LocalTime> getHorasALasQueInicia() {
-        return horasALasQueInicia;
-    }
-
-    /**
-     * Establece la lista de horas día a las que puede inicial el recorrido.
-     *
-     * @param horasALasQueInicia la lista de horas día a las que puede inicial
-     * el recorrido
-     */
-    public void setHorasALasQueInicia(List<LocalTime> horasALasQueInicia) {
-        this.horasALasQueInicia = horasALasQueInicia;
+    public void setDiasYHoras(List<LocalTime> diasYHoras) {
+        this.diasYHoras = diasYHoras;
     }
 
     /**
@@ -278,29 +242,6 @@ public class Itinerario {
         this.numeroEspeciesVisitadas = numeroEspeciesVisitadas;
     }
 
-    /**
-     * Devuelve la lista de quejas enviadas sobre el recorrido.
-     *
-     * @return la lista de quejas enviadas sobre el recorrido
-     */
-    public List<Queja> getQuejas() {
-        return quejas;
-    }
-
-    /**
-     * Establece la lista de quejas enviadas sobre el recorrido.
-     *
-     * @param quejas la lista de quejas enviadas sobre el recorrido
-     */
-    public void setQuejas(List<Queja> quejas) {
-        if (quejas != null) {
-            for (Queja queja : quejas) {
-                queja.setIdItinerario(id);
-            }
-        }
-        this.quejas = quejas;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -328,7 +269,7 @@ public class Itinerario {
 
     @Override
     public String toString() {
-        return "Itinerario{" + "id=" + id + ", nombre=" + nombre + ", idsZonasVisitadas=" + idsZonasVisitadas + ", duracionDelRecorrido=" + duracionDelRecorrido + ", diasDelRecorrido=" + diasDelRecorrido + ", horasALasQueInicia=" + horasALasQueInicia + ", longitud=" + longitud + ", numeroMaximoVisitantes=" + numeroMaximoVisitantes + ", numeroEspeciesVisitadas=" + numeroEspeciesVisitadas + '}';
+        return "Itinerario{" + "id=" + id + ", nombre=" + nombre + ", idsZonasVisitadas=" + idsZonasVisitadas + ", duracionDelRecorrido=" + duracionDelRecorrido + ", diasDelRecorrido=" + ", horasALasQueInicia=" + diasYHoras + ", longitud=" + longitud + ", numeroMaximoVisitantes=" + numeroMaximoVisitantes + ", numeroEspeciesVisitadas=" + numeroEspeciesVisitadas + '}';
     }
 
 }

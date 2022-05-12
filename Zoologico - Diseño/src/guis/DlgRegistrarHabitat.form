@@ -120,7 +120,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                      <EmptySpace pref="25" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="campoNombreHabitat" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -162,6 +162,7 @@
                     <StringItem index="3" value="Item 4"/>
                   </StringArray>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBoxClimaActionPerformed"/>
@@ -180,6 +181,7 @@
                     <StringItem index="3" value="Item 4"/>
                   </StringArray>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBoxVegetacionActionPerformed"/>
@@ -298,6 +300,7 @@
             <Component class="javax.swing.JButton" name="btnAgregarContinente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarContinenteActionPerformed"/>
@@ -306,6 +309,7 @@
             <Component class="javax.swing.JButton" name="btnEliminarContinente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarContinenteActionPerformed"/>
@@ -330,7 +334,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="1" rowCount="6">
-                        <Column editable="true" title="Continentes" type="java.lang.Object"/>
+                        <Column editable="false" title="Continentes" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -348,7 +352,7 @@
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="1" rowCount="6">
-                        <Column editable="true" title="Continentes agregados" type="java.lang.Object"/>
+                        <Column editable="false" title="Continentes Agregados" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>

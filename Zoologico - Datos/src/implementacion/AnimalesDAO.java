@@ -10,6 +10,7 @@ import java.util.List;
 import objetos.Animal;
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import javax.persistence.PersistenceException;
 
 /**
  *
@@ -33,42 +34,61 @@ public class AnimalesDAO implements IPersistenciaAnimal {
     @Override
     public boolean agregar(Animal animal) {
         // TODO: MANEJAR POSIBLES EXCEPCIONES...
-        MongoCollection<Animal> coleccion = this.getCollection();
-        coleccion.insertOne(animal);
-        return true;
+        try {
+            MongoCollection<Animal> coleccion = this.getCollection();
+            coleccion.insertOne(animal);
+            return true;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return false;
+        }
     }
 
     @Override
     public boolean actualizar(Animal animal) {
-        if (animal.getId() == null) {
-            System.out.println("ID del Animal invalida");
-        } else {
-            MongoCollection<Animal> coleccion = this.getCollection();
-            Document filtro = new Document();
-            filtro.append("_id", animal.getId());
-
-            Document entidadActualizada = new Document();
-            entidadActualizada.append("$set", new Document("nombre", animal.getNombre())
-                    .append("sexo", animal.getSexo())
-                    .append("edad", animal.getEdad())
-                    .append("idEspecie", animal.getIdEspecie())
-            );
-
-            UpdateResult resultado = coleccion.updateOne(filtro, entidadActualizada);
-
-            if (resultado.getModifiedCount() == 0) {
-                System.out.println("No se ha actualizado");
+        try {
+            if (animal.getId() == null) {
+                System.out.println("ID del Animal invalida");
             } else {
-                System.out.println("Se ha actualizado");
+                MongoCollection<Animal> coleccion = this.getCollection();
+                Document filtro = new Document();
+                filtro.append("_id", animal.getId());
+
+                Document entidadActualizada = new Document();
+                entidadActualizada.append("$set", new Document("nombre", animal.getNombre())
+                        .append("sexo", animal.getSexo())
+                        .append("edad", animal.getEdad())
+                        .append("idEspecie", animal.getIdEspecie())
+                );
+
+                UpdateResult resultado = coleccion.updateOne(filtro, entidadActualizada);
+
+                if (resultado.getModifiedCount() == 0) {
+                    System.out.println("No se ha actualizado");
+                } else {
+                    System.out.println("Se ha actualizado");
+                }
             }
+            // TODO: MANEJAR POSIBLES EXCEPCIONES...
+            return true;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return false;
         }
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
-        return true;
     }
 
     @Override
     public boolean eliminar(ObjectId id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            MongoCollection<Animal> coleccion = this.getCollection();
+            Document filtro = new Document();
+            filtro.append("_id", id);
+            coleccion.deleteOne(filtro);
+            return true;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return false;
+        }
     }
 
     @Override
@@ -76,12 +96,17 @@ public class AnimalesDAO implements IPersistenciaAnimal {
         List<Animal> listaAnimales = new ArrayList<>();
         MongoCollection<Animal> collection = this.getCollection();
         Document filtro = new Document();
-        filtro.append("_id", id);
-        collection.find(filtro).into(listaAnimales);
-        if (listaAnimales.isEmpty()) {
-            return null;
-        } else {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
+        try {
+            filtro.append("_id", id);
+            collection.find(filtro).into(listaAnimales);
+            if (listaAnimales.isEmpty()) {
+                return null;
+            } else {
+                // TODO: MANEJAR POSIBLES EXCEPCIONES...
+                return listaAnimales.get(0);
+            }
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
             return listaAnimales.get(0);
         }
     }
@@ -89,10 +114,16 @@ public class AnimalesDAO implements IPersistenciaAnimal {
     @Override
     public List<Animal> consultarTodos() {
         // TODO: MANEJAR POSIBLES EXCEPCIONES...
-        List<Animal> listaAnimales = new ArrayList<>();
-        MongoCollection<Animal> collection = this.getCollection();
-        collection.find().into(listaAnimales);
-        return listaAnimales;
+        try {
+            List<Animal> listaAnimales = new ArrayList<>();
+            MongoCollection<Animal> collection = this.getCollection();
+            collection.find().into(listaAnimales);
+            return listaAnimales;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            ex.printStackTrace();
+            return null;
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import interfaces.IConexionBD;
 import interfaces.IPersistenciaItinerario;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.PersistenceException;
 import objetos.Itinerario;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -32,73 +33,101 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
 
     @Override
     public boolean agregar(Itinerario itinerario) {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
-        MongoCollection<Itinerario> coleccion = this.getCollection();
-        coleccion.insertOne(itinerario);
-        return true;
+        try {
+            // TODO: MANEJAR POSIBLES EXCEPCIONES...
+            MongoCollection<Itinerario> coleccion = this.getCollection();
+            coleccion.insertOne(itinerario);
+            return true;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return false;
+        }
     }
 
     @Override
     public boolean actualizar(Itinerario itinerario) {
-         if (itinerario.getId() == null) {
-            System.out.println("ID del Itinerario invalida");
-        } else {
-            MongoCollection<Itinerario> coleccion = this.getCollection();
-            Document filtro = new Document();
-            filtro.append("_id", itinerario.getId());
-
-            Document entidadActualizada = new Document();
-            entidadActualizada.append("$set", new Document("nombre", itinerario.getNombre())
-                    .append("idsZonasVisitadas", itinerario.getIdsZonasVisitadas())
-                    .append("duracionDelRecorrido", itinerario.getDuracionDelRecorrido())
-                    .append("diasDelRecorrido", itinerario.getDiasDelRecorrido())
-                    .append("horasALasQueInicia", itinerario.getHorasALasQueInicia())
-                    .append("longitud", itinerario.getLongitud())
-                    .append("numeroMaximoVisitantes", itinerario.getNumeroMaximoVisitantes())
-                    .append("numeroEspeciesVisitadas", itinerario.getNumeroEspeciesVisitadas())
-                    .append("quejas", itinerario.getQuejas())
-            );
-
-            UpdateResult resultado = coleccion.updateOne(filtro, entidadActualizada);
-
-            if (resultado.getModifiedCount() == 0) {
-                System.out.println("No se ha actualizado");
+        try {
+            if (itinerario.getId() == null) {
+                System.out.println("ID del Itinerario invalida");
             } else {
-                System.out.println("Se ha actualizado");
+                MongoCollection<Itinerario> coleccion = this.getCollection();
+                Document filtro = new Document();
+                filtro.append("_id", itinerario.getId());
+
+                Document entidadActualizada = new Document();
+                entidadActualizada.append("$set", new Document("nombre", itinerario.getNombre())
+                        .append("idsZonasVisitadas", itinerario.getIdsZonasVisitadas())
+                        .append("duracionDelRecorrido", itinerario.getDuracionDelRecorrido())
+                        //                    .append("diasDelRecorrido", itinerario.get())
+                        //                    .append("horasALasQueInicia", itinerario.getHorasALasQueInicia())
+                        .append("longitud", itinerario.getLongitud())
+                        .append("numeroMaximoVisitantes", itinerario.getNumeroMaximoVisitantes())
+                        .append("numeroEspeciesVisitadas", itinerario.getNumeroEspeciesVisitadas())
+                        .append("quejas", itinerario.getQuejas())
+                );
+
+                UpdateResult resultado = coleccion.updateOne(filtro, entidadActualizada);
+
+                if (resultado.getModifiedCount() == 0) {
+                    System.out.println("No se ha actualizado");
+                } else {
+                    System.out.println("Se ha actualizado");
+                }
             }
+            // TODO: MANEJAR POSIBLES EXCEPCIONES...
+            return true;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return false;
         }
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
-        return true;
     }
 
     @Override
     public boolean eliminar(ObjectId id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            MongoCollection<Itinerario> coleccion = this.getCollection();
+            Document filtro = new Document();
+            filtro.append("_id", id);
+            coleccion.deleteOne(filtro);
+            return true;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return false;
+        }
     }
 
     @Override
     public Itinerario consultar(ObjectId id) {
-        List<Itinerario> listaItinerarios = new ArrayList<>();
-        MongoCollection<Itinerario> collection = this.getCollection();
-        Document filtro = new Document();
-        filtro.append("_id", id);
-        collection.find(filtro).into(listaItinerarios);
-        if (listaItinerarios.isEmpty()) {
+        try {
+            List<Itinerario> listaItinerarios = new ArrayList<>();
+            MongoCollection<Itinerario> collection = this.getCollection();
+            Document filtro = new Document();
+            filtro.append("_id", id);
+            collection.find(filtro).into(listaItinerarios);
+            if (listaItinerarios.isEmpty()) {
+                return null;
+            } else {
+                // TODO: MANEJAR POSIBLES EXCEPCIONES...
+                return listaItinerarios.get(0);
+            }
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
             return null;
-        } else {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
-            return listaItinerarios.get(0);
         }
     }
 
     @Override
     public List<Itinerario> consultarTodos() {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
-        List<Itinerario> listaItinerarios = new ArrayList<>();
-        MongoCollection<Itinerario> collection = this.getCollection();
-        collection.find().into(listaItinerarios);
-        return listaItinerarios;
+        try {
+            // TODO: MANEJAR POSIBLES EXCEPCIONES...
+            List<Itinerario> listaItinerarios = new ArrayList<>();
+            MongoCollection<Itinerario> collection = this.getCollection();
+            collection.find().into(listaItinerarios);
+            return listaItinerarios;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
     }
 
-   
 }
