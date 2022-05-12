@@ -596,7 +596,10 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             this.campoTextoLongitudItinerario.setText(String.valueOf(itinerario.getLongitud()));
             this.campoTextoNumeroVisitantes.setText(String.valueOf(itinerario.getNumeroMaximoVisitantes()));
             
-            
+            for (int i = 0; i < cajasZonas.size(); i++) {
+                if(itinerario.getIdsZonasVisitadas().contains(zonas.get(i).getId()))
+                    cajasZonas.get(i).setSelected(true);
+            }
             
         } else {
             liberarCampos(true);
