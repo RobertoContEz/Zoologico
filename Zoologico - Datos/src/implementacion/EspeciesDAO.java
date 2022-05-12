@@ -23,7 +23,7 @@ public class EspeciesDAO implements IPersistenciaEspecie {
 
     public EspeciesDAO(IConexionBD conexion) {
         this.conexion = conexion;
-        this.baseDatos = this.conexion.crearConexion();
+        this.baseDatos = this.conexion.getConexion();
     }
 
     @Override

@@ -23,7 +23,7 @@ public class HabitatsDAO implements IPersistenciaHabitat {
 
     public HabitatsDAO(IConexionBD conexion) {
         this.conexion = conexion;
-        this.baseDatos = this.conexion.crearConexion();
+        this.baseDatos = this.conexion.getConexion();
     }
 
     @Override

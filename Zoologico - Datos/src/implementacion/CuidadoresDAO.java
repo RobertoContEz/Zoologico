@@ -23,7 +23,7 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
 
     public CuidadoresDAO(IConexionBD conexion) {
         this.conexion = conexion;
-        this.baseDatos = this.conexion.crearConexion();
+        this.baseDatos = this.conexion.getConexion();
     }
 
     @Override

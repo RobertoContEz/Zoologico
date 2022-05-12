@@ -21,26 +21,33 @@ public class ConexionBD implements IConexionBD {
     private static final int PUERTO = 27017;
     private static final String BASE_DATOS = "ZoologicoBD";
 
+    private MongoDatabase conexion = null;
+    
     @Override
-    public MongoDatabase crearConexion() {
-        try {
-            //CONFIGURACIÓN PARA QUE MONGODRIVE REALICE EL MAPEO DE POJOS AUMATICAMENTE
-            CodecRegistry pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());
-            CodecRegistry codecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoCodecRegistry);
-            ConnectionString cadenaConexion = new ConnectionString("mongodb://" + HOST + "/" + PUERTO);
+    public MongoDatabase getConexion() {
+        if(conexion == null) {
+            try {
+                //CONFIGURACIÓN PARA QUE MONGODRIVE REALICE EL MAPEO DE POJOS AUMATICAMENTE
+                CodecRegistry pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());
+                CodecRegistry codecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoCodecRegistry);
+                ConnectionString cadenaConexion = new ConnectionString("mongodb://" + HOST + "/" + PUERTO);
 
-            MongoClientSettings clientsSettings = MongoClientSettings.builder()
-                    .applyConnectionString(cadenaConexion)
-                    .codecRegistry(codecRegistry)
-                    .build();
+                MongoClientSettings clientsSettings = MongoClientSettings.builder()
+                        .applyConnectionString(cadenaConexion)
+                        .codecRegistry(codecRegistry)
+                        .build();
 
-            MongoClient clienteMongo = MongoClients.create(clientsSettings);
-            MongoDatabase baseDatos = clienteMongo.getDatabase(BASE_DATOS);
+                MongoClient clienteMongo = MongoClients.create(clientsSettings);
+                MongoDatabase baseDatos = clienteMongo.getDatabase(BASE_DATOS);
 
-            return baseDatos;
-        } catch (Exception ex) {
-            System.err.println(ex.getMessage());
-            return null;
+                conexion = baseDatos;
+                return baseDatos;
+            } catch (Exception ex) {
+                System.err.println(ex.getMessage());
+                return null;
+            }
+        } else {
+            return conexion;
         }
     }
 

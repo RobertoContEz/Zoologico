@@ -11,41 +11,43 @@ import interfaces.IPersistenciaQueja;
 import interfaces.IPersistenciaZona;
 
 public class FabricaDAOs {
+    
+    private static final ConexionBD conexion = new ConexionBD();
 
     public static IPersistenciaAnimal getAnimalesDAO() {
-        return new AnimalesDAO(new ConexionBD());
+        return new AnimalesDAO(conexion);
     }
 
     public static IPersistenciaCuidador getCuidadoresDAO() {
-        return new CuidadoresDAO(new ConexionBD());
+        return new CuidadoresDAO(conexion);
     }
 
     public static IPersistenciaEmpleado getEmpleadosDAO() {
-        return new EmpleadosDAO(new ConexionBD());
+        return new EmpleadosDAO(conexion);
     }
 
     public static IPersistenciaEspecie getEspeciesDAO() {
-        return new EspeciesDAO(new ConexionBD());
+        return new EspeciesDAO(conexion);
     }
 
     public static IPersistenciaGuia getGuiasDAO() {
-        return new GuiasDAO(new ConexionBD());
+        return new GuiasDAO(conexion);
     }
 
     public static IPersistenciaHabitat getHabitatsDAO() {
-        return new HabitatsDAO(new ConexionBD());
+        return new HabitatsDAO(conexion);
     }
 
     public static IPersistenciaItinerario getItinerariosDAO() {
-        return new ItinerariosDAO(new ConexionBD());
+        return new ItinerariosDAO(conexion);
     }
 
     public static IPersistenciaQueja getQuejasDAO() {
-        return new QuejasDAO(new ConexionBD());
+        return new QuejasDAO(conexion);
     }
 
     public static IPersistenciaZona getZonaDAO() {
-        return new ZonasDAO(new ConexionBD());
+        return new ZonasDAO(conexion);
     }
     
 }

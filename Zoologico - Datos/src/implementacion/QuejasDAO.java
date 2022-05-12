@@ -23,7 +23,7 @@ public class QuejasDAO implements IPersistenciaQueja {
 
     public QuejasDAO(IConexionBD conexion) {
         this.conexion = conexion;
-        this.baseDatos = this.conexion.crearConexion();
+        this.baseDatos = this.conexion.getConexion();
     }
 
     @Override

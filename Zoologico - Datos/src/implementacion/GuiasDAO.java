@@ -23,7 +23,7 @@ public class GuiasDAO implements IPersistenciaGuia {
 
     public GuiasDAO(IConexionBD conexion) {
         this.conexion = conexion;
-        this.baseDatos = this.conexion.crearConexion();
+        this.baseDatos = this.conexion.getConexion();
     }
 
     @Override

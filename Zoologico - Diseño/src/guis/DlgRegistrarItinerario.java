@@ -33,19 +33,19 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         guias = control.recuperaGuiasRegistrados();
         zonas = control.recuperaZonasZoologico();
         
-        cajasZonas = new ArrayList();
-        cajas = new ArrayList();
-        campos = new ArrayList();
         inicializar();
     }
 
     private final List<Guia> guias;
     private final List<Zona> zonas;
-    private final List<JCheckBox> cajasZonas;
-    private final List<JCheckBox> cajas;
-    private final List<JTextField> campos;
+    private List<JCheckBox> cajasZonas;
+    private List<JCheckBox> cajas;
+    private List<JTextField> campos;
     
     private void inicializar() {
+        cajasZonas = new ArrayList();
+        campos = new ArrayList();
+        
         cajasZonas.add(ckbZona1);
         cajasZonas.add(ckbZona2);
         cajasZonas.add(ckbZona3);
@@ -55,6 +55,19 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         cajasZonas.add(ckbZona7);
         cajasZonas.add(ckbZona8);
         cajasZonas.add(ckbZona9);
+        
+        campos.add(this.campoTextoDuracionItinerario);
+        campos.add(this.campoTextoLongitudItinerario);
+        campos.add(this.campoTextoNumeroVisitantes);
+        
+        cajas = new ArrayList(cajasZonas);
+        cajas.add(this.checkBoxLunes);
+        cajas.add(this.checkBoxMartes);
+        cajas.add(this.checkBoxMiercoles);
+        cajas.add(this.checkBoxJueves);
+        cajas.add(this.checkBoxViernes);
+        cajas.add(this.checkBoxSabado);
+        cajas.add(this.checkBoxDomingo);
         
         if(zonas!=null) {
                 for (int i = 0; i < cajasZonas.size(); i++) {
@@ -121,12 +134,19 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         checkBoxMartes = new javax.swing.JCheckBox();
         checkBoxLunes = new javax.swing.JCheckBox();
         tiempoMie = new com.github.lgooddatepicker.components.TimePicker();
-        tiempoMie1 = new com.github.lgooddatepicker.components.TimePicker();
-        tiempoMie2 = new com.github.lgooddatepicker.components.TimePicker();
-        tiempoMie3 = new com.github.lgooddatepicker.components.TimePicker();
-        tiempoMie4 = new com.github.lgooddatepicker.components.TimePicker();
-        tiempoMie5 = new com.github.lgooddatepicker.components.TimePicker();
-        tiempoMie6 = new com.github.lgooddatepicker.components.TimePicker();
+        tiempoJue = new com.github.lgooddatepicker.components.TimePicker();
+        tiempoVie = new com.github.lgooddatepicker.components.TimePicker();
+        tiempoSab = new com.github.lgooddatepicker.components.TimePicker();
+        tiempoDom = new com.github.lgooddatepicker.components.TimePicker();
+        tiempoMar = new com.github.lgooddatepicker.components.TimePicker();
+        tiempoLun = new com.github.lgooddatepicker.components.TimePicker();
+        campoMie = new javax.swing.JTextField();
+        campoJue = new javax.swing.JTextField();
+        campoMar = new javax.swing.JTextField();
+        campoVie = new javax.swing.JTextField();
+        campoSab = new javax.swing.JTextField();
+        campoDom = new javax.swing.JTextField();
+        campoLun = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         ckbZona1 = new javax.swing.JCheckBox();
@@ -276,36 +296,88 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             }
         });
 
-        tiempoMie6.setEnabled(false);
+        tiempoMie.setEnabled(false);
+
+        tiempoJue.setEnabled(false);
+
+        tiempoVie.setEnabled(false);
+
+        tiempoSab.setEnabled(false);
+
+        tiempoDom.setEnabled(false);
+
+        tiempoMar.setEnabled(false);
+
+        tiempoLun.setEnabled(false);
+
+        campoMie.setEnabled(false);
+
+        campoJue.setEnabled(false);
+
+        campoMar.setEnabled(false);
+
+        campoVie.setEnabled(false);
+
+        campoSab.setEnabled(false);
+
+        campoDom.setEnabled(false);
+
+        campoLun.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkBoxMiercoles)
-                    .addComponent(checkBoxJueves)
-                    .addComponent(checkBoxViernes)
-                    .addComponent(checkBoxSabado)
-                    .addComponent(checkBoxDomingo)
-                    .addComponent(checkBoxMartes)
-                    .addComponent(checkBoxLunes))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tiempoMie6, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tiempoMie5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tiempoMie4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tiempoMie3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tiempoMie2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tiempoMie1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tiempoMie, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkBoxMartes)
+                            .addComponent(checkBoxMiercoles)
+                            .addComponent(checkBoxJueves)
+                            .addComponent(checkBoxViernes)
+                            .addComponent(checkBoxSabado)
+                            .addComponent(checkBoxDomingo))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(campoVie, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(tiempoVie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(campoSab, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                        .addGap(11, 11, 11)
+                                        .addComponent(tiempoSab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(campoDom, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                        .addGap(11, 11, 11)
+                                        .addComponent(tiempoDom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(campoMie)
+                                    .addComponent(campoJue)
+                                    .addComponent(campoMar, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tiempoJue, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tiempoMie, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(checkBoxLunes)
+                        .addGap(26, 26, 26)
+                        .addComponent(campoLun, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tiempoMar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tiempoLun, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(108, 108, 108)
                 .addComponent(jLabel6)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,31 +387,40 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkBoxLunes)
-                    .addComponent(tiempoMie6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tiempoLun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoLun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkBoxMartes)
-                    .addComponent(tiempoMie5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkBoxMiercoles)
-                    .addComponent(tiempoMie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkBoxJueves)
-                    .addComponent(tiempoMie1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkBoxViernes)
-                    .addComponent(tiempoMie2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(checkBoxSabado)
-                    .addComponent(tiempoMie3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(checkBoxMartes)
+                            .addComponent(tiempoMar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoMar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(checkBoxMiercoles)
+                            .addComponent(tiempoMie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoMie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(checkBoxJueves)
+                            .addComponent(tiempoJue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoJue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(checkBoxViernes)
+                            .addComponent(tiempoVie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(campoVie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(checkBoxSabado)
+                            .addComponent(tiempoSab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(campoSab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkBoxDomingo)
-                    .addComponent(tiempoMie4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tiempoDom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoDom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -475,7 +556,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
+                .addContainerGap(114, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(146, 146, 146))
         );
@@ -542,10 +623,17 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelarItinerario;
     private javax.swing.JButton btnGuardarItinerario;
     private javax.swing.JButton btnRegresarItinerario;
+    private javax.swing.JTextField campoDom;
+    private javax.swing.JTextField campoJue;
+    private javax.swing.JTextField campoLun;
+    private javax.swing.JTextField campoMar;
+    private javax.swing.JTextField campoMie;
+    private javax.swing.JTextField campoSab;
     private javax.swing.JTextField campoTextoDuracionItinerario;
     private javax.swing.JTextField campoTextoLongitudItinerario;
     private javax.swing.JTextField campoTextoNombreItinerario;
     private javax.swing.JTextField campoTextoNumeroVisitantes;
+    private javax.swing.JTextField campoVie;
     private javax.swing.JCheckBox checkBoxDomingo;
     private javax.swing.JCheckBox checkBoxJueves;
     private javax.swing.JCheckBox checkBoxLunes;
@@ -575,13 +663,13 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private com.github.lgooddatepicker.components.TimePicker tiempoDom;
+    private com.github.lgooddatepicker.components.TimePicker tiempoJue;
+    private com.github.lgooddatepicker.components.TimePicker tiempoLun;
+    private com.github.lgooddatepicker.components.TimePicker tiempoMar;
     private com.github.lgooddatepicker.components.TimePicker tiempoMie;
-    private com.github.lgooddatepicker.components.TimePicker tiempoMie1;
-    private com.github.lgooddatepicker.components.TimePicker tiempoMie2;
-    private com.github.lgooddatepicker.components.TimePicker tiempoMie3;
-    private com.github.lgooddatepicker.components.TimePicker tiempoMie4;
-    private com.github.lgooddatepicker.components.TimePicker tiempoMie5;
-    private com.github.lgooddatepicker.components.TimePicker tiempoMie6;
+    private com.github.lgooddatepicker.components.TimePicker tiempoSab;
+    private com.github.lgooddatepicker.components.TimePicker tiempoVie;
     // End of variables declaration//GEN-END:variables
 
     class FondoPanelItinerario extends JPanel{

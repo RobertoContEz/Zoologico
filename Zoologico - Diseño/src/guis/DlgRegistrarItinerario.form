@@ -26,7 +26,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="146" max="32767" attributes="0"/>
+              <EmptySpace pref="114" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
           </Group>
@@ -284,32 +284,70 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="checkBoxMiercoles" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBoxJueves" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBoxViernes" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBoxSabado" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBoxDomingo" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBoxMartes" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="checkBoxLunes" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="checkBoxMartes" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkBoxMiercoles" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkBoxJueves" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkBoxViernes" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkBoxSabado" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="checkBoxDomingo" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="campoVie" pref="202" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                              <Component id="tiempoVie" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="campoSab" pref="201" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                              <Component id="tiempoSab" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="campoDom" pref="201" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                              <Component id="tiempoDom" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="campoMie" max="32767" attributes="0"/>
+                                          <Component id="campoJue" max="32767" attributes="0"/>
+                                          <Component id="campoMar" pref="201" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="11" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="tiempoJue" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="tiempoMie" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="checkBoxLunes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                              <Component id="campoLun" pref="201" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="tiempoMar" max="32767" attributes="0"/>
+                                  <Component id="tiempoLun" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="tiempoMie6" min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="tiempoMie5" min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="tiempoMie4" min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="tiempoMie3" min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="tiempoMie2" min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="tiempoMie1" min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="tiempoMie" min="-2" pref="146" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="96" max="32767" attributes="0"/>
+                      <EmptySpace pref="128" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -321,37 +359,48 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxLunes" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tiempoMie6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tiempoLun" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoLun" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="checkBoxMartes" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tiempoMie5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="checkBoxMiercoles" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tiempoMie" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="checkBoxJueves" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tiempoMie1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="checkBoxViernes" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tiempoMie2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="checkBoxSabado" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tiempoMie3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="checkBoxMartes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tiempoMar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoMar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="checkBoxMiercoles" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tiempoMie" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoMie" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="checkBoxJueves" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tiempoJue" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoJue" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="checkBoxViernes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tiempoVie" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoVie" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="checkBoxSabado" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tiempoSab" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="campoSab" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxDomingo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tiempoMie4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tiempoDom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoDom" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
@@ -413,18 +462,71 @@
               </Events>
             </Component>
             <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie1">
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoJue">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie2">
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoVie">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie3">
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoSab">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie4">
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoDom">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie5">
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMar">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie6">
+            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoLun">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="campoMie">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="campoJue">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="campoMar">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="campoVie">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="campoSab">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="campoDom">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="campoLun">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>

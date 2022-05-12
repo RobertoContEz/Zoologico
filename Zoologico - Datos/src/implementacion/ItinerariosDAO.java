@@ -23,7 +23,7 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
 
     public ItinerariosDAO(IConexionBD conexion) {
         this.conexion = conexion;
-        this.baseDatos = this.conexion.crearConexion();
+        this.baseDatos = this.conexion.getConexion();
     }
 
     @Override

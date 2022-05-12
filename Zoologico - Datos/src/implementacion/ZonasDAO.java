@@ -23,7 +23,7 @@ public class ZonasDAO implements IPersistenciaZona {
 
     public ZonasDAO(IConexionBD conexion) {
         this.conexion = conexion;
-        this.baseDatos = this.conexion.crearConexion();
+        this.baseDatos = this.conexion.getConexion();
     }
 
     @Override

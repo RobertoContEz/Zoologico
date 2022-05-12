@@ -24,7 +24,7 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
 
     public RecorridoDAO(IConexionBD conexion) {
         this.conexion = conexion;
-        this.baseDatos = this.conexion.crearConexion();
+        this.baseDatos = this.conexion.getConexion();
     }
 
     @Override
