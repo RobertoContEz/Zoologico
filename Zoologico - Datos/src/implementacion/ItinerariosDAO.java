@@ -21,6 +21,12 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
     private IConexionBD conexion;
     private MongoDatabase baseDatos;
 
+    /**
+     * Constructor que iguala el atributo conexión al valor del parámetro
+     * recibido. Establece la conexión a la base de datos.
+     *
+     * @param conexion parámetro con la conexión.
+     */
     public ItinerariosDAO(IConexionBD conexion) {
         this.conexion = conexion;
         this.baseDatos = this.conexion.getConexion();
@@ -31,6 +37,13 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
         return this.baseDatos.getCollection("Itinerarios", Itinerario.class);
     }
 
+    /**
+     * Agrega un itinerario a la base de datos.
+     *
+     * @param itinerario itinerario a agregar a la base de datos.
+     * @return true en caso de agregar exitosamente la información a la base,
+     * false en caso contrario.
+     */
     @Override
     public boolean agregar(Itinerario itinerario) {
         try {
@@ -44,6 +57,13 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
         }
     }
 
+    /**
+     * Actualiza la información de un itinerario en la base de datos.
+     *
+     * @param itinerario itinerario a actualizar en la base.
+     * @return true en caso de modificar exitosamente la información, false en
+     * caso contrario.
+     */
     @Override
     public boolean actualizar(Itinerario itinerario) {
         try {
@@ -62,7 +82,7 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
                         //                    .append("horasALasQueInicia", itinerario.getHorasALasQueInicia())
                         .append("longitud", itinerario.getLongitud())
                         .append("numeroMaximoVisitantes", itinerario.getNumeroMaximoVisitantes())
-                        .append("numeroEspeciesVisitadas", itinerario.getNumeroEspeciesVisitadas())                       
+                        .append("numeroEspeciesVisitadas", itinerario.getNumeroEspeciesVisitadas())
                 );
 
                 UpdateResult resultado = coleccion.updateOne(filtro, entidadActualizada);
@@ -81,6 +101,13 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
         }
     }
 
+    /**
+     * Elimina la información de un itinerario dentro de la base.
+     *
+     * @param id itinerario a buscar en la base para ser eliminado.
+     * @return true en caso de eliminar exitosamente el itinerario, false en
+     * caso contrario.
+     */
     @Override
     public boolean eliminar(ObjectId id) {
         try {
@@ -95,6 +122,13 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
         }
     }
 
+    /**
+     * Busca un itinerario en específico dentro de la base.
+     *
+     * @param id itinerario a buscar dentro de la base.
+     * @return regresa un itinerario en caso de encontrarlo, null en caso
+     * contrario.
+     */
     @Override
     public Itinerario consultar(ObjectId id) {
         try {
@@ -115,6 +149,11 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
         }
     }
 
+    /**
+     * Consulta la lista de todos los itinerarios registrados en la base.
+     *
+     * @return lista con todos los itinerarios registrados.
+     */
     @Override
     public List<Itinerario> consultarTodos() {
         try {

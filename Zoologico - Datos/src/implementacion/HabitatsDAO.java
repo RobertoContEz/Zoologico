@@ -21,6 +21,12 @@ public class HabitatsDAO implements IPersistenciaHabitat {
     private IConexionBD conexion;
     private MongoDatabase baseDatos;
 
+    /**
+     * Constructor que iguala el atributo conexión al valor del parámetro
+     * recibido. Establece la conexión a la base de datos.
+     *
+     * @param conexion parámetro con la conexión.
+     */
     public HabitatsDAO(IConexionBD conexion) {
         this.conexion = conexion;
         this.baseDatos = this.conexion.getConexion();
@@ -31,6 +37,13 @@ public class HabitatsDAO implements IPersistenciaHabitat {
         return this.baseDatos.getCollection("Habitats", Habitat.class);
     }
 
+    /**
+     * Agrega un hábitat a la base de datos.
+     *
+     * @param habitat hábitat a agregar a la base de datos.
+     * @return true en caso de agregar exitosamente la información a la base,
+     * false en caso contrario.
+     */
     @Override
     public boolean agregar(Habitat habitat) {
         // TODO: MANEJAR POSIBLES EXCEPCIONES...
@@ -44,6 +57,13 @@ public class HabitatsDAO implements IPersistenciaHabitat {
         }
     }
 
+    /**
+     * Actualiza la información de un hábitat en la base de datos.
+     *
+     * @param habitat hábitat a actualizar en la base.
+     * @return true en caso de modificar exitosamente la información, false en
+     * caso contrario.
+     */
     @Override
     public boolean actualizar(Habitat habitat) {
         try {
@@ -77,6 +97,13 @@ public class HabitatsDAO implements IPersistenciaHabitat {
         }
     }
 
+    /**
+     * Elimina la información de un hábitat dentro de la base.
+     *
+     * @param id hábitat a buscar en la base para ser eliminado.
+     * @return true en caso de eliminar exitosamente el hábitat, false en caso
+     * contrario.
+     */
     @Override
     public boolean eliminar(ObjectId id) {
         try {
@@ -91,6 +118,13 @@ public class HabitatsDAO implements IPersistenciaHabitat {
         }
     }
 
+    /**
+     * Busca un hábitat en específico dentro de la base.
+     *
+     * @param id hábitat a buscar dentro de la base.
+     * @return regresa un hábitat en caso de encontrarlo, null en caso
+     * contrario.
+     */
     @Override
     public Habitat consultar(ObjectId id) {
         try {
@@ -112,6 +146,11 @@ public class HabitatsDAO implements IPersistenciaHabitat {
         }
     }
 
+    /**
+     * Consulta la lista de todos los hábitats registrados en la base.
+     *
+     * @return lista con todos los hábitat registrados.
+     */
     @Override
     public List<Habitat> consultarTodos() {
         // TODO: MANEJAR POSIBLES EXCEPCIONES...

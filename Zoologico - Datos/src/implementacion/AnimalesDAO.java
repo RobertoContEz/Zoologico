@@ -21,6 +21,12 @@ public class AnimalesDAO implements IPersistenciaAnimal {
     private IConexionBD conexion;
     private MongoDatabase baseDatos;
 
+    /**
+     * Constructor que iguala el atributo conexión al valor del parámetro
+     * recibido. Establece la conexión a la base de datos.
+     *
+     * @param conexion parámetro con la conexión.
+     */
     public AnimalesDAO(IConexionBD conexion) {
         this.conexion = conexion;
         this.baseDatos = this.conexion.getConexion();
@@ -31,6 +37,13 @@ public class AnimalesDAO implements IPersistenciaAnimal {
         return this.baseDatos.getCollection("Animales", Animal.class);
     }
 
+    /**
+     * Agrega un animal a la base de datos.
+     *
+     * @param animal animal a agregar a la base de datos.
+     * @return true en caso de agregar exitosamente la información a la base,
+     * false en caso contrario.
+     */
     @Override
     public boolean agregar(Animal animal) {
         // TODO: MANEJAR POSIBLES EXCEPCIONES...
@@ -44,6 +57,13 @@ public class AnimalesDAO implements IPersistenciaAnimal {
         }
     }
 
+    /**
+     * Actualiza la información de un animal en la base de datos.
+     *
+     * @param animal animal a actualizar en la base.
+     * @return true en caso de modificar exitosamente la información, false en
+     * caso contrario.
+     */
     @Override
     public boolean actualizar(Animal animal) {
         try {
@@ -77,6 +97,13 @@ public class AnimalesDAO implements IPersistenciaAnimal {
         }
     }
 
+    /**
+     * Elimina la información de un animal dentro de la base.
+     *
+     * @param id animal a buscar en la base para ser eliminado.
+     * @return true en caso de eliminar exitosamente al animal, false en caso
+     * contrario.
+     */
     @Override
     public boolean eliminar(ObjectId id) {
         try {
@@ -91,6 +118,12 @@ public class AnimalesDAO implements IPersistenciaAnimal {
         }
     }
 
+    /**
+     * Busca un animal en específico dentro de la base.
+     *
+     * @param id animal a buscar dentro de la base.
+     * @return regresa un animal en caso de encontrarlo, null en caso contrario.
+     */
     @Override
     public Animal consultar(ObjectId id) {
         List<Animal> listaAnimales = new ArrayList<>();
@@ -111,6 +144,11 @@ public class AnimalesDAO implements IPersistenciaAnimal {
         }
     }
 
+    /**
+     * Consulta la lista de todos los animales registrados en la base.
+     *
+     * @return lista con todos los animales registrados.
+     */
     @Override
     public List<Animal> consultarTodos() {
         // TODO: MANEJAR POSIBLES EXCEPCIONES...

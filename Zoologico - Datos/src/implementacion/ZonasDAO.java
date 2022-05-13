@@ -21,6 +21,12 @@ public class ZonasDAO implements IPersistenciaZona {
     private IConexionBD conexion;
     private MongoDatabase baseDatos;
 
+    /**
+     * Constructor que iguala el atributo conexión al valor del parámetro
+     * recibido. Establece la conexión a la base de datos.
+     *
+     * @param conexion parámetro con la conexión.
+     */
     public ZonasDAO(IConexionBD conexion) {
         this.conexion = conexion;
         this.baseDatos = this.conexion.getConexion();
@@ -31,6 +37,13 @@ public class ZonasDAO implements IPersistenciaZona {
         return this.baseDatos.getCollection("Zonas", Zona.class);
     }
 
+    /**
+     * Agrega una zona a la base de datos.
+     *
+     * @param zona zona a agregar a la base de datos.
+     * @return true en caso de agregar exitosamente la información a la base,
+     * false en caso contrario.
+     */
     @Override
     public boolean agregar(Zona zona) {
         try {
@@ -44,6 +57,13 @@ public class ZonasDAO implements IPersistenciaZona {
         }
     }
 
+    /**
+     * Actualiza la información de una zona en la base de datos.
+     *
+     * @param zona zona a actualizar en la base.
+     * @return true en caso de modificar exitosamente la información, false en
+     * caso contrario.
+     */
     @Override
     public boolean actualizar(Zona zona) {
         try {
@@ -77,6 +97,13 @@ public class ZonasDAO implements IPersistenciaZona {
         }
     }
 
+    /**
+     * Elimina la información de una zona dentro de la base.
+     *
+     * @param id zona a buscar en la base para ser eliminado.
+     * @return true en caso de eliminar exitosamente la zona, false en caso
+     * contrario.
+     */
     @Override
     public boolean eliminar(ObjectId id) {
         try {
@@ -91,6 +118,12 @@ public class ZonasDAO implements IPersistenciaZona {
         }
     }
 
+    /**
+     * Busca una zona en específico dentro de la base.
+     *
+     * @param id zona a buscar dentro de la base.
+     * @return regresa una zona en caso de encontrarla, null en caso contrario.
+     */
     @Override
     public Zona consultar(ObjectId id) {
         try {
@@ -111,6 +144,11 @@ public class ZonasDAO implements IPersistenciaZona {
         }
     }
 
+    /**
+     * Consulta la lista de todas las zonas registrados en la base.
+     *
+     * @return lista con todas las zonas registrados.
+     */
     @Override
     public List<Zona> consultarTodos() {
         try {

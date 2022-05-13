@@ -21,6 +21,12 @@ public class QuejasDAO implements IPersistenciaQueja {
     private IConexionBD conexion;
     private MongoDatabase baseDatos;
 
+    /**
+     * Constructor que iguala el atributo conexión al valor del parámetro
+     * recibido. Establece la conexión a la base de datos.
+     *
+     * @param conexion parámetro con la conexión.
+     */
     public QuejasDAO(IConexionBD conexion) {
         this.conexion = conexion;
         this.baseDatos = this.conexion.getConexion();
@@ -31,6 +37,13 @@ public class QuejasDAO implements IPersistenciaQueja {
         return this.baseDatos.getCollection("Quejas", Queja.class);
     }
 
+    /**
+     * Agrega una queja a la base de datos.
+     *
+     * @param queja queja a agregar a la base de datos.
+     * @return true en caso de agregar exitosamente la información a la base,
+     * false en caso contrario.
+     */
     @Override
     public boolean agregar(Queja queja) {
         try {
@@ -44,6 +57,13 @@ public class QuejasDAO implements IPersistenciaQueja {
         }
     }
 
+    /**
+     * Actualiza la información de una queja en la base de datos.
+     *
+     * @param queja queja a actualizar en la base.
+     * @return true en caso de modificar exitosamente la información, false en
+     * caso contrario.
+     */
     @Override
     public boolean actualizar(Queja queja) {
         try {
@@ -79,6 +99,13 @@ public class QuejasDAO implements IPersistenciaQueja {
         }
     }
 
+    /**
+     * Elimina la información de una queja dentro de la base.
+     *
+     * @param id queja a buscar en la base para ser eliminado.
+     * @return true en caso de eliminar exitosamente la queja, false en caso
+     * contrario.
+     */
     @Override
     public boolean eliminar(ObjectId id) {
         try {
@@ -93,6 +120,12 @@ public class QuejasDAO implements IPersistenciaQueja {
         }
     }
 
+    /**
+     * Busca una queja en específico dentro de la base.
+     *
+     * @param id queja a buscar dentro de la base.
+     * @return regresa una queja en caso de encontrarlo, null en caso contrario.
+     */
     @Override
     public Queja consultar(ObjectId id) {
         try {
@@ -113,6 +146,11 @@ public class QuejasDAO implements IPersistenciaQueja {
         }
     }
 
+    /**
+     * Consulta la lista de todas las quejas registradas en la base.
+     *
+     * @return lista con todas las quejas registradas.
+     */
     @Override
     public List<Queja> consultarTodos() {
         try {
