@@ -1,5 +1,6 @@
 package objetos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import org.bson.types.ObjectId;
@@ -78,6 +79,18 @@ public class Guia extends Empleado {
      */
     public void setItinerariosActuales(List<ObjectId> itinerariosActuales) {
         this.itinerariosActuales = itinerariosActuales;
+    }
+    
+    /**
+     * Añade un itinerario a la lista de itinerarios del guía.
+     * 
+     * @param idItinerario itinerario nuevo
+     */
+    public void agregaItinerario(ObjectId idItinerario) {
+        if (itinerariosActuales == null) {
+            itinerariosActuales = new ArrayList();
+        }
+        itinerariosActuales.add(idItinerario);
     }
 
     @Override

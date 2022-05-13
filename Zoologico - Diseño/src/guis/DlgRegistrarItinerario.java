@@ -3,8 +3,10 @@ package guis;
 import control.ControlRegistrarItinerario;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
@@ -609,25 +611,121 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
     }
     
     private boolean validar() {
-        Itinerario itinerario = control.buscarItinerario(campoTextoNombreItinerario.getText());
-        if(itinerario!=null) 
+        boolean valido = true;
+        String vacios = "";
+        String errores = "";
         
+        if(campoTextoNombreItinerario.getText().equals("")) {
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Introduzca el nombre del hábitat.";
+            valido = false;
+        } else {
+            Itinerario itinerario = control.buscarItinerario(campoTextoNombreItinerario.getText());
+            if(itinerario!=null) {
+                errores = errores + (errores.equals("")?"":"\n") + "El nombre del itinerario ya está registrado en la base de datos.";
+            }
+        }
+        
+        if(this.cmbGuia.getSelectedIndex()==0) {
+            errores = errores + (errores.equals("")?"":"\n") + "Seleccione el guía del itinerario.";
+            valido = false;
+        }
+        
+        if(this.campoTextoDuracionItinerario.getText().equals("")) {
+            vacios = vacios + (vacios.equals("")?"":"\n") + "ingrese la diración del recorrido.";
+            valido = false;
+        }
+        
+        if(comboBoxVegetacion.getSelectedIndex()==0) {
+            errores = errores + (errores.equals("")?"":"\n") + "Seleccione un tipo de vegetación.";
+            valido = false;
+        }
+        
+        if(continentesAgregados.isEmpty()) {
+            errores = errores + (errores.equals("")?"":"\n") + "Seleccione al menos un continente.";
+            valido = false;
+        }
+        
+        if(!valido) JOptionPane.showMessageDialog(this, "Los siguientes campos están sin llenar: \n"+errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+        
+        return valido;
     }
     
     private void guardar() {
         if(validar()) {
             Itinerario itinerario = new Itinerario();
             itinerario.setNombre(campoTextoNombreItinerario.getText());
+            itinerario.setIdsZonasVisitadas(bajarZonas());
             itinerario.setDuracionDelRecorrido(Integer.parseInt(this.campoTextoDuracionItinerario.getText()));
+            itinerario.setDiasYHoras(bajarHoras());
             itinerario.setLongitud(Long.parseLong(this.campoTextoLongitudItinerario.getText()));
-            itinerario.setTipoVegetacion(climas.get(comboBoxVegetacion.getSelectedIndex()-1));
-            itinerario.setContinentesDondeSeEncuentra(continentesAgregados);
+            itinerario.setNumeroMaximoVisitantes(Integer.parseInt(this.campoTextoDuracionItinerario.getText()));
+            itinerario.setNumeroEspeciesVisitadas(control.calcularEspeciesVisitadas(itinerario.getIdsZonasVisitadas()));
+            
             if(control.guardar(itinerario)) {
                 JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "No se ha podido guardar el hábitat.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
+    
+    private List<ObjectId> bajarZonas() {
+        List<ObjectId> zonas = new ArrayList();
+        for (int i = 0; i < this.cajasZonas.size(); i++) {
+            if(cajasZonas.get(i).isSelected()) {
+                zonas.add(zonas.get(i));
+            }
+        }
+        return zonas;
+    }
+    
+    private List<LocalDateTime> bajarHoras() {
+        List<LocalDateTime> horas = new ArrayList();
+        
+        if(checkBoxLunes.isSelected()) {
+            String[] textos = this.campoLun.getText().split(", ");
+            for (String texto : textos) {
+                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 9)));
+            }
+        }
+        if(checkBoxMartes.isSelected()) {
+            String[] textos = this.campoMar.getText().split(", ");
+            for (String texto : textos) {
+                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 10)));
+            }
+        }
+        if(checkBoxMiercoles.isSelected()) {
+            String[] textos = this.campoMie.getText().split(", ");
+            for (String texto : textos) {
+                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 11)));
+            }
+        }
+        if(checkBoxJueves.isSelected()) {
+            String[] textos = this.campoJue.getText().split(", ");
+            for (String texto : textos) {
+                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 12)));
+            }
+        }
+        if(checkBoxViernes.isSelected()) {
+            String[] textos = this.campoVie.getText().split(", ");
+            for (String texto : textos) {
+                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 13)));
+            }
+        }
+        if(checkBoxSabado.isSelected()) {
+            String[] textos = this.campoSab.getText().split(", ");
+            for (String texto : textos) {
+                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 14)));
+            }
+        }
+        if(checkBoxDomingo.isSelected()) {
+            String[] textos = this.campoLun.getText().split(", ");
+            for (String texto : textos) {
+                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 15)));
+            }
+        }
+        
+        return new ArrayList(new HashSet(horas));
     }
     
 

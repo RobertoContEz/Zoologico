@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import objetos.Guia;
 import objetos.Itinerario;
 import objetos.Zona;
+import org.bson.types.ObjectId;
 
 
 /**
@@ -44,4 +45,28 @@ public class ControlRegistrarItinerario {
         return null;
     }
     
+    public int calcularEspeciesVisitadas(List<ObjectId> ids) {
+        int especies = 0;
+        IPersistenciaZona dao = FabricaDAOs.getZonaDAO();
+        List<Zona> zonas = dao.consultarTodos();
+        for (Zona zona : zonas) {
+            List<ObjectId> e = zona.getEspeciesQueTiene();
+            if(e!=null)
+                especies += e.size();
+        }
+        return especies;
+    }
+    
+    public boolean guardar(Itinerario itinerario) {
+        IPersistenciaItinerario dao = FabricaDAOs.getItinerariosDAO();
+        
+        return dao.agregar(itinerario);
+    }
+    
+    public boolean actualizarGuia(ObjectId idItinerario, ObjectId idGuia) {
+        IPersistenciaGuia dao = FabricaDAOs.getGuiasDAO();
+        Guia guia = dao.consultar(idGuia);
+        guia.agregaItinerario(idItinerario);
+        return dao.actualizar(guia);
+    }
 }

@@ -260,9 +260,14 @@ public class Especie {
         return hash;
     }
 
+    /**
+     * Añade un animal a la lista de ejemplares de la especie en el zoológico.
+     * 
+     * @param animal el animal nuevo.
+     */
     public void agregaAnimal(Animal animal) {
         if (animal != null) {
-            animal.setId(id);
+            animal.setIdEspecie(id);
         }
         if (animales == null) {
             animales = new ArrayList();
