@@ -11,6 +11,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import negocio.Conversiones;
 import objetos.Guia;
 import objetos.Itinerario;
 import objetos.Zona;
@@ -160,7 +161,6 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         ckbZona6 = new javax.swing.JCheckBox();
         ckbZona9 = new javax.swing.JCheckBox();
         btnGuardarItinerario = new javax.swing.JButton();
-        btnCancelarItinerario = new javax.swing.JButton();
         btnRegresarItinerario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -192,8 +192,8 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
 
         campoTextoNumeroVisitantes.setEditable(false);
 
-        jLabel7.setText("DATOS GENERALES DEL RECORRIDO");
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel7.setText("DATOS GENERALES DEL RECORRIDO");
 
         jLabel8.setText("Guía:");
 
@@ -268,8 +268,8 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel6.setText("DÍAS DEL RECORRIDO");
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setText("DÍAS DEL RECORRIDO");
 
         checkBoxDomingo.setText("Domingo");
         checkBoxDomingo.setEnabled(false);
@@ -373,8 +373,8 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel5.setText("ZONAS DEL RECORRIDO");
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setText("ZONAS DEL RECORRIDO");
 
         ckbZona1.setText("1-ALFA");
         ckbZona1.setEnabled(false);
@@ -458,10 +458,18 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
 
         btnGuardarItinerario.setText("Guardar");
         btnGuardarItinerario.setEnabled(false);
-
-        btnCancelarItinerario.setText("Cancelar");
+        btnGuardarItinerario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarItinerarioActionPerformed(evt);
+            }
+        });
 
         btnRegresarItinerario.setText("Regresar");
+        btnRegresarItinerario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarItinerarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -479,9 +487,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(183, 183, 183)
                 .addComponent(btnGuardarItinerario)
-                .addGap(125, 125, 125)
-                .addComponent(btnCancelarItinerario)
-                .addGap(125, 125, 125)
+                .addGap(331, 331, 331)
                 .addComponent(btnRegresarItinerario)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -497,7 +503,6 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
                 .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarItinerario)
-                    .addComponent(btnCancelarItinerario)
                     .addComponent(btnRegresarItinerario))
                 .addGap(30, 30, 30))
         );
@@ -530,6 +535,14 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
     private void btnBuscarItinerarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarItinerarioActionPerformed
         buscar();
     }//GEN-LAST:event_btnBuscarItinerarioActionPerformed
+
+    private void btnRegresarItinerarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarItinerarioActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnRegresarItinerarioActionPerformed
+
+    private void btnGuardarItinerarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarItinerarioActionPerformed
+        guardar();
+    }//GEN-LAST:event_btnGuardarItinerarioActionPerformed
 
     
     private void buscar() {
@@ -580,12 +593,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
     private void agregarHoraAlCampo(JTextField campo, LocalDateTime hora) {
         String texto = campo.getText();
         
-        int h = hora.getHour();
-        int m = hora.getMinute();
-        
-        String horaTexto = (h<10?"0":"")+String.valueOf(h) + ":" + (m<10?"0":"")+String.valueOf(m);
-        
-        texto = texto + (texto.equals("")?"":", ") + horaTexto;
+        texto = texto + (texto.equals("")?"":", ") + Conversiones.horaATexto(hora);
         
         campo.setText(texto);
     }
@@ -600,10 +608,31 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         return indice;
     }
     
+    private boolean validar() {
+        Itinerario itinerario = control.buscarItinerario(campoTextoNombreItinerario.getText());
+        if(itinerario!=null) 
+        
+    }
+    
+    private void guardar() {
+        if(validar()) {
+            Itinerario itinerario = new Itinerario();
+            itinerario.setNombre(campoTextoNombreItinerario.getText());
+            itinerario.setDuracionDelRecorrido(Integer.parseInt(this.campoTextoDuracionItinerario.getText()));
+            itinerario.setLongitud(Long.parseLong(this.campoTextoLongitudItinerario.getText()));
+            itinerario.setTipoVegetacion(climas.get(comboBoxVegetacion.getSelectedIndex()-1));
+            itinerario.setContinentesDondeSeEncuentra(continentesAgregados);
+            if(control.guardar(itinerario)) {
+                JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se ha podido guardar el hábitat.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarItinerario;
-    private javax.swing.JButton btnCancelarItinerario;
     private javax.swing.JButton btnGuardarItinerario;
     private javax.swing.JButton btnRegresarItinerario;
     private javax.swing.JTextField campoDom;
