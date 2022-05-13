@@ -3,7 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/implementacion/EmpleadosDAO.java</file>
             <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/implementacion/AnimalesDAO.java</file>
             <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/implementacion/FabricaDAOs.java</file>
@@ -12,9 +11,6 @@
             <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/implementacion/ZonasDAO.java</file>
             <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/interfaces/IConexionBD.java</file>
             <file>file:/C:/Users/rc0nt/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/Pruebas/Pruebas.java</file>
-=======
-            <file>file:/C:/Users/edw_v/Documents/GitHub/Zoologico/Zoologico%20-%20Datos/src/implementacion/AnimalesDAO.java</file>
->>>>>>> b21cf81c99edcf59c077400b47c842cf54ea5b5e
         </group>
     </open-files>
 </project-private>
