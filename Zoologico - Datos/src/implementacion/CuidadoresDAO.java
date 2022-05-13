@@ -21,6 +21,12 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
     private IConexionBD conexion;
     private MongoDatabase baseDatos;
 
+    /**
+     * Constructor que iguala el atributo conexión al valor del parámetro
+     * recibido. Establece la conexión a la base de datos.
+     *
+     * @param conexion parámetro con la conexión.
+     */
     public CuidadoresDAO(IConexionBD conexion) {
         this.conexion = conexion;
         this.baseDatos = this.conexion.getConexion();
@@ -31,6 +37,13 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
         return this.baseDatos.getCollection("Cuidadores", Cuidador.class);
     }
 
+    /**
+     * Agrega un cuidador a la base de datos.
+     *
+     * @param cuidador cuidador a agregar a la base de datos.
+     * @return true en caso de agregarse exitosamente la información a la base,
+     * false en caso contrario.
+     */
     @Override
     public boolean agregar(Cuidador cuidador) {
         // TODO: MANEJAR POSIBLES EXCEPCIONES...
@@ -44,6 +57,13 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
         }
     }
 
+    /**
+     * Actualiza la información de un cuidador en la base de datos.
+     *
+     * @param cuidador cuidador a actualizar en la base.
+     * @return true en caso de modificar exitosamente la información, false en
+     * caso contrario.
+     */
     @Override
     public boolean actualizar(Cuidador cuidador) {
         try {
@@ -81,6 +101,13 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
         }
     }
 
+    /**
+     * Elimina la información de un cuidador dentro de la base.
+     *
+     * @param id cuidador a buscar en la base para ser eliminado.
+     * @return true en caso de eliminar exitosamente al cuidador, false en caso
+     * contrario.
+     */
     @Override
     public boolean eliminar(ObjectId id) {
         try {
@@ -95,6 +122,13 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
         }
     }
 
+    /**
+     * Busca un cuidador en específico dentro de la base.
+     *
+     * @param id cuidador a buscar dentro de la base.
+     * @return regresa un cuidador en caso de encontrarlo, null en caso
+     * contrario.
+     */
     @Override
     public Cuidador consultar(ObjectId id) {
         try {
@@ -115,6 +149,11 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
         }
     }
 
+    /**
+     * Consulta la lista de todos los cuidadores registrados en la base..
+     *
+     * @return lista con todos los cuidadores registrados.
+     */
     @Override
     public List<Cuidador> consultarTodos() {
         try {

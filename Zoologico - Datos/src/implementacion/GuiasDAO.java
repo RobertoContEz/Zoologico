@@ -21,6 +21,12 @@ public class GuiasDAO implements IPersistenciaGuia {
     private IConexionBD conexion;
     private MongoDatabase baseDatos;
 
+    /**
+     * Constructor que iguala el atributo conexión al valor del parámetro
+     * recibido. Establece la conexión a la base de datos.
+     *
+     * @param conexion parámetro con la conexión.
+     */
     public GuiasDAO(IConexionBD conexion) {
         this.conexion = conexion;
         this.baseDatos = this.conexion.getConexion();
@@ -31,6 +37,13 @@ public class GuiasDAO implements IPersistenciaGuia {
         return this.baseDatos.getCollection("Empleados", Guia.class);
     }
 
+    /**
+     * Agrega un guía a la base de datos.
+     *
+     * @param guia guía a agregar a la base de datos.
+     * @return true en caso de agregar exitosamente la información a la base,
+     * false en caso contrario.
+     */
     @Override
     public boolean agregar(Guia guia) {
         try {
@@ -44,6 +57,13 @@ public class GuiasDAO implements IPersistenciaGuia {
         }
     }
 
+    /**
+     * Actualiza la información de un guía en la base de datos.
+     *
+     * @param guia guia a actualizar en la base.
+     * @return true en caso de modificar exitosamente la información, false en
+     * caso contrario.
+     */
     @Override
     public boolean actualizar(Guia guia) {
         try {
@@ -78,6 +98,13 @@ public class GuiasDAO implements IPersistenciaGuia {
         }
     }
 
+    /**
+     * Elimina la información de un guía dentro de la base.
+     *
+     * @param id guía a buscar en la base para ser eliminado.
+     * @return true en caso de eliminar exitosamente al guía, false en caso
+     * contrario.
+     */
     @Override
     public boolean eliminar(ObjectId id) {
         try {
@@ -93,6 +120,12 @@ public class GuiasDAO implements IPersistenciaGuia {
         }
     }
 
+    /**
+     * Busca un guía en específico dentro de la base.
+     *
+     * @param id guía a buscar dentro de la base.
+     * @return regresa un guía en caso de encontrarlo, null en caso contrario.
+     */
     @Override
     public Guia consultar(ObjectId id) {
         try {
@@ -114,6 +147,11 @@ public class GuiasDAO implements IPersistenciaGuia {
         }
     }
 
+    /**
+     * Consulta la lista de todos los guías registrados en la base.
+     *
+     * @return lista con todos los guías registrados.
+     */
     @Override
     public List<Guia> consultarTodos() {
         try {

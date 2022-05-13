@@ -21,6 +21,12 @@ public class EspeciesDAO implements IPersistenciaEspecie {
     private IConexionBD conexion;
     private MongoDatabase baseDatos;
 
+    /**
+     * Constructor que iguala el atributo conexión al valor del parámetro
+     * recibido. Establece la conexión a la base de datos.
+     *
+     * @param conexion parámetro con la conexión.
+     */
     public EspeciesDAO(IConexionBD conexion) {
         this.conexion = conexion;
         this.baseDatos = this.conexion.getConexion();
@@ -31,6 +37,13 @@ public class EspeciesDAO implements IPersistenciaEspecie {
         return this.baseDatos.getCollection("Especies", Especie.class);
     }
 
+    /**
+     * Agrega una especie a la base de datos.
+     *
+     * @param especie especie a agregar a la base de datos.
+     * @return true en caso de agregar exitosamente la información a la base,
+     * false en caso contrario.
+     */
     @Override
     public boolean agregar(Especie especie) {
         try {
@@ -44,6 +57,13 @@ public class EspeciesDAO implements IPersistenciaEspecie {
         }
     }
 
+    /**
+     * Actualiza la información de una especie en la base de datos.
+     *
+     * @param especie especie a actualizar en la base.
+     * @return true en caso de modificar eitosamente la información, false en
+     * caso contrario.
+     */
     @Override
     public boolean actualizar(Especie especie) {
         try {
@@ -80,6 +100,13 @@ public class EspeciesDAO implements IPersistenciaEspecie {
         }
     }
 
+    /**
+     * Elimina la información de una especie dentro de la base.
+     *
+     * @param id especie a buscar dentro de la base para ser eliminado.
+     * @return true en caso de eliminar exitosamente la especie, false en caso
+     * contrario.
+     */
     @Override
     public boolean eliminar(ObjectId id) {
         try {
@@ -94,6 +121,13 @@ public class EspeciesDAO implements IPersistenciaEspecie {
         }
     }
 
+    /**
+     * Busca una especie en específico dentro de la base.
+     *
+     * @param id especie a buscar dentro de la base.
+     * @return regresa una especie en caso de encontrarla, null en caso
+     * contrario.
+     */
     @Override
     public Especie consultar(ObjectId id) {
         try {
@@ -114,6 +148,11 @@ public class EspeciesDAO implements IPersistenciaEspecie {
         }
     }
 
+    /**
+     * Consulta la lista de todas las especies registradas en la base.
+     *
+     * @return lista con todas las especies registradas en la base.
+     */
     @Override
     public List<Especie> consultarTodos() {
         try {

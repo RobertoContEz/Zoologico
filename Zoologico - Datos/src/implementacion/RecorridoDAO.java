@@ -25,6 +25,12 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
     private IConexionBD conexion;
     private MongoDatabase baseDatos;
 
+    /**
+     * Constructor que iguala el atributo conexión al valor del parámetro
+     * recibido. Establece la conexión a la base de datos.
+     *
+     * @param conexion parámetro con la conexión.
+     */
     public RecorridoDAO(IConexionBD conexion) {
         this.conexion = conexion;
         this.baseDatos = this.conexion.getConexion();
@@ -35,6 +41,13 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
         return this.baseDatos.getCollection("Recorridos", Recorrido.class);
     }
 
+    /**
+     * Agrega un recorrido a la base de datos.
+     *
+     * @param recorrido recorrido a agregar a la base de datos.
+     * @return true en caso de agregar exitosamente la información a la base,
+     * false en caso contrario.
+     */
     @Override
     public boolean agregar(Recorrido recorrido) {
         // TODO: MANEJAR POSIBLES EXCEPCIONES...
@@ -48,6 +61,13 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
         }
     }
 
+    /**
+     * Actualiza la información de un recorrido en la base de datos.
+     *
+     * @param recorrido recorrido a actualizar en la base.
+     * @return true en caso de modificar exitosamente la información, false en
+     * caso contrario.
+     */
     @Override
     public boolean actualizar(Recorrido recorrido) {
         try {
@@ -82,6 +102,13 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
         }
     }
 
+    /**
+     * Elimina la información de un recorrido dentro de la base.
+     *
+     * @param id recorrido a buscar en la base para ser eliminado.
+     * @return true en caso de eliminar exitosamente el recorrido, false en caso
+     * contrario.
+     */
     @Override
     public boolean eliminar(ObjectId id) {
         try {
@@ -96,6 +123,13 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
         }
     }
 
+    /**
+     * Busca un recorrido en específico dentro de la base.
+     *
+     * @param id recorrido a buscar dentro de la base.
+     * @return regresa un recorrido en caso de encontrarlo, null en caso
+     * contrario.
+     */
     @Override
     public Recorrido consultar(ObjectId id) {
         List<Recorrido> listaRecorrido = new ArrayList<>();
@@ -116,6 +150,11 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
         }
     }
 
+    /**
+     * Consulta la lista de todos los recorridos registrados en la base.
+     *
+     * @return lista con todos los recorridos registrados.
+     */
     @Override
     public List<Recorrido> consultarTodos() {
         // TODO: MANEJAR POSIBLES EXCEPCIONES...
@@ -131,6 +170,12 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
         }
     }
 
+    /**
+     * Consulta la lista de todos los recorridos registrados en la base en el
+     * último mes.
+     *
+     * @return lista con todos los recorridos registrados en el último mes.
+     */
     @Override
     public List<Recorrido> consultarRecorridosUltimoMes() {
         List<Recorrido> listaRecorrido = new ArrayList<>();
@@ -139,7 +184,7 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
             Document filtro = new Document();
             LocalDateTime ultimoMes = LocalDateTime.now().minusDays(30);
             //DBObject query = new BasicDBObject("fechHora", new BasicDBObject("$gt", ultimoMes));
-            filtro.append("fechHora", new BasicDBObject("$gt", ultimoMes));                      
+            filtro.append("fechHora", new BasicDBObject("$gt", ultimoMes));
             collection.find(filtro).into(listaRecorrido);
             if (listaRecorrido.isEmpty()) {
                 return null;

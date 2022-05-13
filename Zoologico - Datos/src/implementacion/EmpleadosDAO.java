@@ -21,6 +21,12 @@ public class EmpleadosDAO implements IPersistenciaEmpleado {
     private IConexionBD conexion;
     private MongoDatabase baseDatos;
 
+    /**
+     * Constructor que iguala el atributo conexión al valor del parámetro
+     * recibido. Establece la conexión a la base de datos.
+     *
+     * @param conexion parámetro con la conexión.
+     */
     public EmpleadosDAO(IConexionBD conexion) {
         this.conexion = conexion;
         this.baseDatos = this.conexion.getConexion();
@@ -31,6 +37,13 @@ public class EmpleadosDAO implements IPersistenciaEmpleado {
         return this.baseDatos.getCollection("Empleados", Empleado.class);
     }
 
+    /**
+     * Agrega un empleado a la base de datos.
+     *
+     * @param empleado empleado a agregar a la base de datos.
+     * @return true en caso de agregar exitosamente la información a la base,
+     * false en caso contrario.
+     */
     @Override
     public boolean agregar(Empleado empleado) {
         try {
@@ -44,6 +57,13 @@ public class EmpleadosDAO implements IPersistenciaEmpleado {
         }
     }
 
+    /**
+     * Actualiza la información de un empleado en la base de datos.
+     *
+     * @param empleado empleado a actualizar en la base.
+     * @return true en caso de modificar exitosamente la información, false en
+     * caso contrario.
+     */
     @Override
     public boolean actualizar(Empleado empleado) {
         try {
@@ -77,6 +97,13 @@ public class EmpleadosDAO implements IPersistenciaEmpleado {
         }
     }
 
+    /**
+     * Elimina la información de un empleado dentro de la base.
+     *
+     * @param id empleado a buscar en la base para ser eliminado.
+     * @return treu enc aso de eliminar exitosamente al empleado, false en caso
+     * contrario.
+     */
     @Override
     public boolean eliminar(ObjectId id) {
         try {
@@ -91,6 +118,13 @@ public class EmpleadosDAO implements IPersistenciaEmpleado {
         }
     }
 
+    /**
+     * Busca a un empleado en específico dentro de la base.
+     *
+     * @param id empleado a buscar dentro de la base.
+     * @return regresa un empleado en caso de encontrarlo, null en caso
+     * contrario.
+     */
     @Override
     public Empleado consultar(ObjectId id) {
         try {
@@ -111,6 +145,11 @@ public class EmpleadosDAO implements IPersistenciaEmpleado {
         }
     }
 
+    /**
+     * Consulta la lista de todos los animales registrados en la base.
+     *
+     * @return lista con todos los animales registrados.
+     */
     @Override
     public List<Empleado> consultarTodos() {
         try {
