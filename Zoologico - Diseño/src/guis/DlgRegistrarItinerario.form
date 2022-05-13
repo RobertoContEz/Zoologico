@@ -26,7 +26,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace pref="114" max="32767" attributes="0"/>
+              <EmptySpace pref="144" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
           </Group>
@@ -35,7 +35,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <EmptySpace pref="110" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
           </Group>
@@ -243,10 +243,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
+                <Property name="text" type="java.lang.String" value="DATOS GENERALES DEL RECORRIDO"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="DATOS GENERALES DEL RECORRIDO"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
@@ -283,71 +283,50 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="checkBoxMartes" min="-2" max="-2" attributes="0"/>
-                                  <Component id="checkBoxMiercoles" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="checkBoxJueves" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="checkBoxViernes" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="checkBoxSabado" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="checkBoxDomingo" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="campoVie" pref="202" max="32767" attributes="0"/>
-                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                              <Component id="tiempoVie" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxMartes" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxMiercoles" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxJueves" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxViernes" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxSabado" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="checkBoxDomingo" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                                              <Component id="campoMar" min="-2" pref="285" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="campoSab" pref="201" max="32767" attributes="0"/>
-                                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                              <Component id="tiempoSab" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="campoDom" pref="201" max="32767" attributes="0"/>
-                                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                                              <Component id="tiempoDom" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="campoMie" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="campoJue" alignment="1" min="-2" pref="284" max="-2" attributes="0"/>
+                                                  <Component id="campoVie" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="campoSab" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="campoDom" alignment="1" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="campoMie" max="32767" attributes="0"/>
-                                          <Component id="campoJue" max="32767" attributes="0"/>
-                                          <Component id="campoMar" pref="201" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="11" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="tiempoJue" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="tiempoMie" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="checkBoxLunes" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                      <Component id="campoLun" min="-2" pref="285" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="checkBoxLunes" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Component id="campoLun" pref="201" max="32767" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="tiempoMar" max="32767" attributes="0"/>
-                                  <Component id="tiempoLun" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="128" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -359,50 +338,39 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxLunes" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tiempoLun" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="campoLun" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="checkBoxMartes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tiempoMar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoMar" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="checkBoxMiercoles" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tiempoMie" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoMie" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="checkBoxJueves" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tiempoJue" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoJue" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="checkBoxViernes" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tiempoVie" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoVie" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="checkBoxSabado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tiempoSab" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="campoSab" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="checkBoxMartes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoMar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="checkBoxMiercoles" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoMie" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="checkBoxJueves" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoJue" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="checkBoxViernes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoVie" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="checkBoxSabado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoSab" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="checkBoxDomingo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tiempoDom" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="campoDom" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -410,10 +378,10 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
+                <Property name="text" type="java.lang.String" value="D&#xcd;AS DEL RECORRIDO"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="D&#xcd;AS DEL RECORRIDO"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="checkBoxDomingo">
@@ -461,75 +429,19 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxLunesActionPerformed"/>
               </Events>
             </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMie">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoJue">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoVie">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoSab">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoDom">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoMar">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
-            <Component class="com.github.lgooddatepicker.components.TimePicker" name="tiempoLun">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="campoMie">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoJue">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoMar">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoVie">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoSab">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoDom">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="campoLun">
-              <Properties>
-                <Property name="enabled" type="boolean" value="false"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -551,23 +463,30 @@
                       <EmptySpace min="-2" pref="321" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ckbZona1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ckbZona4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ckbZona7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="ckbZona4" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona1" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbZona7" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ckbZona2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ckbZona5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ckbZona8" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="ckbZona3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ckbZona6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ckbZona9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="ckbZona2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                              <Component id="ckbZona3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="ckbZona5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ckbZona8" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="ckbZona6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ckbZona9" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -604,63 +523,63 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
+                <Property name="text" type="java.lang.String" value="ZONAS DEL RECORRIDO"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="ZONAS DEL RECORRIDO"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbZona1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox1"/>
+                <Property name="text" type="java.lang.String" value="1-ALFA"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbZona4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox2"/>
+                <Property name="text" type="java.lang.String" value="2-ALFA"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbZona7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox3"/>
+                <Property name="text" type="java.lang.String" value="3-ALFA"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbZona2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox4"/>
+                <Property name="text" type="java.lang.String" value="1-BETA"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbZona5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox5"/>
+                <Property name="text" type="java.lang.String" value="2-BETA"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbZona8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox6"/>
+                <Property name="text" type="java.lang.String" value="3-BETA"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbZona3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox7"/>
+                <Property name="text" type="java.lang.String" value="1-CHARLIE"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbZona6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox8"/>
+                <Property name="text" type="java.lang.String" value="2-CHARLIE"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbZona9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jCheckBox9"/>
+                <Property name="text" type="java.lang.String" value="3-CHARLIE"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>

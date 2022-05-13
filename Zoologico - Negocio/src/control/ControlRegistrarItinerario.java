@@ -41,11 +41,6 @@ public class ControlRegistrarItinerario {
             if(itinerario.getNombre().equals(nombre)) return itinerario;
         }
         
-        if (buscarItinerario(nombre) == null) {
-//            JOptionPane.INFORMATION_MESSAGE();
-              
-        }
-        
         return null;
     }
     

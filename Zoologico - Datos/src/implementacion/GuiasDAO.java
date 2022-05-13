@@ -28,7 +28,7 @@ public class GuiasDAO implements IPersistenciaGuia {
 
     @Override
     public MongoCollection<Guia> getCollection() {
-        return this.baseDatos.getCollection("Guias", Guia.class);
+        return this.baseDatos.getCollection("Empleados", Guia.class);
     }
 
     @Override
@@ -84,6 +84,7 @@ public class GuiasDAO implements IPersistenciaGuia {
             MongoCollection<Guia> coleccion = this.getCollection();
             Document filtro = new Document();
             filtro.append("_id", id);
+            filtro.append("tipo", "Guía");
             coleccion.deleteOne(filtro);
             return true;
         } catch (PersistenceException ex) {
@@ -99,6 +100,7 @@ public class GuiasDAO implements IPersistenciaGuia {
             MongoCollection<Guia> collection = this.getCollection();
             Document filtro = new Document();
             filtro.append("_id", id);
+            filtro.append("tipo", "Guía");
             collection.find(filtro).into(listaGuias);
             if (listaGuias.isEmpty()) {
                 return null;
@@ -118,7 +120,9 @@ public class GuiasDAO implements IPersistenciaGuia {
             // TODO: MANEJAR POSIBLES EXCEPCIONES...
             List<Guia> listaGuias = new ArrayList<>();
             MongoCollection<Guia> collection = this.getCollection();
-            collection.find().into(listaGuias);
+            Document filtro = new Document();
+            filtro.append("tipo", "Guía");
+            collection.find(filtro).into(listaGuias);
             return listaGuias;
         } catch (PersistenceException ex) {
             ex.printStackTrace();
