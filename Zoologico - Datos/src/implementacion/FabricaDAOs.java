@@ -8,6 +8,7 @@ import interfaces.IPersistenciaGuia;
 import interfaces.IPersistenciaHabitat;
 import interfaces.IPersistenciaItinerario;
 import interfaces.IPersistenciaQueja;
+import interfaces.IPersistenciaRecorrido;
 import interfaces.IPersistenciaZona;
 
 public class FabricaDAOs {
@@ -40,6 +41,10 @@ public class FabricaDAOs {
 
     public static IPersistenciaItinerario getItinerariosDAO() {
         return new ItinerariosDAO(conexion);
+    }
+    
+    public static IPersistenciaRecorrido getRecorridosDAO() {
+        return new RecorridoDAO(conexion);
     }
 
     public static IPersistenciaQueja getQuejasDAO() {
