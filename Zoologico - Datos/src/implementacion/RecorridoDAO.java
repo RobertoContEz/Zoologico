@@ -61,7 +61,7 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
                 Document entidadActualizada = new Document();
                 entidadActualizada.append("$set", new Document("idItinerario", recorrido.getIdItinerario())
                         .append("idGuia", recorrido.getIdGuia())
-                        .append("fechHora", recorrido.getFechHora())
+                        .append("fechHora", recorrido.getFechaHora())
                         .append("numVistitantes", recorrido.getNumVistitantes())
                         .append("quejas", recorrido.getQuejas())
                 );
