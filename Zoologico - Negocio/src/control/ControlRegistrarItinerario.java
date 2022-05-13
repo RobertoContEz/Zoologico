@@ -24,8 +24,7 @@ public class ControlRegistrarItinerario {
     public List<Zona> recuperaZonasZoologico() {
         IPersistenciaZona dao = FabricaDAOs.getZonaDAO();
         
-        //return dao.consultarTodos();
-        return null;
+        return dao.consultarTodos();
     }
 
     public List<Guia> recuperaGuiasRegistrados() {

@@ -119,7 +119,7 @@ public class ZonasDAO implements IPersistenciaZona {
             MongoCollection<Zona> collection = this.getCollection();
             collection.find().into(listaZona);
             return listaZona;
-        } catch (PersistenceException ex) {
+        } catch (Exception ex) {
             System.err.println(ex.getMessage());
             return null;
         }

@@ -1,6 +1,6 @@
 package objetos;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import org.bson.types.ObjectId;
@@ -19,7 +19,7 @@ public class Itinerario {
     private String nombre;
     private List<ObjectId> idsZonasVisitadas;
     private int duracionDelRecorrido;
-    private List<LocalTime> diasYHoras;
+    private List<LocalDateTime> diasYHoras;
     private long longitud;
     private int numeroMaximoVisitantes;
     private int numeroEspeciesVisitadas;
@@ -54,7 +54,7 @@ public class Itinerario {
      * @param numeroEspeciesVisitadas el número de especies visitadas en el
      * recorrido
      */
-    public Itinerario(String nombre, List<ObjectId> idsZonasVisitadas, int duracionDelRecorrido, List<LocalTime> diasYHoras, long longitud, int numeroMaximoVisitantes, int numeroEspeciesVisitadas) {
+    public Itinerario(String nombre, List<ObjectId> idsZonasVisitadas, int duracionDelRecorrido, List<LocalDateTime> diasYHoras, long longitud, int numeroMaximoVisitantes, int numeroEspeciesVisitadas) {
         this.nombre = nombre;
         this.idsZonasVisitadas = idsZonasVisitadas;
         this.duracionDelRecorrido = duracionDelRecorrido;
@@ -80,7 +80,7 @@ public class Itinerario {
      * @param numeroEspeciesVisitadas el número de especies visitadas en el
      * recorrido
      */
-    public Itinerario(ObjectId id, String nombre, List<ObjectId> idsZonasVisitadas, int duracionDelRecorrido, List<LocalTime> diasYHoras, long longitud, int numeroMaximoVisitantes, int numeroEspeciesVisitadas) {
+    public Itinerario(ObjectId id, String nombre, List<ObjectId> idsZonasVisitadas, int duracionDelRecorrido, List<LocalDateTime> diasYHoras, long longitud, int numeroMaximoVisitantes, int numeroEspeciesVisitadas) {
         this.id = id;
         this.nombre = nombre;
         this.idsZonasVisitadas = idsZonasVisitadas;
@@ -171,7 +171,7 @@ public class Itinerario {
      * @return la lista de horas y los días de la semana a las que puede iniciar
      * el recorrido.
      */
-    public List<LocalTime> getDiasYHoras() {
+    public List<LocalDateTime> getDiasYHoras() {
         return diasYHoras;
     }
 
@@ -182,7 +182,7 @@ public class Itinerario {
      * @param diasYHoras la lista de horas y los días de la semana a las que 
      * puede iniciar el recorrido.
      */
-    public void setDiasYHoras(List<LocalTime> diasYHoras) {
+    public void setDiasYHoras(List<LocalDateTime> diasYHoras) {
         this.diasYHoras = diasYHoras;
     }
 

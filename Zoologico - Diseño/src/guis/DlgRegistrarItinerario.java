@@ -3,6 +3,8 @@ package guis;
 import control.ControlRegistrarItinerario;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -596,9 +598,26 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             this.campoTextoLongitudItinerario.setText(String.valueOf(itinerario.getLongitud()));
             this.campoTextoNumeroVisitantes.setText(String.valueOf(itinerario.getNumeroMaximoVisitantes()));
             
-            for (int i = 0; i < cajasZonas.size(); i++) {
-                if(itinerario.getIdsZonasVisitadas().contains(zonas.get(i).getId()))
-                    cajasZonas.get(i).setSelected(true);
+//            for (int i = 0; i < cajasZonas.size(); i++) {
+//                if(itinerario.getIdsZonasVisitadas().contains(zonas.get(i).getId()))
+//                    cajasZonas.get(i).setSelected(true);
+//            }
+            
+            List<LocalDateTime> horas = itinerario.getDiasYHoras();
+            for (LocalDateTime hora : horas) {
+                JTextField campo = null;
+                JCheckBox caja = null;
+                switch(hora.getDayOfWeek().getValue()) {
+                    case 1: campo = this.campoLun; caja = this.checkBoxLunes; break;
+                    case 2: campo = this.campoMar; caja = this.checkBoxMartes; break;
+                    case 3: campo = this.campoMie; caja = this.checkBoxMiercoles; break;
+                    case 4: campo = this.campoJue; caja = this.checkBoxJueves; break;
+                    case 5: campo = this.campoVie; caja = this.checkBoxViernes; break;
+                    case 6: campo = this.campoSab; caja = this.checkBoxSabado; break;
+                    case 7: campo = this.campoDom; caja = this.checkBoxDomingo; break;
+                }
+                agregarHoraAlCampo(campo,hora);
+                caja.setSelected(true);
             }
             
         } else {
@@ -608,6 +627,19 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         }
         
         return itinerario==null;
+    }
+    
+    private void agregarHoraAlCampo(JTextField campo, LocalDateTime hora) {
+        String texto = campo.getText();
+        
+        int h = hora.getHour();
+        int m = hora.getMinute();
+        
+        String horaTexto = (h<10?"0":"")+String.valueOf(h) + ":" + (m<10?"0":"")+String.valueOf(m);
+        
+        texto = texto + (texto.equals("")?"":", ") + horaTexto;
+        
+        campo.setText(texto);
     }
     
     private int relacionarGuia(Itinerario itinerario) {
