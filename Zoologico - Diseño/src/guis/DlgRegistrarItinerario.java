@@ -631,7 +631,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         }
         
         if(this.campoTextoDuracionItinerario.getText().equals("")) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la diración del recorrido.";
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la duración del recorrido.";
             valido = false;
         } else {
             try {
@@ -650,22 +650,42 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             }
         }
         
-        if(this.campoTextoDuracionItinerario.getText().equals("")) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la diración del recorrido.";
+        if(this.campoTextoLongitudItinerario.getText().equals("")) {
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la longitud del recorrido.";
             valido = false;
         } else {
             try {
-                int i = Integer.parseInt(campoTextoDuracionItinerario.getText());
+                int i = Integer.parseInt(campoTextoLongitudItinerario.getText());
                 if(i<0) {
-                    errores = errores + (errores.equals("")?"":"\n") + "La duracción del recorrido debe ser mayor a 0m.";
+                    errores = errores + (errores.equals("")?"":"\n") + "La longitud del recorrido debe ser mayor a 0m.";
                     valido = false;
                 }
                 if(i>1500) {
-                    errores = errores + (errores.equals("")?"":"\n") + "La duracción del recorrido debe ser menor a 1.5km.";
+                    errores = errores + (errores.equals("")?"":"\n") + "La longitud del recorrido debe ser menor a 1.5km.";
                     valido = false;
                 }
             } catch(Exception e) {
-                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para la duración.";
+                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para la longitud.";
+                valido = false;
+            }
+        }
+        
+        if(this.campoTextoNumeroVisitantes.getText().equals("")) {
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese el número máximo de visitantes autorizados.";
+            valido = false;
+        } else {
+            try {
+                int i = Integer.parseInt(campoTextoLongitudItinerario.getText());
+                if(i<0) {
+                    errores = errores + (errores.equals("")?"":"\n") + "La longitud del recorrido debe ser mayor a 0m.";
+                    valido = false;
+                }
+                if(i>1500) {
+                    errores = errores + (errores.equals("")?"":"\n") + "La longitud del recorrido debe ser menor a 1.5km.";
+                    valido = false;
+                }
+            } catch(Exception e) {
+                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para la longitud.";
                 valido = false;
             }
         }
