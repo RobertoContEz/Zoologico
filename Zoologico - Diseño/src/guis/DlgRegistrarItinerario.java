@@ -631,7 +631,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         }
         
         if(this.campoTextoDuracionItinerario.getText().equals("")) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la diración del recorrido.";
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la duración del recorrido.";
             valido = false;
         } else {
             try {
@@ -650,37 +650,65 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             }
         }
         
-        if(this.campoTextoDuracionItinerario.getText().equals("")) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la diración del recorrido.";
+        if(this.campoTextoLongitudItinerario.getText().equals("")) {
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la longitud del recorrido.";
             valido = false;
         } else {
             try {
-                int i = Integer.parseInt(campoTextoDuracionItinerario.getText());
+                int i = Integer.parseInt(campoTextoLongitudItinerario.getText());
                 if(i<0) {
-                    errores = errores + (errores.equals("")?"":"\n") + "La duracción del recorrido debe ser mayor a 0m.";
+                    errores = errores + (errores.equals("")?"":"\n") + "La longitud del recorrido debe ser mayor a 0m.";
                     valido = false;
                 }
                 if(i>1500) {
-                    errores = errores + (errores.equals("")?"":"\n") + "La duracción del recorrido debe ser menor a 1.5km.";
+                    errores = errores + (errores.equals("")?"":"\n") + "La longitud del recorrido debe ser menor a 1.5km.";
                     valido = false;
                 }
             } catch(Exception e) {
-                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para la duración.";
+                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para la longitud.";
                 valido = false;
             }
         }
         
-        if(comboBoxVegetacion.getSelectedIndex()==0) {
-            errores = errores + (errores.equals("")?"":"\n") + "Seleccione un tipo de vegetación.";
+        if(this.campoTextoNumeroVisitantes.getText().equals("")) {
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la cantidad máxima de visitantes autorizados para el recorrido.";
+            valido = false;
+        } else {
+            try {
+                int i = Integer.parseInt(campoTextoNumeroVisitantes.getText());
+                if(i<0) {
+                    errores = errores + (errores.equals("")?"":"\n") + "El número de visitantes debe ser mayor a 0m.";
+                    valido = false;
+                }
+                if(i>30) {
+                    errores = errores + (errores.equals("")?"":"\n") + "El número máximo de visitantes ser menor a 30.";
+                    valido = false;
+                }
+            } catch(Exception e) {
+                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para el máximo de visitantes.";
+                valido = false;
+            }
+        }
+        
+        try {
+            List<LocalDateTime> horas = bajarHoras();
+            if(horas.isEmpty()) vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese al menos una hora.";
+            valido = false;
+        } catch (Exception e) {
+            errores = errores + (errores.equals("")?"":"\n") + "Verifique el formato de las horas, deve de ser hh:mm,\nseparando las distintas horas con una coma y un espacio.";
             valido = false;
         }
         
-        if(continentesAgregados.isEmpty()) {
-            errores = errores + (errores.equals("")?"":"\n") + "Seleccione al menos un continente.";
+        if(bajarZonas().isEmpty()) {
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Seleccione al menos una zona.";
             valido = false;
         }
         
-        if(!valido) JOptionPane.showMessageDialog(this, "Los siguientes campos están sin llenar: \n"+errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+        if(!valido) {
+            vacios = (vacios.equals("")?"":"Los siguientes campos están sin llenar: \n"+vacios);
+            errores = (errores.equals("")?"":"Hay errores en los siguientes campos: \n"+errores);
+            JOptionPane.showMessageDialog(this, vacios+errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
         
         return valido;
     }
