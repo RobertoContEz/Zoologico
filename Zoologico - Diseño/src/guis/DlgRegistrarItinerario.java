@@ -601,6 +601,8 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
                     cajasZonas.get(i).setSelected(true);
             }
             
+            
+            
         } else {
             liberarCampos(true);
             JOptionPane.showMessageDialog(this, "No se ha encontrado otro itinerario con ese nombre.\n"

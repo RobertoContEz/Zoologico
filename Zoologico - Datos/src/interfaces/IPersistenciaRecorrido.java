@@ -8,10 +8,10 @@ import org.bson.types.ObjectId;
 /**
  *
  * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
- * 
+ *
  */
 public interface IPersistenciaRecorrido {
-    
+
     MongoCollection<Recorrido> getCollection();
 
     public boolean agregar(Recorrido recorrido);
@@ -23,5 +23,7 @@ public interface IPersistenciaRecorrido {
     public Recorrido consultar(ObjectId id);
 
     public List<Recorrido> consultarTodos();
-    
+
+    public List<Recorrido> consultarRecorridosUltimoMes();
+
 }

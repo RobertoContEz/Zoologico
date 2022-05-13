@@ -62,8 +62,7 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
                         //                    .append("horasALasQueInicia", itinerario.getHorasALasQueInicia())
                         .append("longitud", itinerario.getLongitud())
                         .append("numeroMaximoVisitantes", itinerario.getNumeroMaximoVisitantes())
-                        .append("numeroEspeciesVisitadas", itinerario.getNumeroEspeciesVisitadas())
-                        .append("quejas", itinerario.getQuejas())
+                        .append("numeroEspeciesVisitadas", itinerario.getNumeroEspeciesVisitadas())                       
                 );
 
                 UpdateResult resultado = coleccion.updateOne(filtro, entidadActualizada);

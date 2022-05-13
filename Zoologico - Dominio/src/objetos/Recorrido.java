@@ -1,39 +1,39 @@
 package objetos;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import org.bson.types.ObjectId;
 
 /**
  *
- * @author pache
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
  */
 public class Recorrido {
 
     private ObjectId id;
     private ObjectId idItinerario;
     private ObjectId idGuia;
-    private LocalTime fechHora;
+    private LocalDateTime fechaHora;
     private int numVistitantes;
     private List<Queja> quejas;
 
     public Recorrido() {
     }
 
-    public Recorrido(ObjectId idItinerario, ObjectId idGuia, LocalTime fechHora, int numVistitantes, List<Queja> quejas) {
+    public Recorrido(ObjectId idItinerario, ObjectId idGuia, LocalDateTime fechaHora, int numVistitantes, List<Queja> quejas) {
         this.idItinerario = idItinerario;
         this.idGuia = idGuia;
-        this.fechHora = fechHora;
+        this.fechaHora = fechaHora;
         this.numVistitantes = numVistitantes;
         this.quejas = quejas;
     }
 
-    public Recorrido(ObjectId id, ObjectId idItinerario, ObjectId idGuia, LocalTime fechHora, int numVistitantes, List<Queja> quejas) {
+    public Recorrido(ObjectId id, ObjectId idItinerario, ObjectId idGuia, LocalDateTime fechaHora, int numVistitantes, List<Queja> quejas) {
         this.id = id;
         this.idItinerario = idItinerario;
         this.idGuia = idGuia;
-        this.fechHora = fechHora;
+        this.fechaHora = fechaHora;
         this.numVistitantes = numVistitantes;
         this.quejas = quejas;
     }
@@ -62,12 +62,12 @@ public class Recorrido {
         this.idGuia = idGuia;
     }
 
-    public LocalTime getFechHora() {
-        return fechHora;
+    public LocalDateTime getFechaHora() {
+        return fechaHora;
     }
 
-    public void setFechHora(LocalTime fechHora) {
-        this.fechHora = fechHora;
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
     }
 
     public int getNumVistitantes() {
@@ -113,7 +113,7 @@ public class Recorrido {
 
     @Override
     public String toString() {
-        return "Recorrido{" + "id=" + id + ", idItinerario=" + idItinerario + ", idGuia=" + idGuia + ", fechHora=" + fechHora + ", numVistitantes=" + numVistitantes + ", quejas=" + quejas + '}';
+        return "Recorrido{" + "id=" + id + ", idItinerario=" + idItinerario + ", idGuia=" + idGuia + ", fechHora=" + fechaHora + ", numVistitantes=" + numVistitantes + ", quejas=" + quejas + '}';
     }
 
 }
