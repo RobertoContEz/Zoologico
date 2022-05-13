@@ -631,8 +631,43 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         }
         
         if(this.campoTextoDuracionItinerario.getText().equals("")) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "ingrese la diración del recorrido.";
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la diración del recorrido.";
             valido = false;
+        } else {
+            try {
+                int i = Integer.parseInt(campoTextoDuracionItinerario.getText());
+                if(i<0) {
+                    errores = errores + (errores.equals("")?"":"\n") + "La duracción del recorrido debe ser mayor a 0.";
+                    valido = false;
+                }
+                if(i>90) {
+                    errores = errores + (errores.equals("")?"":"\n") + "La duracción del recorrido debe ser menor a hora y media.";
+                    valido = false;
+                }
+            } catch(Exception e) {
+                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para la duración.";
+                valido = false;
+            }
+        }
+        
+        if(this.campoTextoDuracionItinerario.getText().equals("")) {
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la diración del recorrido.";
+            valido = false;
+        } else {
+            try {
+                int i = Integer.parseInt(campoTextoDuracionItinerario.getText());
+                if(i<0) {
+                    errores = errores + (errores.equals("")?"":"\n") + "La duracción del recorrido debe ser mayor a 0m.";
+                    valido = false;
+                }
+                if(i>1500) {
+                    errores = errores + (errores.equals("")?"":"\n") + "La duracción del recorrido debe ser menor a 1.5km.";
+                    valido = false;
+                }
+            } catch(Exception e) {
+                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para la duración.";
+                valido = false;
+            }
         }
         
         if(comboBoxVegetacion.getSelectedIndex()==0) {
@@ -660,6 +695,8 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             itinerario.setLongitud(Long.parseLong(this.campoTextoLongitudItinerario.getText()));
             itinerario.setNumeroMaximoVisitantes(Integer.parseInt(this.campoTextoDuracionItinerario.getText()));
             itinerario.setNumeroEspeciesVisitadas(control.calcularEspeciesVisitadas(itinerario.getIdsZonasVisitadas()));
+            
+            control.actualizarGuia(itinerario.getId(), guias.get(this.cmbGuia.getSelectedIndex()-1).getId());
             
             if(control.guardar(itinerario)) {
                 JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
