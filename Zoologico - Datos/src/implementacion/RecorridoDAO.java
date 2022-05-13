@@ -1,10 +1,13 @@
 package implementacion;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.UpdateResult;
 import interfaces.IConexionBD;
 import interfaces.IPersistenciaRecorrido;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.PersistenceException;
@@ -116,11 +119,34 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
     @Override
     public List<Recorrido> consultarTodos() {
         // TODO: MANEJAR POSIBLES EXCEPCIONES...
+        List<Recorrido> listaRecorrido = new ArrayList<>();
+        MongoCollection<Recorrido> collection = this.getCollection();
         try {
-            List<Recorrido> listaRecorrido = new ArrayList<>();
-            MongoCollection<Recorrido> collection = this.getCollection();
             collection.find().into(listaRecorrido);
             return listaRecorrido;
+        } catch (PersistenceException ex) {
+            System.err.println(ex.getMessage());
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<Recorrido> consultarRecorridosUltimoMes() {
+        List<Recorrido> listaRecorrido = new ArrayList<>();
+        MongoCollection<Recorrido> collection = this.getCollection();
+        try {
+            Document filtro = new Document();
+            LocalDateTime ultimoMes = LocalDateTime.now().minusDays(30);
+            //DBObject query = new BasicDBObject("fechHora", new BasicDBObject("$gt", ultimoMes));
+            filtro.append("fechHora", new BasicDBObject("$gt", ultimoMes));                      
+            collection.find(filtro).into(listaRecorrido);
+            if (listaRecorrido.isEmpty()) {
+                return null;
+            } else {
+                // TODO: MANEJAR POSIBLES EXCEPCIONES...
+                return (List<Recorrido>) listaRecorrido.get(0);
+            }
         } catch (PersistenceException ex) {
             System.err.println(ex.getMessage());
             ex.printStackTrace();
