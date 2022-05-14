@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import negocio.Conversiones;
 import objetos.Guia;
@@ -339,27 +341,70 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         if(validar()) {
             Queja queja = new Queja();
             
-            queja.set
+            queja.setFecha(fecha);
+            queja.setHora(hora);
+            queja.setCorreo(correo);
+            queja.setTelefono(telefono);
+            queja.setIdItinerario(itinerario.getId());
             
-            Itinerario itinerario = new Itinerario();
-            itinerario.setNombre(campoTextoNombreItinerario.getText());
-            itinerario.setIdsZonasVisitadas(bajarZonas());
-            itinerario.setDuracionDelRecorrido(Integer.parseInt(this.campoTextoDuracionItinerario.getText()));
-            itinerario.setDiasYHoras(bajarHoras());
-            itinerario.setLongitud(Long.parseLong(this.campoTextoLongitudItinerario.getText()));
-            itinerario.setNumeroMaximoVisitantes(Integer.parseInt(this.campoTextoDuracionItinerario.getText()));
-            itinerario.setNumeroEspeciesVisitadas(control.calcularEspeciesVisitadas(itinerario.getIdsZonasVisitadas()));
-            
-            control.actualizarGuia(itinerario.getId(), guias.get(this.cmbGuia.getSelectedIndex()-1).getId());
-            
-            if(control.guardar(itinerario)) {
-                JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            if(control.guardar(queja)) {
+                JOptionPane.showMessageDialog(this, "Se ha enviado la queja a la administración del zoológico.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(this, "No se ha podido guardar el hábitat.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se ha podido enviar la queja.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
     
+    private LocalTime hora;
+    private String correo;
+    private String telefono;
+    
+    private boolean validar() {
+        boolean valido = true;
+//        String vacios = "";
+//        String errores = "";
+        
+        int i = this.comboBoxItinerarioQueja.getSelectedIndex();
+        if(i == 0) {
+            JOptionPane.showMessageDialog(this, "Seleccione itinerario, fecha y hora antes de enviar su queja.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        } else {
+            itinerario = itinerarios.get(i-1);
+            
+            i = this.comboBoxFechaRecorridoQueja.getSelectedIndex();
+            if(i == 0) {
+                JOptionPane.showMessageDialog(this, "Seleccione la fecha y la hora del recorrido antes de enviar su queja.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            } else {
+                fecha = fechas.get(i-1);
+                
+                i = this.comboBoxFechaRecorridoQueja.getSelectedIndex();
+                if(i == 0) {
+                    JOptionPane.showMessageDialog(this, "Seleccione la hora del recorrido antes de enviar su queja.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    
+                }
+            }
+        }
+        
+        if(campoTextoNombreItinerario.getText().equals("")) {
+            vacios = vacios + (vacios.equals("")?"":"\n") + "Introduzca el nombre del hábitat.";
+            valido = false;
+        } else {
+            Itinerario itinerario = control.buscarItinerario(campoTextoNombreItinerario.getText());
+            if(itinerario!=null) {
+                errores = errores + (errores.equals("")?"":"\n") + "El nombre del itinerario ya está registrado en la base de datos.";
+            }
+        }
+        
+        
+    }
+    
+    public static boolean validarMail(String email) {
+        // Patron para validar el email
+        Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+ 
+        Matcher mather = pattern.matcher(email);
+        return mather.find();
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaTextoQueja;
