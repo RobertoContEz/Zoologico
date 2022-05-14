@@ -3,8 +3,13 @@ package control;
 import implementacion.FabricaDAOs;
 import interfaces.IPersistenciaItinerario;
 import interfaces.IPersistenciaRecorrido;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import objetos.Itinerario;
 import objetos.Recorrido;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -14,18 +19,41 @@ import objetos.Recorrido;
  */
 public class ControlRegistrarQueja {
 
-    public Recorrido recuperarRecorridos(String nombre) {
+    public List<Recorrido> recuperarRecorridosUltimoMes() {
         IPersistenciaRecorrido daoRecorrido = FabricaDAOs.getRecorridosDAO();
-        IPersistenciaItinerario daoItinerario = FabricaDAOs.getItinerariosDAO();
-        List<Recorrido> lista = daoRecorrido.consultarRecorridosUltimoMes();
-
-        for (Recorrido recorrido : lista) {
-            String nombreItinearario = daoItinerario.consultar(recorrido.getIdItinerario()).getNombre();
-            if (nombreItinearario.equals(nombre)) {
-                return recorrido;
-            }
-        }
-        return null;
+        
+        return daoRecorrido.consultarRecorridosUltimoMes();
     }
+    
+    public List<Itinerario> recuperarItinerariosDeLosRecorridos(List<Recorrido> recorridos) {
+        IPersistenciaItinerario daoItinerario = FabricaDAOs.getItinerariosDAO();
+        
+        List<ObjectId> ids = new ArrayList();
+        for (Recorrido recorrido : recorridos) {
+            ids.add(recorrido.getIdItinerario());
+        }
+        ids = new ArrayList(new HashSet(ids));
+        
+        List<Itinerario> lista = new ArrayList();
+        for (ObjectId id : ids) {
+            lista.add(daoItinerario.consultar(id));
+        }
+        
+        return lista.isEmpty()? null : lista;
+    } 
 
+    public HashMap<Itinerario,List<Recorrido>> ordenarRecorridos(List<Itinerario> itinerarios, List<Recorrido> recorridos) {
+        HashMap<Itinerario,List<Recorrido>> mapa = new HashMap();
+        
+        for (Itinerario itinerario : itinerarios) {
+            List<Recorrido> r = new ArrayList();
+            for (Recorrido recorrido : recorridos) {
+                if (recorrido.getIdItinerario().equals(itinerario.getId()))
+                    r.add(recorrido);
+            }
+            mapa.put(itinerario, (r.isEmpty()?null:r));
+        }
+        
+        return mapa;
+    }
 }
