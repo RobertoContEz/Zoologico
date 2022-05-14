@@ -18,21 +18,42 @@ import org.bson.types.ObjectId;
  *
  * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
  *
- * TODO: Documentar clase
+ * Esta clase hace la conexión entre las guis y persistencias, recupera y
+ * verifica en la base de datos los Itinerarios y Guias de la base de datos
+ *
  */
 public class ControlRegistrarItinerario {
 
+   /**
+     * Metodo que devuelve las zonas recuperadas del Zoologico en la base de
+     * datos
+     *
+     * @return zonas del Zoologico en la base de datos
+     */
     public List<Zona> recuperaZonasZoologico() {
         IPersistenciaZona dao = FabricaDAOs.getZonaDAO();
         
         return dao.consultarTodos();
     }
 
+   /**
+     * Metodo que devuelve los guias recuperados del Zoologico en la base de
+     * datos
+     *
+     * @return guias registrados del Zoologico en la base de datos
+     */
     public List<Guia> recuperaGuiasRegistrados() {
         IPersistenciaGuia dao = FabricaDAOs.getGuiasDAO();
         return dao.consultarTodos();
     }
-    
+
+    /**
+     * Metodo que busca el itinerario en la base de datos
+     *
+     * @param nombre parametro a guarda en la base de datos
+     * @return itinerario de la base de datos, si no, regresa null
+     */
+
     public Itinerario buscarItinerario(String nombre) {
         IPersistenciaItinerario dao = FabricaDAOs.getItinerariosDAO();
         
