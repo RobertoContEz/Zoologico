@@ -137,6 +137,8 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
 
         jLabel7.setText("Número telefónico:");
 
+        campoTextoNumeroTelefonico.setText("()");
+
         jLabel8.setText("Nombre (opcional):");
 
         btnEnviarQueja.setText("Enviar");
