@@ -41,8 +41,8 @@ public class Queja {
     /**
      * Inicializa la queja con todos los atributos a exepción del id.
      *
-     * @param fecha la fecha del recorrido de la fecha
-     * @param hora la hora del recorrido de la fecha
+     * @param fecha la fecha del recorrido de la queja
+     * @param hora la hora del recorrido de la queja
      * @param queja el enunciado de la queja
      * @param correo el correo del visitante
      * @param telefono el teléfono del visitante

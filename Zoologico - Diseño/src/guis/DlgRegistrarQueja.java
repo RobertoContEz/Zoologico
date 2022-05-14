@@ -1,11 +1,18 @@
 package guis;
 
 import control.ControlRegistrarQueja;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import negocio.Conversiones;
 import objetos.Guia;
 import objetos.Itinerario;
+import objetos.Queja;
 import objetos.Recorrido;
 
 /**
@@ -25,23 +32,23 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         
         recorridos = control.recuperarRecorridosUltimoMes();
         itinerarios = control.recuperarItinerariosDeLosRecorridos(recorridos);
-        mapa = control.ordenarRecorridos(itinerarios, recorridos);
+        recorridosPorItinerario = control.ordenarRecorridos(itinerarios, recorridos);
         
         inicializar();
     }
     
     private final List<Recorrido> recorridos;
     private final List<Itinerario> itinerarios;
-    private final HashMap<Itinerario,List<Recorrido>> mapa;
+    private final HashMap<Itinerario,List<Recorrido>> recorridosPorItinerario;
 
     private void inicializar() {
         if(itinerarios==null) {
             JOptionPane.showMessageDialog(this, "Error recuperando los registros de los itinerarios.", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
-            this.comboBoxFechaRecorridoQueja.removeAllItems();
-            this.comboBoxFechaRecorridoQueja.addItem("Seleccione...");
+            this.comboBoxItinerarioQueja.removeAllItems();
+            this.comboBoxItinerarioQueja.addItem("Seleccione...");
             for (Itinerario itinerario : itinerarios) {
-                this.comboBoxFechaRecorridoQueja.addItem(itinerario.getNombre());
+                this.comboBoxItinerarioQueja.addItem(itinerario.getNombre());
             }
         }
         this.comboBoxFechaRecorridoQueja.removeAllItems();
@@ -83,7 +90,6 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         campoTextoNombreQueja = new javax.swing.JTextField();
         btnEnviarQueja = new javax.swing.JButton();
-        btnCancelarQueja = new javax.swing.JButton();
         btnRegresarQueja = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
@@ -96,10 +102,20 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         jLabel1.setText("Nombre del itinerario:");
 
         comboBoxItinerarioQueja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxItinerarioQueja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxItinerarioQuejaActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Fecha del recorrido:");
 
         comboBoxFechaRecorridoQueja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxFechaRecorridoQueja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxFechaRecorridoQuejaActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Nombre del guía:");
 
@@ -122,8 +138,11 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         jLabel8.setText("Nombre (opcional):");
 
         btnEnviarQueja.setText("Enviar");
-
-        btnCancelarQueja.setText("Cancelar");
+        btnEnviarQueja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarQuejaActionPerformed(evt);
+            }
+        });
 
         btnRegresarQueja.setText("Regresar");
 
@@ -137,38 +156,35 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel2)
-                    .addComponent(btnEnviarQueja, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel2))
                         .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(comboBoxItinerarioQueja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboBoxFechaRecorridoQueja, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(campoTextoNombreGuia, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoTextoCorreo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoTextoNumeroTelefonico, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoTextoNombreQueja, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                            .addComponent(comboBoxHoraRecorridoQueja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(16, 16, 16))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(campoTextoNombreQueja)
+                            .addComponent(campoTextoNumeroTelefonico)
+                            .addComponent(campoTextoCorreo)
+                            .addComponent(jScrollPane1)
+                            .addComponent(comboBoxHoraRecorridoQueja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(campoTextoNombreGuia)
+                            .addComponent(comboBoxFechaRecorridoQueja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboBoxItinerarioQueja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnEnviarQueja, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelarQueja)
-                        .addGap(118, 118, 118)))
-                .addComponent(btnRegresarQueja)
-                .addContainerGap())
+                        .addComponent(btnRegresarQueja)))
+                .addGap(14, 14, 14))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
                 .addComponent(jLabel9)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,8 +210,8 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(campoTextoCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -210,7 +226,6 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviarQueja)
-                    .addComponent(btnCancelarQueja)
                     .addComponent(btnRegresarQueja))
                 .addGap(29, 29, 29))
         );
@@ -227,7 +242,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
+                .addContainerGap(109, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60))
         );
@@ -236,11 +251,118 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboBoxItinerarioQuejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxItinerarioQuejaActionPerformed
+        cargarFechas();
+    }//GEN-LAST:event_comboBoxItinerarioQuejaActionPerformed
 
+    private void comboBoxFechaRecorridoQuejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxFechaRecorridoQuejaActionPerformed
+        cargarHoras();
+    }//GEN-LAST:event_comboBoxFechaRecorridoQuejaActionPerformed
 
+    private void btnEnviarQuejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarQuejaActionPerformed
+        guardar();
+    }//GEN-LAST:event_btnEnviarQuejaActionPerformed
+
+    private List<LocalDate> fechas;
+    private HashMap<LocalDate,List<Recorrido>> recorridosPorFecha;
+    private Recorrido recorrido;
+    private Itinerario itinerario;
+    
+    private void cargarFechas() {
+        int i = this.comboBoxItinerarioQueja.getSelectedIndex();
+        if(i==0) {
+            liberarCampos(false);
+            return;
+        }
+        
+        fechas = new ArrayList();
+        recorridosPorFecha = new HashMap();
+        Itinerario  itinerario = itinerarios.get(i-1);
+        List<Recorrido> recorridos = recorridosPorItinerario.get(itinerario);
+        
+        if(recorridos != null) for (Recorrido recorrido : recorridos) {
+            LocalDate fecha = recorrido.getFechaHora().toLocalDate();
+            if(fechas.contains(fecha)) {
+                recorridosPorFecha.get(fecha).add(recorrido);
+            } else {
+                fechas.add(fecha);
+                List<Recorrido> r = new ArrayList();
+                r.add(recorrido);
+                recorridosPorFecha.put(fecha, r);
+            }
+            recorrido = recorrido;
+        }
+        fechas = new ArrayList(new HashSet(fechas));
+        
+        if(fechas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Error recuperando las fechas de los recoridos del itinerario.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            this.comboBoxFechaRecorridoQueja.removeAllItems();
+            this.comboBoxFechaRecorridoQueja.addItem("Seleccione...");
+            for (LocalDate fecha : fechas) {
+                this.comboBoxFechaRecorridoQueja.addItem(Conversiones.fechaATexto(fecha));
+            }
+            this.comboBoxFechaRecorridoQueja.setEnabled(true);
+        }
+        cargarGuia();
+    }
+
+    private void cargarGuia() {
+        Guia guia = control.recuperarGuia(recorrido);
+        this.campoTextoNombreGuia.setText(guia.getNombre());
+    }
+
+    private LocalDate fecha;
+    private List<LocalTime> horas;
+    private HashMap<LocalTime,Recorrido> recorridosPorHora;
+    
+    private void cargarHoras() {
+        int i = this.comboBoxFechaRecorridoQueja.getSelectedIndex();
+        if(i==0) {
+            liberarCampos(false);
+            return;
+        }
+        
+        horas = new ArrayList();
+        recorridosPorHora = new HashMap();
+        fecha = fechas.get(i-1);
+        List<Recorrido> recorridos = recorridosPorFecha.get(fecha);
+        
+        for (Recorrido recorrido : recorridos) {
+            LocalTime hora = recorrido.getFechaHora().toLocalTime();
+            recorridosPorHora.put(hora, recorrido);
+            horas.add(hora);
+        }
+    }
+    
+    private void guardar() {
+        if(validar()) {
+            Queja queja = new Queja();
+            
+            queja.set
+            
+            Itinerario itinerario = new Itinerario();
+            itinerario.setNombre(campoTextoNombreItinerario.getText());
+            itinerario.setIdsZonasVisitadas(bajarZonas());
+            itinerario.setDuracionDelRecorrido(Integer.parseInt(this.campoTextoDuracionItinerario.getText()));
+            itinerario.setDiasYHoras(bajarHoras());
+            itinerario.setLongitud(Long.parseLong(this.campoTextoLongitudItinerario.getText()));
+            itinerario.setNumeroMaximoVisitantes(Integer.parseInt(this.campoTextoDuracionItinerario.getText()));
+            itinerario.setNumeroEspeciesVisitadas(control.calcularEspeciesVisitadas(itinerario.getIdsZonasVisitadas()));
+            
+            control.actualizarGuia(itinerario.getId(), guias.get(this.cmbGuia.getSelectedIndex()-1).getId());
+            
+            if(control.guardar(itinerario)) {
+                JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se ha podido guardar el hábitat.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaTextoQueja;
-    private javax.swing.JButton btnCancelarQueja;
     private javax.swing.JButton btnEnviarQueja;
     private javax.swing.JButton btnRegresarQueja;
     private javax.swing.JTextField campoTextoCorreo;
