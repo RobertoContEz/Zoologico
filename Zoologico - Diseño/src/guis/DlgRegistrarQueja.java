@@ -137,8 +137,6 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
 
         jLabel7.setText("Número telefónico:");
 
-        campoTextoNumeroTelefonico.setText("()");
-
         jLabel8.setText("Nombre (opcional):");
 
         btnEnviarQueja.setText("Enviar");
@@ -393,21 +391,54 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         if(textoQueja.equals("")) {
             errores = errores + (errores.equals("")?"":"\n") + "Redacte su queja en el area de texto por favor.";
             valido = false;
+        }
+        
+        correo = this.campoTextoCorreo.getText();
+        if(correo.equals("")) {
+            errores = errores + (errores.equals("")?"":"\n") + "Introduzca su correo.";
+            valido = false;
         } else {
-            Itinerario itinerario = control.buscarItinerario(campoTextoNombreItinerario.getText());
-            if(itinerario!=null) {
-                errores = errores + (errores.equals("")?"":"\n") + "El nombre del itinerario ya está registrado en la base de datos.";
+            if(!validarCorreo(correo)) {
+                errores = errores + (errores.equals("")?"":"\n") + "El correo introducido no es válido";
+                valido = false;
             }
         }
         
+        telefono = this.campoTextoNumeroTelefonico.getText();
+        if(telefono.equals("")) {
+            errores = errores + (errores.equals("")?"":"\n") + "Introduzca su teléfono.";
+            valido = false;
+        } else {
+            if(!validarTelefono(telefono)) {
+                errores = errores + (errores.equals("")?"":"\n") + "Introduzca su teléfono con el formato \"(nnn)-nnn-nnnn\".";
+                valido = false;
+            }
+        }
         
+        nombre = this.campoTextoNombreQueja.getText();
+        if(nombre.equals("")) nombre = null;
+        
+        if(!valido) {
+            errores = (errores.equals("")?"":"No ha sido posible enviar la queja por los siguientes motivos: \n"+errores);
+            JOptionPane.showMessageDialog(this, errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        return valido;
     }
     
-    public static boolean validarMail(String email) {
+    private boolean validarCorreo(String correo) {
         // Patron para validar el email
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
  
-        Matcher mather = pattern.matcher(email);
+        Matcher mather = pattern.matcher(correo);
+        return mather.find();
+    }
+    
+    private boolean validarTelefono(String tel) {
+        // Patron para validar el teléfono
+        Pattern pattern = Pattern.compile("^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$");
+ 
+        Matcher mather = pattern.matcher(tel);
         return mather.find();
     }
     
