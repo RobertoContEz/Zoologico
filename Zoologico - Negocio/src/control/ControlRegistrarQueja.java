@@ -2,12 +2,14 @@ package control;
 
 import implementacion.FabricaDAOs;
 import interfaces.IPersistenciaItinerario;
+import interfaces.IPersistenciaQueja;
 import interfaces.IPersistenciaRecorrido;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import objetos.Itinerario;
+import objetos.Queja;
 import objetos.Recorrido;
 import org.bson.types.ObjectId;
 
@@ -55,5 +57,11 @@ public class ControlRegistrarQueja {
         }
         
         return mapa;
+    }
+    
+    public boolean guardar(Queja queja) {
+        IPersistenciaQueja dao = FabricaDAOs.getQuejasDAO();
+        
+        return dao.agregar(queja);
     }
 }
