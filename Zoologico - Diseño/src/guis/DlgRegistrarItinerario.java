@@ -725,10 +725,10 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             itinerario.setNumeroEspeciesVisitadas(control.calcularEspeciesVisitadas(itinerario.getIdsZonasVisitadas()));
             
             if(control.guardar(itinerario)) {
-                JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Itinerario guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
                 control.actualizarGuia(itinerario.getId(), guias.get(this.cmbGuia.getSelectedIndex()-1).getId());
             } else {
-                JOptionPane.showMessageDialog(this, "No se ha podido guardar el hábitat.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se ha podido guardar el itinerario.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

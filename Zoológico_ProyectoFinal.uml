@@ -51059,7 +51059,7 @@
 <XPD:ATTR name="Left" type="integer">356</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">624</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">117</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">108</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">121</XPD:ATTR>
 <XPD:REF name="Model">RTBfrgYGc027VwSc7UXP9gAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="JsetVdk+vUGBRrZNUicQqwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="x/NZOp6wXkuAnfGyCR0p8QAA">
@@ -51087,7 +51087,7 @@
 <XPD:OBJ name="OwnedViews[16]" type="UMLAssociationView" guid="wgVOx6uVy0Gd5S82MLJHaAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">194,636;356,666</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">194,637;356,672</XPD:ATTR>
 <XPD:REF name="Model">RChtxZr9a0qVajdrL3g1mgAA</XPD:REF>
 <XPD:REF name="Head">r+3egAx02ESwhk2UjVcMhgAA</XPD:REF>
 <XPD:REF name="Tail">95LupjAaNUmEunquTWD4uwAA</XPD:REF>
@@ -52231,7 +52231,7 @@
 <XPD:REF name="Views[3]">D8Oex3gUbUyAESROZW5f1QAA</XPD:REF>
 <XPD:ATTR name="#Associations" type="integer">1</XPD:ATTR>
 <XPD:REF name="Associations[0]">5tsa5oP0F0KBbsAC4cSVAwAA</XPD:REF>
-<XPD:ATTR name="#Attributes" type="integer">5</XPD:ATTR>
+<XPD:ATTR name="#Attributes" type="integer">6</XPD:ATTR>
 <XPD:OBJ name="Attributes[0]" type="UMLAttribute" guid="I1KXKopvaUard4SukQuuQwAA">
 <XPD:ATTR name="Name" type="string">id</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
@@ -52258,6 +52258,12 @@
 </XPD:OBJ>
 <XPD:OBJ name="Attributes[4]" type="UMLAttribute" guid="M/6fqtcFekqVoeDsqdzLgAAA">
 <XPD:ATTR name="Name" type="string">telefono</XPD:ATTR>
+<XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
+<XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
+<XPD:REF name="Owner">RTBfrgYGc027VwSc7UXP9gAA</XPD:REF>
+</XPD:OBJ>
+<XPD:OBJ name="Attributes[5]" type="UMLAttribute" guid="oVf0eq/8j0exligVX80k4gAA">
+<XPD:ATTR name="Name" type="string">nombre</XPD:ATTR>
 <XPD:ATTR name="Visibility" type="UMLVisibilityKind">vkPrivate</XPD:ATTR>
 <XPD:ATTR name="TypeExpression" type="string">String</XPD:ATTR>
 <XPD:REF name="Owner">RTBfrgYGc027VwSc7UXP9gAA</XPD:REF>
