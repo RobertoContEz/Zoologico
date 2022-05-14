@@ -343,7 +343,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
             
             queja.setFecha(fecha);
             queja.setHora(hora);
-            queja.setQueja(queja);
+            queja.setQueja(textoQueja);
             queja.setCorreo(correo);
             queja.setTelefono(telefono);
             queja.setIdItinerario(itinerario.getId());
@@ -357,9 +357,10 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
     }
     
     private LocalTime hora;
-    private String queja;
+    private String textoQueja;
     private String correo;
     private String telefono;
+    private String nombre;
     
     private boolean validar() {
         boolean valido = true;
@@ -367,28 +368,28 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         
         int i = this.comboBoxItinerarioQueja.getSelectedIndex();
         if(i == 0) {
-            JOptionPane.showMessageDialog(this, "Seleccione itinerario, fecha y hora antes de enviar su queja.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            errores = errores + (errores.equals("")?"":"\n") + "Seleccione itinerario, fecha y hora antes de enviar su queja.";
         } else {
             itinerario = itinerarios.get(i-1);
             
             i = this.comboBoxFechaRecorridoQueja.getSelectedIndex();
             if(i == 0) {
-                JOptionPane.showMessageDialog(this, "Seleccione la fecha y la hora del recorrido antes de enviar su queja.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                errores = errores + (errores.equals("")?"":"\n") + "Seleccione la fecha y la hora del recorrido antes de enviar su queja.";
             } else {
                 fecha = fechas.get(i-1);
                 
                 i = this.comboBoxFechaRecorridoQueja.getSelectedIndex();
                 if(i == 0) {
-                    JOptionPane.showMessageDialog(this, "Seleccione la hora del recorrido antes de enviar su queja.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                    errores = errores + (errores.equals("")?"":"\n") + "Seleccione la hora del recorrido antes de enviar su queja.";
                 } else {
                     hora = horas.get(i-1);
                 }
             }
         }
         
-        queja = this.
-        if(campoTextoNombreItinerario.getText().equals("")) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "Introduzca el nombre del hábitat.";
+        textoQueja = this.areaTextoQueja.getText();
+        if(textoQueja.equals("")) {
+            errores = errores + (errores.equals("")?"":"\n") + "Redacte su queja en el area de texto por favor.";
             valido = false;
         } else {
             Itinerario itinerario = control.buscarItinerario(campoTextoNombreItinerario.getText());
