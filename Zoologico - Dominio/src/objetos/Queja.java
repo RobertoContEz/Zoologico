@@ -21,6 +21,7 @@ public class Queja {
     private String queja;
     private String correo;
     private String telefono;
+    private String nombre;
     private ObjectId idItinerario;
 
     /**
@@ -46,14 +47,16 @@ public class Queja {
      * @param queja el enunciado de la queja
      * @param correo el correo del visitante
      * @param telefono el teléfono del visitante
+     * @param nombre el nombre del visitante
      * @param idItinerario el id del itinerario para el que se presentó la queja
      */
-    public Queja(LocalDate fecha, LocalTime hora, String queja, String correo, String telefono, ObjectId idItinerario) {
+    public Queja(LocalDate fecha, LocalTime hora, String queja, String correo, String telefono, String nombre, ObjectId idItinerario) {
         this.fecha = fecha;
         this.hora = hora;
         this.queja = queja;
         this.correo = correo;
         this.telefono = telefono;
+        this.nombre = nombre;
         this.idItinerario = idItinerario;
     }
 
@@ -66,15 +69,17 @@ public class Queja {
      * @param queja el enunciado de la queja
      * @param correo el correo del visitante
      * @param telefono el teléfono del visitante
+     * @param nombre el nombre del visitante
      * @param idItinerario el id del itinerario para el que se presentó la queja
      */
-    public Queja(ObjectId id, LocalDate fecha, LocalTime hora, String queja, String correo, String telefono, ObjectId idItinerario) {
+    public Queja(ObjectId id, LocalDate fecha, LocalTime hora, String queja, String correo, String telefono, String nombre, ObjectId idItinerario) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.queja = queja;
         this.correo = correo;
         this.telefono = telefono;
+        this.nombre = nombre;
         this.idItinerario = idItinerario;
     }
 
@@ -184,6 +189,24 @@ public class Queja {
      */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    /**
+     * Devuelve el nombre del visitante.
+     * 
+     * @return el nombre del visitante
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Establece el el nombre del visitante.
+     * 
+     * @param nombre el nombre del visitante 
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     /**

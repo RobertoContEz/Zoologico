@@ -343,6 +343,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
             
             queja.setFecha(fecha);
             queja.setHora(hora);
+            queja.setQueja(queja);
             queja.setCorreo(correo);
             queja.setTelefono(telefono);
             queja.setIdItinerario(itinerario.getId());
@@ -356,13 +357,13 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
     }
     
     private LocalTime hora;
+    private String queja;
     private String correo;
     private String telefono;
     
     private boolean validar() {
         boolean valido = true;
-//        String vacios = "";
-//        String errores = "";
+        String errores = "";
         
         int i = this.comboBoxItinerarioQueja.getSelectedIndex();
         if(i == 0) {
@@ -380,11 +381,12 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
                 if(i == 0) {
                     JOptionPane.showMessageDialog(this, "Seleccione la hora del recorrido antes de enviar su queja.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    
+                    hora = horas.get(i-1);
                 }
             }
         }
         
+        queja = this.
         if(campoTextoNombreItinerario.getText().equals("")) {
             vacios = vacios + (vacios.equals("")?"":"\n") + "Introduzca el nombre del hábitat.";
             valido = false;
