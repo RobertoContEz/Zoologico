@@ -1,18 +1,36 @@
 package guis;
 
+import control.ControlRegistrarQueja;
+import java.util.HashMap;
+import java.util.List;
+import objetos.Itinerario;
+import objetos.Recorrido;
+
 /**
  *
  * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
  */
 public class DlgRegistrarQueja extends javax.swing.JDialog {
 
+    private final ControlRegistrarQueja control = new ControlRegistrarQueja();
+    
     /**
      * Creates new form DlgRegistrarQueja
      */
     public DlgRegistrarQueja(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        recorridos = control.recuperarRecorridosUltimoMes();
+        itinerarios = control.recuperarItinerariosDeLosRecorridos(recorridos);
+        mapa = control.ordenarRecorridos(itinerarios, recorridos);
+        
+        inicializar();
     }
+    
+    private final List<Recorrido> recorridos;
+    private final List<Itinerario> itinerarios;
+    private final HashMap<Itinerario,List<Recorrido>> mapa;
 
     /**
      * This method is called from within the constructor to initialize the form.

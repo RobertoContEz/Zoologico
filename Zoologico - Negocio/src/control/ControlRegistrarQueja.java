@@ -1,6 +1,7 @@
 package control;
 
 import implementacion.FabricaDAOs;
+import interfaces.IPersistenciaGuia;
 import interfaces.IPersistenciaItinerario;
 import interfaces.IPersistenciaQueja;
 import interfaces.IPersistenciaRecorrido;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import objetos.Guia;
 import objetos.Itinerario;
 import objetos.Queja;
 import objetos.Recorrido;
@@ -57,6 +59,12 @@ public class ControlRegistrarQueja {
         }
         
         return mapa;
+    }
+    
+    public Guia recuperarGuia(Itinerario itinerario) {
+        IPersistenciaGuia dao = FabricaDAOs.getGuiasDAO();
+        
+        return dao.consultarPorItinerario(itinerario);
     }
     
     public boolean guardar(Queja queja) {

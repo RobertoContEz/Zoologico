@@ -3,6 +3,7 @@ package interfaces;
 import com.mongodb.client.MongoCollection;
 import java.util.List;
 import objetos.Guia;
+import objetos.Itinerario;
 import org.bson.types.ObjectId;
 
 /**
@@ -20,6 +21,8 @@ public interface IPersistenciaGuia {
     public boolean eliminar(ObjectId id);
 
     public Guia consultar(ObjectId id);
+    
+    public Guia consultarPorItinerario(Itinerario itinerario);
 
     public List<Guia> consultarTodos();
 }
