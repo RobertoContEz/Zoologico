@@ -3,6 +3,8 @@ package guis;
 import control.ControlRegistrarQueja;
 import java.util.HashMap;
 import java.util.List;
+import javax.swing.JOptionPane;
+import objetos.Guia;
 import objetos.Itinerario;
 import objetos.Recorrido;
 
@@ -32,6 +34,27 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
     private final List<Itinerario> itinerarios;
     private final HashMap<Itinerario,List<Recorrido>> mapa;
 
+    private void inicializar() {
+        if(itinerarios==null) {
+            JOptionPane.showMessageDialog(this, "Error recuperando los registros de los itinerarios.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            this.comboBoxFechaRecorridoQueja.removeAllItems();
+            this.comboBoxFechaRecorridoQueja.addItem("Seleccione...");
+            for (Itinerario itinerario : itinerarios) {
+                this.comboBoxFechaRecorridoQueja.addItem(itinerario.getNombre());
+            }
+        }
+        this.comboBoxFechaRecorridoQueja.removeAllItems();
+        this.comboBoxHoraRecorridoQueja.removeAllItems();
+        
+        liberarCampos(false);
+    }
+    
+    private void liberarCampos(boolean b) {
+        this.comboBoxFechaRecorridoQueja.setEnabled(b);
+        this.comboBoxHoraRecorridoQueja.setEnabled(b);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,11 +68,11 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         comboBoxItinerarioQueja = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        comboBoxFechaItinerarioQueja = new javax.swing.JComboBox<>();
+        comboBoxFechaRecorridoQueja = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         campoTextoNombreGuia = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        comboBoxHoraItinerarioQueja = new javax.swing.JComboBox<>();
+        comboBoxHoraRecorridoQueja = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaTextoQueja = new javax.swing.JTextArea();
@@ -74,15 +97,17 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
 
         comboBoxItinerarioQueja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel2.setText("Fecha del itinerario:");
+        jLabel2.setText("Fecha del recorrido:");
 
-        comboBoxFechaItinerarioQueja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxFechaRecorridoQueja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setText("Nombre del guía:");
 
+        campoTextoNombreGuia.setEditable(false);
+
         jLabel4.setText("Hora:");
 
-        comboBoxHoraItinerarioQueja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxHoraRecorridoQueja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setText("Queja:");
 
@@ -126,13 +151,13 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
                         .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(comboBoxItinerarioQueja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboBoxFechaItinerarioQueja, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboBoxFechaRecorridoQueja, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(campoTextoNombreGuia, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoTextoCorreo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoTextoNumeroTelefonico, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoTextoNombreQueja, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                            .addComponent(comboBoxHoraItinerarioQueja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(comboBoxHoraRecorridoQueja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(16, 16, 16))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -157,7 +182,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(comboBoxFechaItinerarioQueja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxFechaRecorridoQueja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -165,7 +190,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(comboBoxHoraItinerarioQueja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboBoxHoraRecorridoQueja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -222,8 +247,8 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
     private javax.swing.JTextField campoTextoNombreGuia;
     private javax.swing.JTextField campoTextoNombreQueja;
     private javax.swing.JTextField campoTextoNumeroTelefonico;
-    private javax.swing.JComboBox<String> comboBoxFechaItinerarioQueja;
-    private javax.swing.JComboBox<String> comboBoxHoraItinerarioQueja;
+    private javax.swing.JComboBox<String> comboBoxFechaRecorridoQueja;
+    private javax.swing.JComboBox<String> comboBoxHoraRecorridoQueja;
     private javax.swing.JComboBox<String> comboBoxItinerarioQueja;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

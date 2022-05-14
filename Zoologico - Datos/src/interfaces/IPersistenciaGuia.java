@@ -22,7 +22,5 @@ public interface IPersistenciaGuia {
 
     public Guia consultar(ObjectId id);
     
-    public Guia consultarPorItinerario(Itinerario itinerario);
-
     public List<Guia> consultarTodos();
 }

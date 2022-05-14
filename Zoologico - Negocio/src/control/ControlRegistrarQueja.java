@@ -61,10 +61,10 @@ public class ControlRegistrarQueja {
         return mapa;
     }
     
-    public Guia recuperarGuia(Itinerario itinerario) {
+    public Guia recuperarGuia(Recorrido recorrido) {
         IPersistenciaGuia dao = FabricaDAOs.getGuiasDAO();
         
-        return dao.consultarPorItinerario(itinerario);
+        return dao.consultar(recorrido.getIdGuia());
     }
     
     public boolean guardar(Queja queja) {

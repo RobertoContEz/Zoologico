@@ -73,13 +73,13 @@
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="comboBoxItinerarioQueja" alignment="1" max="32767" attributes="0"/>
-                              <Component id="comboBoxFechaItinerarioQueja" alignment="0" max="32767" attributes="0"/>
+                              <Component id="comboBoxFechaRecorridoQueja" alignment="0" max="32767" attributes="0"/>
                               <Component id="campoTextoNombreGuia" alignment="0" max="32767" attributes="0"/>
                               <Component id="campoTextoCorreo" alignment="0" max="32767" attributes="0"/>
                               <Component id="campoTextoNumeroTelefonico" alignment="0" max="32767" attributes="0"/>
                               <Component id="campoTextoNombreQueja" alignment="0" max="32767" attributes="0"/>
                               <Component id="jScrollPane1" alignment="1" pref="229" max="32767" attributes="0"/>
-                              <Component id="comboBoxHoraItinerarioQueja" alignment="1" max="32767" attributes="0"/>
+                              <Component id="comboBoxHoraRecorridoQueja" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
@@ -112,7 +112,7 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboBoxFechaItinerarioQueja" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboBoxFechaRecorridoQueja" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -122,7 +122,7 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboBoxHoraItinerarioQueja" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboBoxHoraRecorridoQueja" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -178,10 +178,10 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Fecha del itinerario:"/>
+            <Property name="text" type="java.lang.String" value="Fecha del recorrido:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboBoxFechaItinerarioQueja">
+        <Component class="javax.swing.JComboBox" name="comboBoxFechaRecorridoQueja">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -202,13 +202,16 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="campoTextoNombreGuia">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hora:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="comboBoxHoraItinerarioQueja">
+        <Component class="javax.swing.JComboBox" name="comboBoxHoraRecorridoQueja">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
