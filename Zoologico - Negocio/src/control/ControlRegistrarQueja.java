@@ -100,27 +100,11 @@ public class ControlRegistrarQueja {
      * Metodo que guarda Queja en la base de datos
      *
      * @param queja parametro a guardar en la base de datos
-     * @param recorrido parametro de recorrido a actualizar con la queja
      * @return confirmación de la operación
      */
-    public boolean guardar(Queja queja, Recorrido recorrido) {
-        IPersistenciaQueja daoQ = FabricaDAOs.getQuejasDAO();
-        IPersistenciaRecorrido daoR = FabricaDAOs.getRecorridosDAO();
-
-        if(recorrido.getQuejas()!=null) {
-            if(!recorrido.getQuejas().contains(queja)) {
-                recorrido.getQuejas().add(queja);
-            }
-        } else {
-            List<Queja> quejas = new ArrayList();
-            quejas.add(queja);
-            recorrido.setQuejas(quejas);
-        }
-                
-        if(daoR.actualizar(daoR.consultar(recorrido.getId()))) {
-            return daoQ.agregar(queja);
-        } else {
-            return false;
-        }
+    public boolean guardar(Queja queja) {
+        IPersistenciaQueja dao = FabricaDAOs.getQuejasDAO();
+        
+        return dao.agregar(queja);
     }
 }

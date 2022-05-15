@@ -360,7 +360,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
             queja.setTelefono(telefono);
             queja.setRecorrido(recorrido.getId());
             
-            if(control.guardar(queja, recorrido)) {
+            if(control.guardar(queja)) {
                 JOptionPane.showMessageDialog(this, "Se ha enviado la queja a la administración del zoológico.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "No se ha podido enviar la queja.", "ERROR", JOptionPane.ERROR_MESSAGE);
