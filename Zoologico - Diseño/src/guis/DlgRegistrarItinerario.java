@@ -653,7 +653,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
     private int relacionarGuia(Itinerario itinerario) {
         int indice = -1;
         for (int i = 0; i < guias.size(); i++) {
-            for (ObjectId idItinerario : guias.get(i).getItinerariosActuales()) {
+            for (ObjectId idItinerario : guias.get(i).getIdsItinerariosActuales()) {
                 if (itinerario.getId().equals(idItinerario)) {
                     indice = i;
                 }
