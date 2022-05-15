@@ -47,7 +47,6 @@ public class EspeciesDAO implements IPersistenciaEspecie {
     @Override
     public boolean agregar(Especie especie) {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             MongoCollection<Especie> coleccion = this.getCollection();
             coleccion.insertOne(especie);
             return true;
@@ -92,7 +91,6 @@ public class EspeciesDAO implements IPersistenciaEspecie {
                     System.out.println("Se ha actualizado");
                 }
             }
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             return true;
         } catch (PersistenceException ex) {
             ex.printStackTrace();
@@ -139,7 +137,6 @@ public class EspeciesDAO implements IPersistenciaEspecie {
             if (listaEspecies.isEmpty()) {
                 return null;
             } else {
-                // TODO: MANEJAR POSIBLES EXCEPCIONES...
                 return listaEspecies.get(0);
             }
         } catch (PersistenceException ex) {
@@ -156,7 +153,6 @@ public class EspeciesDAO implements IPersistenciaEspecie {
     @Override
     public List<Especie> consultarTodos() {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             List<Especie> listaEspecies = new ArrayList<>();
             MongoCollection<Especie> collection = this.getCollection();
             collection.find().into(listaEspecies);

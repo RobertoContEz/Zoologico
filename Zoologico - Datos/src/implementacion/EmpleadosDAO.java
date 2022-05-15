@@ -47,7 +47,6 @@ public class EmpleadosDAO implements IPersistenciaEmpleado {
     @Override
     public boolean agregar(Empleado empleado) {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             MongoCollection<Empleado> coleccion = this.getCollection();
             coleccion.insertOne(empleado);
             return true;
@@ -89,7 +88,6 @@ public class EmpleadosDAO implements IPersistenciaEmpleado {
                     System.out.println("Se ha actualizado");
                 }
             }
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             return true;
         } catch (PersistenceException ex) {
             ex.printStackTrace();
@@ -136,7 +134,6 @@ public class EmpleadosDAO implements IPersistenciaEmpleado {
             if (listaEmpleados.isEmpty()) {
                 return null;
             } else {
-                // TODO: MANEJAR POSIBLES EXCEPCIONES...
                 return listaEmpleados.get(0);
             }
         } catch (PersistenceException ex) {
@@ -153,7 +150,6 @@ public class EmpleadosDAO implements IPersistenciaEmpleado {
     @Override
     public List<Empleado> consultarTodos() {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             List<Empleado> listaEmpleados = new ArrayList<>();
             MongoCollection<Empleado> collection = this.getCollection();
             collection.find().into(listaEmpleados);

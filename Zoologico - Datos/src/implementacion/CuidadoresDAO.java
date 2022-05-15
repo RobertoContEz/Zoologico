@@ -46,7 +46,6 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
      */
     @Override
     public boolean agregar(Cuidador cuidador) {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
         try {
             MongoCollection<Cuidador> coleccion = this.getCollection();
             coleccion.insertOne(cuidador);
@@ -93,7 +92,6 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
                     System.out.println("Se ha actualizado");
                 }
             }
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             return true;
         } catch (PersistenceException ex) {
             ex.printStackTrace();
@@ -140,7 +138,6 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
             if (listaCuidadores.isEmpty()) {
                 return null;
             } else {
-                // TODO: MANEJAR POSIBLES EXCEPCIONES...
                 return listaCuidadores.get(0);
             }
         } catch (PersistenceException ex) {
@@ -157,7 +154,6 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
     @Override
     public List<Cuidador> consultarTodos() {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             List<Cuidador> listaCuidadores = new ArrayList<>();
             MongoCollection<Cuidador> collection = this.getCollection();
             collection.find().into(listaCuidadores);

@@ -50,7 +50,6 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
      */
     @Override
     public boolean agregar(Recorrido recorrido) {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
         try {
             MongoCollection<Recorrido> coleccion = this.getCollection();
             coleccion.insertOne(recorrido);
@@ -94,7 +93,6 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
                     System.out.println("Se ha actualizado");
                 }
             }
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             return true;
         } catch (PersistenceException ex) {
             System.err.println(ex.getMessage());
@@ -141,7 +139,6 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
             if (listaRecorrido.isEmpty()) {
                 return null;
             } else {
-                // TODO: MANEJAR POSIBLES EXCEPCIONES...
                 return listaRecorrido.get(0);
             }
         } catch (PersistenceException ex) {
@@ -157,7 +154,6 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
      */
     @Override
     public List<Recorrido> consultarTodos() {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
         List<Recorrido> listaRecorrido = new ArrayList<>();
         MongoCollection<Recorrido> collection = this.getCollection();
         try {
@@ -183,13 +179,11 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
         try {
             Document filtro = new Document();
             LocalDateTime ultimoMes = LocalDateTime.now().minusDays(30);
-            //DBObject query = new BasicDBObject("fechHora", new BasicDBObject("$gt", ultimoMes));
             filtro.append("fechHora", new BasicDBObject("$gt", ultimoMes));
             collection.find(filtro).into(listaRecorrido);
             if (listaRecorrido.isEmpty()) {
                 return null;
             } else {
-                // TODO: MANEJAR POSIBLES EXCEPCIONES...
                 return (List<Recorrido>) listaRecorrido.get(0);
             }
         } catch (PersistenceException ex) {

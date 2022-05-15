@@ -47,7 +47,6 @@ public class QuejasDAO implements IPersistenciaQueja {
     @Override
     public boolean agregar(Queja queja) {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             MongoCollection<Queja> coleccion = this.getCollection();
             coleccion.insertOne(queja);
             return true;
@@ -91,7 +90,6 @@ public class QuejasDAO implements IPersistenciaQueja {
                     System.out.println("Se ha actualizado");
                 }
             }
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             return true;
         } catch (PersistenceException ex) {
             System.err.println(ex.getMessage());
@@ -137,7 +135,6 @@ public class QuejasDAO implements IPersistenciaQueja {
             if (listaQuejas.isEmpty()) {
                 return null;
             } else {
-                // TODO: MANEJAR POSIBLES EXCEPCIONES...
                 return listaQuejas.get(0);
             }
         } catch (PersistenceException ex) {
@@ -154,7 +151,6 @@ public class QuejasDAO implements IPersistenciaQueja {
     @Override
     public List<Queja> consultarTodos() {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             List<Queja> listaQuejas = new ArrayList<>();
             MongoCollection<Queja> collection = this.getCollection();
             collection.find().into(listaQuejas);

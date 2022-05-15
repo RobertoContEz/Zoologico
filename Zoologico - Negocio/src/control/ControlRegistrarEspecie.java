@@ -12,8 +12,9 @@ import objetos.Habitat;
 /**
  *
  * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
- * 
- * TODO: Documentar clase
+ *
+ * Esta clase hace la conexión entre las guis y persistencias, recupera y
+ * verifica en la base de datos los Cuidadores, Habitats, Especies
  */
 public class ControlRegistrarEspecie {
     

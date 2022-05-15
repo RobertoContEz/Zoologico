@@ -20,6 +20,7 @@ import objetos.Recorrido;
 /**
  *
  * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
+ * Esta clase representa gráficamente la interacción entre el usuario y el sistema al momento de registrar una Queja
  */
 public class DlgRegistrarQueja extends javax.swing.JDialog {
 
@@ -101,6 +102,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Nombre del itinerario:");
 
         comboBoxItinerarioQueja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -110,6 +112,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Fecha del recorrido:");
 
         comboBoxFechaRecorridoQueja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -119,26 +122,33 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Nombre del guía:");
 
         campoTextoNombreGuia.setEditable(false);
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Hora:");
 
         comboBoxHoraRecorridoQueja.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Queja:");
 
         areaTextoQueja.setColumns(20);
         areaTextoQueja.setRows(5);
         jScrollPane1.setViewportView(areaTextoQueja);
 
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("Correo electrónico:");
 
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setText("Número telefónico:");
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("Nombre (opcional):");
 
+        btnEnviarQueja.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnEnviarQueja.setText("Enviar");
         btnEnviarQueja.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +156,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
             }
         });
 
+        btnRegresarQueja.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnRegresarQueja.setText("Regresar");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -179,9 +190,11 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
                             .addComponent(comboBoxFechaRecorridoQueja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(comboBoxItinerarioQueja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
                         .addComponent(btnEnviarQueja, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRegresarQueja)))
+                        .addGap(57, 57, 57)
+                        .addComponent(btnRegresarQueja)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(14, 14, 14))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
@@ -237,16 +250,16 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
+                .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
+                .addGap(30, 30, 30))
         );
 
         pack();

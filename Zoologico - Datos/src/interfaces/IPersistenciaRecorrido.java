@@ -7,8 +7,10 @@ import org.bson.types.ObjectId;
 
 /**
  *
- * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
- *
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola Clase que hace la
+ * conexión con la base de datos respecto a los Recorridos con capacidad para
+ * guardarse, actualizarse, eliminarse y recuperarse mediante metodos abstractos
+ * en la interfaz
  */
 public interface IPersistenciaRecorrido {
 

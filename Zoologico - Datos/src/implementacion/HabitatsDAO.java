@@ -46,7 +46,6 @@ public class HabitatsDAO implements IPersistenciaHabitat {
      */
     @Override
     public boolean agregar(Habitat habitat) {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
         try {
             MongoCollection<Habitat> coleccion = this.getCollection();
             coleccion.insertOne(habitat);
@@ -89,7 +88,6 @@ public class HabitatsDAO implements IPersistenciaHabitat {
                     System.out.println("Se ha actualizado");
                 }
             }
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             return true;
         } catch (PersistenceException ex) {
             ex.printStackTrace();
@@ -136,7 +134,6 @@ public class HabitatsDAO implements IPersistenciaHabitat {
             if (listaHabitats.isEmpty()) {
                 return null;
             } else {
-                // TODO: MANEJAR POSIBLES EXCEPCIONES...
                 return listaHabitats.get(0);
             }
         } catch (PersistenceException ex) {
@@ -153,7 +150,6 @@ public class HabitatsDAO implements IPersistenciaHabitat {
      */
     @Override
     public List<Habitat> consultarTodos() {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
         try {
             List<Habitat> listaHabitatas = new ArrayList<>();
             MongoCollection<Habitat> collection = this.getCollection();

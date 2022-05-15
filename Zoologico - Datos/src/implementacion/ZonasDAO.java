@@ -47,7 +47,6 @@ public class ZonasDAO implements IPersistenciaZona {
     @Override
     public boolean agregar(Zona zona) {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             MongoCollection<Zona> coleccion = this.getCollection();
             coleccion.insertOne(zona);
             return true;
@@ -89,7 +88,6 @@ public class ZonasDAO implements IPersistenciaZona {
                     System.out.println("Se ha actualizado");
                 }
             }
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             return true;
         } catch (PersistenceException ex) {
             System.err.println(ex.getMessage());
@@ -135,7 +133,6 @@ public class ZonasDAO implements IPersistenciaZona {
             if (listaZona.isEmpty()) {
                 return null;
             } else {
-                // TODO: MANEJAR POSIBLES EXCEPCIONES...
                 return listaZona.get(0);
             }
         } catch (PersistenceException ex) {
@@ -152,7 +149,6 @@ public class ZonasDAO implements IPersistenciaZona {
     @Override
     public List<Zona> consultarTodos() {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             List<Zona> listaZona = new ArrayList<>();
             MongoCollection<Zona> collection = this.getCollection();
             collection.find().into(listaZona);

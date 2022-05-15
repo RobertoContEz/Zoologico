@@ -14,25 +14,27 @@ import objetos.Habitat;
 
 /**
  *
- * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola Esta clase
+ * representa gráficamente la interacción entre el usuario y el sistema al
+ * momento de registrar un habitat
  */
 public class DlgRegistrarHabitat extends javax.swing.JDialog {
-    
+
     private final ControlRegistrarHabitat control = new ControlRegistrarHabitat();
 
     FondoPanelHabitat fondo = new FondoPanelHabitat();
-    
+
     public DlgRegistrarHabitat(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.setContentPane(fondo);
         initComponents();
-        
+
         this.climas = control.recuperaListaClimas();
         this.vegetaciones = control.recuperaListaVegetaciones();
         this.continentes = control.recuperaListaContinentes();
-        
+
         inicializar();
-        
+
         continentesAgregados = new ArrayList();
     }
 
@@ -40,9 +42,9 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
     private final List<String> vegetaciones;
     private final List<String> continentes;
     private List<String> continentesAgregados;
-    
+
     private void inicializar() {
-        if(climas==null) {
+        if (climas == null) {
             JOptionPane.showMessageDialog(this, "Error recuperando los climas.", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
             comboBoxClima.removeAllItems();
@@ -51,9 +53,8 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
                 comboBoxClima.addItem(clima);
             }
         }
-        
-        
-        if(vegetaciones==null) {
+
+        if (vegetaciones == null) {
             JOptionPane.showMessageDialog(this, "Error recuperando los tipos de vegetación.", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
             comboBoxVegetacion.removeAllItems();
@@ -63,8 +64,7 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
             }
         }
 
-        
-        if(continentes==null) {
+        if (continentes == null) {
             JOptionPane.showMessageDialog(this, "Error recuperando los continentes.", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
             DefaultTableModel modeloTabla = (DefaultTableModel) tablaContinentes.getModel();
@@ -90,7 +90,7 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
             modeloTabla.addRow(fila);
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -186,14 +186,14 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
                     .addComponent(campoNombreHabitat))
                 .addGap(34, 34, 34)
                 .addComponent(btnVerificarNombre)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(campoNombreHabitat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -334,31 +334,33 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGuardarHabitat)
-                .addGap(115, 115, 115)
-                .addComponent(btnCancelarHabitat)
-                .addGap(350, 350, 350))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnGuardarHabitat)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(btnCancelarHabitat)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(177, 177, 177)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 173, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardarHabitat)
-                    .addComponent(btnCancelarHabitat))
-                .addGap(116, 116, 116))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCancelarHabitat)
+                    .addComponent(btnGuardarHabitat))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -369,7 +371,9 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -410,24 +414,24 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
 
     private boolean verificar() {
         Habitat habitat = control.verificarExistencia(campoNombreHabitat.getText());
-        if(habitat!=null) {
+        if (habitat != null) {
             comboBoxClima.setEnabled(false);
             comboBoxVegetacion.setEnabled(false);
             btnAgregarContinente.setEnabled(false);
             btnEliminarContinente.setEnabled(false);
-            
+
             List<String> listaContinentes = habitat.getContinentesDondeSeEncuentra();
             String continentes = listaContinentes.get(0);
             listaContinentes.remove(0);
             for (String continente : listaContinentes) {
-                continentes = continentes+", "+continente; 
+                continentes = continentes + ", " + continente;
             }
-            
+
             JOptionPane.showMessageDialog(this, "El hábitat ya está registrado.\n"
-                    +"Nombre: "+habitat.getNombre()+"\n"
-                    +"Clima: "+habitat.getTipoClima()+"\n"
-                    +"Vegetación: "+habitat.getTipoVegetacion()+"\n"
-                    +"Continentes: "+continentes, 
+                    + "Nombre: " + habitat.getNombre() + "\n"
+                    + "Clima: " + habitat.getTipoClima() + "\n"
+                    + "Vegetación: " + habitat.getTipoVegetacion() + "\n"
+                    + "Continentes: " + continentes,
                     "Aviso", JOptionPane.WARNING_MESSAGE);
         } else {
             comboBoxClima.setEnabled(true);
@@ -435,10 +439,10 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
             btnAgregarContinente.setEnabled(true);
             btnEliminarContinente.setEnabled(true);
         }
-        
-        return habitat==null;
+
+        return habitat == null;
     }
-    
+
     private void agregarContinente() {
         int indiceFila = tablaContinentes.getSelectedRow();
         if (indiceFila == -1) {
@@ -449,7 +453,7 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
             actualizarContinentes();
         }
     }
-    
+
     private void eliminarContinente() {
         int indiceFila = tablaContinentesAgregados.getSelectedRow();
         if (indiceFila == -1) {
@@ -459,40 +463,42 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
             actualizarContinentes();
         }
     }
-    
+
     private boolean validar() {
         boolean valido = true;
         String errores = "";
-        if(campoNombreHabitat.getText().equals("")) {
-            errores = errores + (errores.equals("")?"":"\n") + "Introduzca el nombre del hábitat.";
+        if (campoNombreHabitat.getText().equals("")) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca el nombre del hábitat.";
             valido = false;
         }
-        if(comboBoxClima.getSelectedIndex()==0) {
-            errores = errores + (errores.equals("")?"":"\n") + "Seleccione un tipo de clima.";
+        if (comboBoxClima.getSelectedIndex() == 0) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione un tipo de clima.";
             valido = false;
         }
-        if(comboBoxVegetacion.getSelectedIndex()==0) {
-            errores = errores + (errores.equals("")?"":"\n") + "Seleccione un tipo de vegetación.";
+        if (comboBoxVegetacion.getSelectedIndex() == 0) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione un tipo de vegetación.";
             valido = false;
         }
-        if(continentesAgregados.isEmpty()) {
-            errores = errores + (errores.equals("")?"":"\n") + "Seleccione al menos un continente.";
+        if (continentesAgregados.isEmpty()) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione al menos un continente.";
             valido = false;
         }
-        
-        if(!valido) JOptionPane.showMessageDialog(this, "Los siguientes campos están sin llenar: \n"+errores, "Aviso", JOptionPane.WARNING_MESSAGE);
-        
+
+        if (!valido) {
+            JOptionPane.showMessageDialog(this, "Los siguientes campos están sin llenar: \n" + errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+
         return valido;
     }
-    
+
     private void guardar() {
-        if(verificar()&&validar()) {
+        if (verificar() && validar()) {
             Habitat habitat = new Habitat();
             habitat.setNombre(campoNombreHabitat.getText());
-            habitat.setTipoClima(climas.get(comboBoxClima.getSelectedIndex()-1));
-            habitat.setTipoVegetacion(climas.get(comboBoxVegetacion.getSelectedIndex()-1));
+            habitat.setTipoClima(climas.get(comboBoxClima.getSelectedIndex() - 1));
+            habitat.setTipoVegetacion(climas.get(comboBoxVegetacion.getSelectedIndex() - 1));
             habitat.setContinentesDondeSeEncuentra(continentesAgregados);
-            if(control.guardar(habitat)) {
+            if (control.guardar(habitat)) {
                 JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "No se ha podido guardar el hábitat.", "ERROR", JOptionPane.ERROR_MESSAGE);

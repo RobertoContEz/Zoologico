@@ -15,6 +15,7 @@ import javax.persistence.PersistenceException;
 /**
  *
  * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
+ * 
  */
 public class AnimalesDAO implements IPersistenciaAnimal {
 
@@ -46,7 +47,6 @@ public class AnimalesDAO implements IPersistenciaAnimal {
      */
     @Override
     public boolean agregar(Animal animal) {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
         try {
             MongoCollection<Animal> coleccion = this.getCollection();
             coleccion.insertOne(animal);
@@ -89,7 +89,6 @@ public class AnimalesDAO implements IPersistenciaAnimal {
                     System.out.println("Se ha actualizado");
                 }
             }
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             return true;
         } catch (PersistenceException ex) {
             System.err.println(ex.getMessage());
@@ -135,7 +134,6 @@ public class AnimalesDAO implements IPersistenciaAnimal {
             if (listaAnimales.isEmpty()) {
                 return null;
             } else {
-                // TODO: MANEJAR POSIBLES EXCEPCIONES...
                 return listaAnimales.get(0);
             }
         } catch (PersistenceException ex) {
@@ -151,7 +149,6 @@ public class AnimalesDAO implements IPersistenciaAnimal {
      */
     @Override
     public List<Animal> consultarTodos() {
-        // TODO: MANEJAR POSIBLES EXCEPCIONES...
         try {
             List<Animal> listaAnimales = new ArrayList<>();
             MongoCollection<Animal> collection = this.getCollection();

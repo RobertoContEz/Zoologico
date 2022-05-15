@@ -47,7 +47,6 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
     @Override
     public boolean agregar(Itinerario itinerario) {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             MongoCollection<Itinerario> coleccion = this.getCollection();
             coleccion.insertOne(itinerario);
             return true;
@@ -78,8 +77,6 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
                 entidadActualizada.append("$set", new Document("nombre", itinerario.getNombre())
                         .append("idsZonasVisitadas", itinerario.getIdsZonasVisitadas())
                         .append("duracionDelRecorrido", itinerario.getDuracionDelRecorrido())
-                        //                    .append("diasDelRecorrido", itinerario.get())
-                        //                    .append("horasALasQueInicia", itinerario.getHorasALasQueInicia())
                         .append("longitud", itinerario.getLongitud())
                         .append("numeroMaximoVisitantes", itinerario.getNumeroMaximoVisitantes())
                         .append("numeroEspeciesVisitadas", itinerario.getNumeroEspeciesVisitadas())
@@ -93,7 +90,6 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
                     System.out.println("Se ha actualizado");
                 }
             }
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             return true;
         } catch (PersistenceException ex) {
             System.err.println(ex.getMessage());
@@ -140,7 +136,6 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
             if (listaItinerarios.isEmpty()) {
                 return null;
             } else {
-                // TODO: MANEJAR POSIBLES EXCEPCIONES...
                 return listaItinerarios.get(0);
             }
         } catch (PersistenceException ex) {
@@ -157,7 +152,6 @@ public class ItinerariosDAO implements IPersistenciaItinerario {
     @Override
     public List<Itinerario> consultarTodos() {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             List<Itinerario> listaItinerarios = new ArrayList<>();
             MongoCollection<Itinerario> collection = this.getCollection();
             collection.find().into(listaItinerarios);

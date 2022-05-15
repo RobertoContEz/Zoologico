@@ -21,22 +21,24 @@ import org.bson.types.ObjectId;
 
 /**
  *
- * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola Esta clase
+ * representa gráficamente la interacción entre el usuario y el sistema al
+ * momento de registrar un Itinerario
  */
 public class DlgRegistrarItinerario extends javax.swing.JDialog {
 
     private final ControlRegistrarItinerario control = new ControlRegistrarItinerario();
-    
+
     FondoPanelItinerario fondo = new FondoPanelItinerario();
-    
+
     public DlgRegistrarItinerario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.setContentPane(fondo);
         initComponents();
-        
+
         guias = control.recuperaGuiasRegistrados();
         zonas = control.recuperaZonasZoologico();
-        
+
         inicializar();
     }
 
@@ -45,11 +47,11 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
     private List<JCheckBox> cajasZonas;
     private List<JCheckBox> cajas;
     private List<JTextField> campos;
-    
+
     private void inicializar() {
         cajasZonas = new ArrayList();
         campos = new ArrayList();
-        
+
         cajasZonas.add(ckbZona1);
         cajasZonas.add(ckbZona2);
         cajasZonas.add(ckbZona3);
@@ -59,7 +61,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         cajasZonas.add(ckbZona7);
         cajasZonas.add(ckbZona8);
         cajasZonas.add(ckbZona9);
-        
+
         campos.add(this.campoTextoDuracionItinerario);
         campos.add(this.campoTextoLongitudItinerario);
         campos.add(this.campoTextoNumeroVisitantes);
@@ -70,7 +72,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         campos.add(this.campoMie);
         campos.add(this.campoSab);
         campos.add(this.campoVie);
-        
+
         cajas = new ArrayList(cajasZonas);
         cajas.add(this.checkBoxLunes);
         cajas.add(this.checkBoxMartes);
@@ -79,16 +81,16 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         cajas.add(this.checkBoxViernes);
         cajas.add(this.checkBoxSabado);
         cajas.add(this.checkBoxDomingo);
-        
-        if(zonas!=null) {
-                for (int i = 0; i < cajasZonas.size(); i++) {
+
+        if (zonas != null) {
+            for (int i = 0; i < cajasZonas.size(); i++) {
                 cajasZonas.get(i).setText(zonas.get(i).getNombre());
             }
         } else {
             JOptionPane.showMessageDialog(this, "Error recuperando las zonas.", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        
-        if(guias==null) {
+
+        if (guias == null) {
             JOptionPane.showMessageDialog(this, "Error recuperando los guías.", "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
             cmbGuia.removeAllItems();
@@ -97,10 +99,10 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
                 cmbGuia.addItem(guia.getNombre());
             }
         }
-        
+
         liberarCampos(false);
     }
-    
+
     private void liberarCampos(boolean b) {
         for (JCheckBox caja : cajas) {
             caja.setEnabled(b);
@@ -111,7 +113,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         cmbGuia.setEnabled(b);
         btnGuardarItinerario.setEnabled(b);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -173,6 +175,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        btnBuscarItinerario.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscarItinerario.setText("Buscar");
         btnBuscarItinerario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,16 +183,20 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Nombre itinerario:");
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Duración (minutos):");
 
         campoTextoDuracionItinerario.setEditable(false);
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Longitud (metros):");
 
         campoTextoLongitudItinerario.setEditable(false);
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Num. visitantes autorizados:");
 
         campoTextoNumeroVisitantes.setEditable(false);
@@ -197,6 +204,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("DATOS GENERALES DEL RECORRIDO");
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("Guía:");
 
         cmbGuia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -206,50 +214,53 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(15, 15, 15)
-                                .addComponent(campoTextoNombreItinerario, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(campoTextoNumeroVisitantes, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(campoTextoLongitudItinerario, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscarItinerario))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(campoTextoNombreItinerario, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel8))
+                                        .addGap(80, 80, 80)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(campoTextoDuracionItinerario, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(cmbGuia, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel3))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(campoTextoLongitudItinerario, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                                            .addComponent(campoTextoNumeroVisitantes))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel8))
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(campoTextoDuracionItinerario, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                            .addComponent(cmbGuia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnBuscarItinerario)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuscarItinerario)
-                    .addComponent(campoTextoNombreItinerario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(6, 6, 6)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(btnBuscarItinerario))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(campoTextoNombreItinerario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(cmbGuia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -273,24 +284,31 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("DÍAS DEL RECORRIDO");
 
+        checkBoxDomingo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         checkBoxDomingo.setText("Domingo");
         checkBoxDomingo.setEnabled(false);
 
+        checkBoxSabado.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         checkBoxSabado.setText("Sábado");
         checkBoxSabado.setEnabled(false);
 
+        checkBoxViernes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         checkBoxViernes.setText("Viernes");
         checkBoxViernes.setEnabled(false);
 
+        checkBoxJueves.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         checkBoxJueves.setText("Jueves");
         checkBoxJueves.setEnabled(false);
 
+        checkBoxMiercoles.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         checkBoxMiercoles.setText("Miércoles");
         checkBoxMiercoles.setEnabled(false);
 
+        checkBoxMartes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         checkBoxMartes.setText("Martes");
         checkBoxMartes.setEnabled(false);
 
+        checkBoxLunes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         checkBoxLunes.setText("Lunes");
         checkBoxLunes.setEnabled(false);
         checkBoxLunes.addActionListener(new java.awt.event.ActionListener() {
@@ -307,7 +325,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(checkBoxMartes)
@@ -330,7 +348,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
                                             .addComponent(campoDom)))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(checkBoxLunes)
-                                .addGap(26, 26, 26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(campoLun, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(108, 108, 108)
@@ -370,7 +388,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkBoxDomingo)
                     .addComponent(campoDom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -378,30 +396,39 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("ZONAS DEL RECORRIDO");
 
+        ckbZona1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ckbZona1.setText("1-ALFA");
         ckbZona1.setEnabled(false);
 
+        ckbZona4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ckbZona4.setText("2-ALFA");
         ckbZona4.setEnabled(false);
 
+        ckbZona7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ckbZona7.setText("3-ALFA");
         ckbZona7.setEnabled(false);
 
+        ckbZona2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ckbZona2.setText("1-BETA");
         ckbZona2.setEnabled(false);
 
+        ckbZona5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ckbZona5.setText("2-BETA");
         ckbZona5.setEnabled(false);
 
+        ckbZona8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ckbZona8.setText("3-BETA");
         ckbZona8.setEnabled(false);
 
+        ckbZona3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ckbZona3.setText("1-CHARLIE");
         ckbZona3.setEnabled(false);
 
+        ckbZona6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ckbZona6.setText("2-CHARLIE");
         ckbZona6.setEnabled(false);
 
+        ckbZona9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ckbZona9.setText("3-CHARLIE");
         ckbZona9.setEnabled(false);
 
@@ -458,6 +485,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        btnGuardarItinerario.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnGuardarItinerario.setText("Guardar");
         btnGuardarItinerario.setEnabled(false);
         btnGuardarItinerario.addActionListener(new java.awt.event.ActionListener() {
@@ -466,6 +494,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             }
         });
 
+        btnRegresarItinerario.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnRegresarItinerario.setText("Regresar");
         btnRegresarItinerario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -514,14 +543,14 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(144, Short.MAX_VALUE)
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(146, 146, 146))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50))
         );
@@ -546,175 +575,200 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         guardar();
     }//GEN-LAST:event_btnGuardarItinerarioActionPerformed
 
-    
     private void buscar() {
         Itinerario itinerario = control.buscarItinerario(campoTextoNombreItinerario.getText());
-        if(itinerario!=null) {
+        if (itinerario != null) {
             inicializar();
-            
+
             int indiceGuia = relacionarGuia(itinerario);
-            if(indiceGuia==-1) {
+            if (indiceGuia == -1) {
                 JOptionPane.showMessageDialog(this, "No se ha encontrado el guía del itinerario.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-            this.cmbGuia.setSelectedIndex(indiceGuia+1);
-            
+            this.cmbGuia.setSelectedIndex(indiceGuia + 1);
+
             this.campoTextoDuracionItinerario.setText(String.valueOf(itinerario.getDuracionDelRecorrido()));
             this.campoTextoLongitudItinerario.setText(String.valueOf(itinerario.getLongitud()));
             this.campoTextoNumeroVisitantes.setText(String.valueOf(itinerario.getNumeroMaximoVisitantes()));
-            
+
             for (int i = 0; i < cajasZonas.size(); i++) {
-                if(itinerario.getIdsZonasVisitadas().contains(zonas.get(i).getId()))
+                if (itinerario.getIdsZonasVisitadas().contains(zonas.get(i).getId())) {
                     cajasZonas.get(i).setSelected(true);
+                }
             }
-            
+
             List<LocalDateTime> horas = itinerario.getDiasYHoras();
             for (LocalDateTime hora : horas) {
                 JTextField campo = null;
                 JCheckBox caja = null;
-                switch(hora.getDayOfWeek().getValue()) {
-                    case 1: campo = this.campoLun; caja = this.checkBoxLunes; break;
-                    case 2: campo = this.campoMar; caja = this.checkBoxMartes; break;
-                    case 3: campo = this.campoMie; caja = this.checkBoxMiercoles; break;
-                    case 4: campo = this.campoJue; caja = this.checkBoxJueves; break;
-                    case 5: campo = this.campoVie; caja = this.checkBoxViernes; break;
-                    case 6: campo = this.campoSab; caja = this.checkBoxSabado; break;
-                    case 7: campo = this.campoDom; caja = this.checkBoxDomingo; break;
+                switch (hora.getDayOfWeek().getValue()) {
+                    case 1:
+                        campo = this.campoLun;
+                        caja = this.checkBoxLunes;
+                        break;
+                    case 2:
+                        campo = this.campoMar;
+                        caja = this.checkBoxMartes;
+                        break;
+                    case 3:
+                        campo = this.campoMie;
+                        caja = this.checkBoxMiercoles;
+                        break;
+                    case 4:
+                        campo = this.campoJue;
+                        caja = this.checkBoxJueves;
+                        break;
+                    case 5:
+                        campo = this.campoVie;
+                        caja = this.checkBoxViernes;
+                        break;
+                    case 6:
+                        campo = this.campoSab;
+                        caja = this.checkBoxSabado;
+                        break;
+                    case 7:
+                        campo = this.campoDom;
+                        caja = this.checkBoxDomingo;
+                        break;
                 }
-                agregarHoraAlCampo(campo,hora);
+                agregarHoraAlCampo(campo, hora);
                 caja.setSelected(true);
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "No se ha encontrado otro itinerario con ese nombre.\n"
-                    +"Se van a habilitar los campos para el registro.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                    + "Se van a habilitar los campos para el registro.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             liberarCampos(true);
         }
-        
+
     }
-    
+
     private void agregarHoraAlCampo(JTextField campo, LocalDateTime hora) {
         String texto = campo.getText();
-        
-        texto = texto + (texto.equals("")?"":", ") + Conversiones.horaATexto(hora);
-        
+
+        texto = texto + (texto.equals("") ? "" : ", ") + Conversiones.horaATexto(hora);
+
         campo.setText(texto);
     }
-    
+
     private int relacionarGuia(Itinerario itinerario) {
         int indice = -1;
         for (int i = 0; i < guias.size(); i++) {
             for (ObjectId idItinerario : guias.get(i).getItinerariosActuales()) {
-                if(itinerario.getId().equals(idItinerario)) indice = i;
+                if (itinerario.getId().equals(idItinerario)) {
+                    indice = i;
+                }
             }
         }
         return indice;
     }
-    
+
     private boolean validar() {
         boolean valido = true;
         String vacios = "";
         String errores = "";
-        
-        if(campoTextoNombreItinerario.getText().equals("")) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "Introduzca el nombre del hábitat.";
+
+        if (campoTextoNombreItinerario.getText().equals("")) {
+            vacios = vacios + (vacios.equals("") ? "" : "\n") + "Introduzca el nombre del hábitat.";
             valido = false;
         } else {
             Itinerario itinerario = control.buscarItinerario(campoTextoNombreItinerario.getText());
-            if(itinerario!=null) {
-                errores = errores + (errores.equals("")?"":"\n") + "El nombre del itinerario ya está registrado en la base de datos.";
+            if (itinerario != null) {
+                errores = errores + (errores.equals("") ? "" : "\n") + "El nombre del itinerario ya está registrado en la base de datos.";
             }
         }
-        
-        if(this.cmbGuia.getSelectedIndex()==0) {
-            errores = errores + (errores.equals("")?"":"\n") + "Seleccione el guía del itinerario.";
+
+        if (this.cmbGuia.getSelectedIndex() == 0) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione el guía del itinerario.";
             valido = false;
         }
-        
-        if(this.campoTextoDuracionItinerario.getText().equals("")) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la duración del recorrido.";
+
+        if (this.campoTextoDuracionItinerario.getText().equals("")) {
+            vacios = vacios + (vacios.equals("") ? "" : "\n") + "Ingrese la duración del recorrido.";
             valido = false;
         } else {
             try {
                 int i = Integer.parseInt(campoTextoDuracionItinerario.getText());
-                if(i<0) {
-                    errores = errores + (errores.equals("")?"":"\n") + "La duracción del recorrido debe ser mayor a 0.";
+                if (i < 0) {
+                    errores = errores + (errores.equals("") ? "" : "\n") + "La duracción del recorrido debe ser mayor a 0.";
                     valido = false;
                 }
-                if(i>90) {
-                    errores = errores + (errores.equals("")?"":"\n") + "La duracción del recorrido debe ser menor a hora y media.";
+                if (i > 90) {
+                    errores = errores + (errores.equals("") ? "" : "\n") + "La duracción del recorrido debe ser menor a hora y media.";
                     valido = false;
                 }
-            } catch(Exception e) {
-                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para la duración.";
+            } catch (Exception e) {
+                errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca un número entero para la duración.";
                 valido = false;
             }
         }
-        
-        if(this.campoTextoLongitudItinerario.getText().equals("")) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la longitud del recorrido.";
+
+        if (this.campoTextoLongitudItinerario.getText().equals("")) {
+            vacios = vacios + (vacios.equals("") ? "" : "\n") + "Ingrese la longitud del recorrido.";
             valido = false;
         } else {
             try {
                 int i = Integer.parseInt(campoTextoLongitudItinerario.getText());
-                if(i<0) {
-                    errores = errores + (errores.equals("")?"":"\n") + "La longitud del recorrido debe ser mayor a 0m.";
+                if (i < 0) {
+                    errores = errores + (errores.equals("") ? "" : "\n") + "La longitud del recorrido debe ser mayor a 0m.";
                     valido = false;
                 }
-                if(i>1500) {
-                    errores = errores + (errores.equals("")?"":"\n") + "La longitud del recorrido debe ser menor a 1.5km.";
+                if (i > 1500) {
+                    errores = errores + (errores.equals("") ? "" : "\n") + "La longitud del recorrido debe ser menor a 1.5km.";
                     valido = false;
                 }
-            } catch(Exception e) {
-                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para la longitud.";
+            } catch (Exception e) {
+                errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca un número entero para la longitud.";
                 valido = false;
             }
         }
-        
-        if(this.campoTextoNumeroVisitantes.getText().equals("")) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese la cantidad máxima de visitantes autorizados para el recorrido.";
+
+        if (this.campoTextoNumeroVisitantes.getText().equals("")) {
+            vacios = vacios + (vacios.equals("") ? "" : "\n") + "Ingrese la cantidad máxima de visitantes autorizados para el recorrido.";
             valido = false;
         } else {
             try {
                 int i = Integer.parseInt(campoTextoNumeroVisitantes.getText());
-                if(i<0) {
-                    errores = errores + (errores.equals("")?"":"\n") + "El número de visitantes debe ser mayor a 0m.";
+                if (i < 0) {
+                    errores = errores + (errores.equals("") ? "" : "\n") + "El número de visitantes debe ser mayor a 0m.";
                     valido = false;
                 }
-                if(i>30) {
-                    errores = errores + (errores.equals("")?"":"\n") + "El número máximo de visitantes ser menor a 30.";
+                if (i > 30) {
+                    errores = errores + (errores.equals("") ? "" : "\n") + "El número máximo de visitantes ser menor a 30.";
                     valido = false;
                 }
-            } catch(Exception e) {
-                errores = errores + (errores.equals("")?"":"\n") + "Introduzca un número entero para el máximo de visitantes.";
+            } catch (Exception e) {
+                errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca un número entero para el máximo de visitantes.";
                 valido = false;
             }
         }
-        
+
         try {
             List<LocalDateTime> horas = bajarHoras();
-            if(horas.isEmpty()) vacios = vacios + (vacios.equals("")?"":"\n") + "Ingrese al menos una hora.";
+            if (horas.isEmpty()) {
+                vacios = vacios + (vacios.equals("") ? "" : "\n") + "Ingrese al menos una hora.";
+            }
             valido = false;
         } catch (Exception e) {
-            errores = errores + (errores.equals("")?"":"\n") + "Verifique el formato de las horas, deve de ser hh:mm,\nseparando las distintas horas con una coma y un espacio.";
+            errores = errores + (errores.equals("") ? "" : "\n") + "Verifique el formato de las horas, deve de ser hh:mm,\nseparando las distintas horas con una coma y un espacio.";
             valido = false;
         }
-        
-        if(bajarZonas().isEmpty()) {
-            vacios = vacios + (vacios.equals("")?"":"\n") + "Seleccione al menos una zona.";
+
+        if (bajarZonas().isEmpty()) {
+            vacios = vacios + (vacios.equals("") ? "" : "\n") + "Seleccione al menos una zona.";
             valido = false;
         }
-        
-        if(!valido) {
-            vacios = (vacios.equals("")?"":"Los siguientes campos están sin llenar: \n"+vacios);
-            errores = (errores.equals("")?"":"Hay errores en los siguientes campos: \n"+errores);
-            JOptionPane.showMessageDialog(this, vacios+errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+
+        if (!valido) {
+            vacios = (vacios.equals("") ? "" : "Los siguientes campos están sin llenar: \n" + vacios);
+            errores = (errores.equals("") ? "" : "Hay errores en los siguientes campos: \n" + errores);
+            JOptionPane.showMessageDialog(this, vacios + errores, "Aviso", JOptionPane.WARNING_MESSAGE);
         }
-        
+
         return valido;
     }
-    
+
     private void guardar() {
-        if(validar()) {
+        if (validar()) {
             Itinerario itinerario = new Itinerario();
             itinerario.setNombre(campoTextoNombreItinerario.getText());
             itinerario.setIdsZonasVisitadas(bajarZonas());
@@ -723,75 +777,75 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             itinerario.setLongitud(Long.parseLong(this.campoTextoLongitudItinerario.getText()));
             itinerario.setNumeroMaximoVisitantes(Integer.parseInt(this.campoTextoDuracionItinerario.getText()));
             itinerario.setNumeroEspeciesVisitadas(control.calcularEspeciesVisitadas(itinerario.getIdsZonasVisitadas()));
-            
-            if(control.guardar(itinerario)) {
+
+            if (control.guardar(itinerario)) {
                 JOptionPane.showMessageDialog(this, "Itinerario guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-                control.actualizarGuia(itinerario.getId(), guias.get(this.cmbGuia.getSelectedIndex()-1).getId());
+                control.actualizarGuia(itinerario.getId(), guias.get(this.cmbGuia.getSelectedIndex() - 1).getId());
             } else {
                 JOptionPane.showMessageDialog(this, "No se ha podido guardar el itinerario.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
-    
+
     private List<ObjectId> bajarZonas() {
         List<ObjectId> zonas = new ArrayList();
         for (int i = 0; i < this.cajasZonas.size(); i++) {
-            if(cajasZonas.get(i).isSelected()) {
+            if (cajasZonas.get(i).isSelected()) {
                 zonas.add(zonas.get(i));
             }
         }
         return zonas;
     }
-    
+
     private List<LocalDateTime> bajarHoras() {
         List<LocalDateTime> horas = new ArrayList();
-        
-        if(checkBoxLunes.isSelected()) {
+
+        if (checkBoxLunes.isSelected()) {
             String[] textos = this.campoLun.getText().split(", ");
             for (String texto : textos) {
-                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 9)));
+                horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 9)));
             }
         }
-        if(checkBoxMartes.isSelected()) {
+        if (checkBoxMartes.isSelected()) {
             String[] textos = this.campoMar.getText().split(", ");
             for (String texto : textos) {
-                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 10)));
+                horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 10)));
             }
         }
-        if(checkBoxMiercoles.isSelected()) {
+        if (checkBoxMiercoles.isSelected()) {
             String[] textos = this.campoMie.getText().split(", ");
             for (String texto : textos) {
-                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 11)));
+                horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 11)));
             }
         }
-        if(checkBoxJueves.isSelected()) {
+        if (checkBoxJueves.isSelected()) {
             String[] textos = this.campoJue.getText().split(", ");
             for (String texto : textos) {
-                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 12)));
+                horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 12)));
             }
         }
-        if(checkBoxViernes.isSelected()) {
+        if (checkBoxViernes.isSelected()) {
             String[] textos = this.campoVie.getText().split(", ");
             for (String texto : textos) {
-                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 13)));
+                horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 13)));
             }
         }
-        if(checkBoxSabado.isSelected()) {
+        if (checkBoxSabado.isSelected()) {
             String[] textos = this.campoSab.getText().split(", ");
             for (String texto : textos) {
-                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 14)));
+                horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 14)));
             }
         }
-        if(checkBoxDomingo.isSelected()) {
+        if (checkBoxDomingo.isSelected()) {
             String[] textos = this.campoLun.getText().split(", ");
             for (String texto : textos) {
-                    horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 15)));
+                horas.add(Conversiones.textoAHora(texto).atDate(LocalDate.of(2022, 5, 15)));
             }
         }
-        
+
         return new ArrayList(new HashSet(horas));
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarItinerario;
@@ -839,18 +893,19 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 
-    class FondoPanelItinerario extends JPanel{
+    class FondoPanelItinerario extends JPanel {
+
         private Image imagen;
-        
+
         @Override
-        public void paint(Graphics g){
-            
+        public void paint(Graphics g) {
+
             imagen = new ImageIcon(getClass().getResource("/imagenes/FondoMenuPrincipal.jpg")).getImage();
-            
+
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-            
+
             setOpaque(false);
-            
+
             super.paint(g);
         }
     }

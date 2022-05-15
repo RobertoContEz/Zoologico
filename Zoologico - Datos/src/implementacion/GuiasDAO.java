@@ -155,7 +155,6 @@ public class GuiasDAO implements IPersistenciaGuia {
     @Override
     public List<Guia> consultarTodos() {
         try {
-            // TODO: MANEJAR POSIBLES EXCEPCIONES...
             List<Guia> listaGuias = new ArrayList<>();
             MongoCollection<Guia> collection = this.getCollection();
             Document filtro = new Document();

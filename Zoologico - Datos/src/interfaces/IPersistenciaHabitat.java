@@ -6,11 +6,13 @@ import objetos.Habitat;
 import org.bson.types.ObjectId;
 
 /**
- * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
- * TODO: Documentar interfaz
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola Clase que hace la
+ * conexión con la base de datos respecto a los Habitats con capacidad para
+ * guardarse, actualizarse, eliminarse y recuperarse mediante metodos abstractos
+ * en la interfaz
  */
 public interface IPersistenciaHabitat {
-    
+
     MongoCollection<Habitat> getCollection();
 
     public boolean agregar(Habitat habitat);
