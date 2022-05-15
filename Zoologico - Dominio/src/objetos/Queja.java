@@ -9,9 +9,9 @@ import org.bson.types.ObjectId;
  * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
  * 
  * Esta clase representa las quejas presentadas por los visitantes de los
- * distintos itinerarios del zoológico. Una abstracción de esta clase contiene
+ * distintos recorridos del zoológico. Una abstracción de esta clase contiene
  * todos los datos relevantes de la queja. En la base de datos, las quejas se
- * almacenan en la collección de Itinerarios como un documento anidado.
+ * almacenan en la collección de Recorridos como un documento anidado.
  */
 public class Queja {
 
@@ -22,7 +22,7 @@ public class Queja {
     private String correo;
     private String telefono;
     private String nombre;
-    private ObjectId idItinerario;
+    private ObjectId idRecorrido;
 
     /**
      * Constructor por defecto.
@@ -48,16 +48,16 @@ public class Queja {
      * @param correo el correo del visitante
      * @param telefono el teléfono del visitante
      * @param nombre el nombre del visitante
-     * @param idItinerario el id del itinerario para el que se presentó la queja
+     * @param idRecorrido el id del recorrido para el que se presentó la queja
      */
-    public Queja(LocalDate fecha, LocalTime hora, String queja, String correo, String telefono, String nombre, ObjectId idItinerario) {
+    public Queja(LocalDate fecha, LocalTime hora, String queja, String correo, String telefono, String nombre, ObjectId idRecorrido) {
         this.fecha = fecha;
         this.hora = hora;
         this.queja = queja;
         this.correo = correo;
         this.telefono = telefono;
         this.nombre = nombre;
-        this.idItinerario = idItinerario;
+        this.idRecorrido = idRecorrido;
     }
 
     /**
@@ -70,9 +70,9 @@ public class Queja {
      * @param correo el correo del visitante
      * @param telefono el teléfono del visitante
      * @param nombre el nombre del visitante
-     * @param idItinerario el id del itinerario para el que se presentó la queja
+     * @param idRecorrido el id del recorrido para el que se presentó la queja
      */
-    public Queja(ObjectId id, LocalDate fecha, LocalTime hora, String queja, String correo, String telefono, String nombre, ObjectId idItinerario) {
+    public Queja(ObjectId id, LocalDate fecha, LocalTime hora, String queja, String correo, String telefono, String nombre, ObjectId idRecorrido) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
@@ -80,7 +80,7 @@ public class Queja {
         this.correo = correo;
         this.telefono = telefono;
         this.nombre = nombre;
-        this.idItinerario = idItinerario;
+        this.idRecorrido = idRecorrido;
     }
 
     /**
@@ -210,21 +210,21 @@ public class Queja {
     }
 
     /**
-     * Devuelve el id del itinerario para el que se presentó la queja.
+     * Devuelve el id del recorrido para el que se presentó la queja.
      *
-     * @return el id del itinerario para el que se presentó la queja
+     * @return el id del recorrido para el que se presentó la queja
      */
-    public ObjectId getIdItinerario() {
-        return idItinerario;
+    public ObjectId getRecorrido() {
+        return idRecorrido;
     }
 
     /**
-     * Establece el id del itinerario para el que se presentó la queja.
+     * Establece el id del recorrido para el que se presentó la queja.
      *
-     * @param idItinerario el id del itinerario para el que se presentó la queja
+     * @param idRecorrido el id del recorrido para el que se presentó la queja
      */
-    public void setIdItinerario(ObjectId idItinerario) {
-        this.idItinerario = idItinerario;
+    public void setRecorrido(ObjectId idRecorrido) {
+        this.idRecorrido = idRecorrido;
     }
 
     @Override
@@ -254,7 +254,7 @@ public class Queja {
 
     @Override
     public String toString() {
-        return "Queja{" + "id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", queja=" + queja + ", correo=" + correo + ", telefono=" + telefono + ", idItinerario=" + idItinerario + '}';
+        return "Queja{" + "id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", queja=" + queja + ", correo=" + correo + ", telefono=" + telefono + ", idRecorrido=" + idRecorrido + '}';
     }
 
 }

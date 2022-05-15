@@ -14,7 +14,7 @@ import org.bson.types.ObjectId;
  */
 public class Guia extends Empleado {
 
-    private List<ObjectId> itinerariosActuales;
+    private List<ObjectId> idsItinerariosActuales;
 
     /**
      * Constructor por defecto.
@@ -43,7 +43,7 @@ public class Guia extends Empleado {
      */
     public Guia(List<ObjectId> itinerariosActuales, String nombre, String direccion, String telefono, Date fechaIngreso) {
         super(nombre, direccion, telefono, fechaIngreso, "Guía");
-        this.itinerariosActuales = itinerariosActuales;
+        this.idsItinerariosActuales = itinerariosActuales;
     }
 
     /**
@@ -59,7 +59,7 @@ public class Guia extends Empleado {
      */
     public Guia(List<ObjectId> itinerariosActuales, ObjectId id, String nombre, String direccion, String telefono, Date fechaIngreso) {
         super(id, nombre, direccion, telefono, fechaIngreso, "Guía");
-        this.itinerariosActuales = itinerariosActuales;
+        this.idsItinerariosActuales = itinerariosActuales;
     }
 
     /**
@@ -67,18 +67,18 @@ public class Guia extends Empleado {
      *
      * @return la lista de los ids de los itinerarios actuales del guía
      */
-    public List<ObjectId> getItinerariosActuales() {
-        return itinerariosActuales;
+    public List<ObjectId> getIdsItinerariosActuales() {
+        return idsItinerariosActuales;
     }
 
     /**
      * Establece la lista de los ids de los itinerarios actuales del guía.
      *
-     * @param itinerariosActuales la lista de los ids de los itinerarios actuales
+     * @param idsItinerariosActuales la lista de los ids de los itinerarios actuales
      * del guía
      */
-    public void setItinerariosActuales(List<ObjectId> itinerariosActuales) {
-        this.itinerariosActuales = itinerariosActuales;
+    public void setIdsItinerariosActuales(List<ObjectId> idsItinerariosActuales) {
+        this.idsItinerariosActuales = idsItinerariosActuales;
     }
     
     /**
@@ -87,15 +87,15 @@ public class Guia extends Empleado {
      * @param idItinerario itinerario nuevo
      */
     public void agregaItinerario(ObjectId idItinerario) {
-        if (itinerariosActuales == null) {
-            itinerariosActuales = new ArrayList();
+        if (idsItinerariosActuales == null) {
+            idsItinerariosActuales = new ArrayList();
         }
-        itinerariosActuales.add(idItinerario);
+        idsItinerariosActuales.add(idItinerario);
     }
 
     @Override
     public String toString() {
-        return super.toString() + " Guia{" + "itinerariosActuales=" + itinerariosActuales + '}';
+        return super.toString() + " Guia{" + "itinerariosActuales=" + idsItinerariosActuales + '}';
     }
 
 }

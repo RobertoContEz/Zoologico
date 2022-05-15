@@ -1,5 +1,6 @@
 package guis;
 
+import control.ControlRegistrarEspecie;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -12,6 +13,8 @@ import javax.swing.JPanel;
 public class DlgRegistrarEspecie extends javax.swing.JDialog {
 
     FondoPanelEspecie fondo = new FondoPanelEspecie();
+    
+    private final ControlRegistrarEspecie control = new ControlRegistrarEspecie();
     
     
     public DlgRegistrarEspecie(java.awt.Frame parent, boolean modal) {

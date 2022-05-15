@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -359,7 +358,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
             queja.setQueja(textoQueja);
             queja.setCorreo(correo);
             queja.setTelefono(telefono);
-            queja.setIdItinerario(itinerario.getId());
+            queja.setRecorrido(recorrido.getId());
             
             if(control.guardar(queja)) {
                 JOptionPane.showMessageDialog(this, "Se ha enviado la queja a la administración del zoológico.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
