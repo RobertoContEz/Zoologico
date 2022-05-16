@@ -214,7 +214,7 @@ public class Queja {
      *
      * @return el id del recorrido para el que se presentó la queja
      */
-    public ObjectId getRecorrido() {
+    public ObjectId getIdRecorrido() {
         return idRecorrido;
     }
 
@@ -223,7 +223,7 @@ public class Queja {
      *
      * @param idRecorrido el id del recorrido para el que se presentó la queja
      */
-    public void setRecorrido(ObjectId idRecorrido) {
+    public void setIdRecorrido(ObjectId idRecorrido) {
         this.idRecorrido = idRecorrido;
     }
 

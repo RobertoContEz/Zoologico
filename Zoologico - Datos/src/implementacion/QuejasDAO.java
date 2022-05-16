@@ -81,7 +81,7 @@ public class QuejasDAO implements IPersistenciaQueja {
                         .append("queja", queja.getQueja())
                         .append("correo", queja.getCorreo())
                         .append("telefono", queja.getTelefono())
-                        .append("recorrido", queja.getRecorrido())
+                        .append("recorrido", queja.getIdRecorrido())
                 );
 
                 UpdateResult resultado = coleccion.updateOne(filtro, entidadActualizada);
