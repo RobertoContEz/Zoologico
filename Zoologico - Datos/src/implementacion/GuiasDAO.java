@@ -81,7 +81,7 @@ public class GuiasDAO implements IPersistenciaGuia {
                         .append("direccion", guia.getDireccion())
                         .append("telefono", guia.getTelefono())
                         .append("fechaIngreso", guia.getFechaIngreso())
-                        .append("itinerarioActual", guia.getItinerariosActuales())
+                        .append("itinerarioActual", guia.getIdsItinerariosActuales())
                 );
 
                 UpdateResult resultado = coleccion.updateOne(filtro, entidadActualizada);
