@@ -328,45 +328,46 @@ public class DlgRegistrarEspecie extends javax.swing.JDialog {
     }
 
     private boolean validar() {
-        boolean valido = true;
-        String errores = "";
-        if (campoNombreHabitat.getText().equals("")) {
-            errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca el nombre del hábitat.";
-            valido = false;
-        }
-        if (comboBoxClima.getSelectedIndex() == 0) {
-            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione un tipo de clima.";
-            valido = false;
-        }
-        if (comboBoxVegetacion.getSelectedIndex() == 0) {
-            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione un tipo de vegetación.";
-            valido = false;
-        }
-        if (continentesAgregados.isEmpty()) {
-            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione al menos un continente.";
-            valido = false;
-        }
-
-        if (!valido) {
-            JOptionPane.showMessageDialog(this, "Los siguientes campos están sin llenar: \n" + errores, "Aviso", JOptionPane.WARNING_MESSAGE);
-        }
-
-        return valido;
+//        boolean valido = true;
+//        String errores = "";
+//        if (campoNombreHabitat.getText().equals("")) {
+//            errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca el nombre del hábitat.";
+//            valido = false;
+//        }
+//        if (comboBoxClima.getSelectedIndex() == 0) {
+//            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione un tipo de clima.";
+//            valido = false;
+//        }
+//        if (comboBoxVegetacion.getSelectedIndex() == 0) {
+//            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione un tipo de vegetación.";
+//            valido = false;
+//        }
+//        if (continentesAgregados.isEmpty()) {
+//            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione al menos un continente.";
+//            valido = false;
+//        }
+//
+//        if (!valido) {
+//            JOptionPane.showMessageDialog(this, "Los siguientes campos están sin llenar: \n" + errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+//        }
+//
+//        return valido;
+        return true;
     }
 
     private void guardar() {
-        if (verificar() && validar()) {
-            Habitat habitat = new Habitat();
-            habitat.setNombre(campoNombreHabitat.getText());
-            habitat.setTipoClima(climas.get(comboBoxClima.getSelectedIndex() - 1));
-            habitat.setTipoVegetacion(climas.get(comboBoxVegetacion.getSelectedIndex() - 1));
-            habitat.setContinentesDondeSeEncuentra(continentesAgregados);
-            if (control.guardar(habitat)) {
-                JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "No se ha podido guardar el hábitat.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        }
+//        if (verificar() && validar()) {
+//            Habitat habitat = new Habitat();
+//            habitat.setNombre(campoNombreHabitat.getText());
+//            habitat.setTipoClima(climas.get(comboBoxClima.getSelectedIndex() - 1));
+//            habitat.setTipoVegetacion(climas.get(comboBoxVegetacion.getSelectedIndex() - 1));
+//            habitat.setContinentesDondeSeEncuentra(continentesAgregados);
+//            if (control.guardar(habitat)) {
+//                JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+//            } else {
+//                JOptionPane.showMessageDialog(this, "No se ha podido guardar el hábitat.", "ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
