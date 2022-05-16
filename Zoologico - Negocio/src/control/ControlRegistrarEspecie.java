@@ -58,11 +58,15 @@ public class ControlRegistrarEspecie {
     /**
      * Guarda un objeto de tipo especie en la base de datos.
      * @param especie objeto a guardar en la base de datos.
-     * @return 
+     * @return confirmación de la operación
      */
     public boolean guardar(Especie especie) {
         IPersistenciaEspecie dao = FabricaDAOs.getEspeciesDAO();
         
-        return dao.agregar(especie);
+        if (especie.getId()==null) {
+            return dao.agregar(especie);
+        } else {
+            return dao.actualizar(especie);
+        }
     }
 }

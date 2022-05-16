@@ -13,7 +13,8 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 
 /**
  *
- * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola
+ * @author R.Pacheco, R.Contreras, E.Villagrana y G.Gaxiola Clase que hace la
+ * conexión con la base de datos
  */
 public class ConexionBD implements IConexionBD {
 
