@@ -36,7 +36,7 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
 
     @Override
     public MongoCollection<Cuidador> getCollection() {
-        return this.baseDatos.getCollection("Cuidadores", Cuidador.class);
+        return this.baseDatos.getCollection("Empleados", Cuidador.class);
     }
 
     /**
@@ -158,7 +158,9 @@ public class CuidadoresDAO implements IPersistenciaCuidador {
         try {
             List<Cuidador> listaCuidadores = new ArrayList<>();
             MongoCollection<Cuidador> collection = this.getCollection();
-            collection.find().into(listaCuidadores);
+            Document filtro = new Document();
+            filtro.append("tipo", "Cuidador");
+            collection.find(filtro).into(listaCuidadores);
             return listaCuidadores;
         } catch (PersistenceException ex) {
             ex.printStackTrace();

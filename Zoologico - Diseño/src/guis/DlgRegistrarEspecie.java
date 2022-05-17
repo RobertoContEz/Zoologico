@@ -1,15 +1,14 @@
 package guis;
 
 import control.ControlRegistrarEspecie;
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import objetos.Animal;
 import objetos.Cuidador;
 import objetos.Especie;
@@ -40,9 +39,9 @@ public class DlgRegistrarEspecie extends javax.swing.JDialog {
     private final List<Cuidador> cuidadores;
     private final List<Habitat> habitats;
     
-    private Cuidador cuidador;
-    private Habitat habitat;
     private List<Animal> animales;
+    
+    private Especie especie;
 
     private void inicializar() {
         if (cuidadores == null) {
@@ -61,7 +60,7 @@ public class DlgRegistrarEspecie extends javax.swing.JDialog {
             comboBoxHabitat.removeAllItems();
             comboBoxHabitat.addItem("Seleccione...");
             for (Habitat habitat : habitats) {
-                comboBoxCuidador.addItem(habitat.getNombre());
+                comboBoxHabitat.addItem(habitat.getNombre());
             }
         }
         
@@ -293,11 +292,15 @@ public class DlgRegistrarEspecie extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVerificarNombreEspecieActionPerformed
 
     private void editarAnimales() {
+        if(animales == null) animales = new ArrayList();
         
+        new DlgEditarAnimales((Frame)this.getParent(), true, animales).setVisible(true);
+        
+        this.campoTextoAnimalesAgregados.setText(String.valueOf(animales.size()));
     }
     
-    private void verificar() {
-        Especie especie = control.buscarEspecie(campoNombreEspecie.getText());
+    private boolean verificar() {
+        Especie especie = control.buscarEspecieEspanol(campoNombreEspecie.getText());
         if (especie != null) {
             liberarCampos(false);
 
@@ -310,7 +313,6 @@ public class DlgRegistrarEspecie extends javax.swing.JDialog {
             ObjectId idCuidador = especie.getIdCuidador();
             for (int i = 0; i < cuidadores.size(); i++) {
                 if(cuidadores.get(i).getId().equals(idCuidador)) {
-                    cuidador = cuidadores.get(i);
                     this.comboBoxCuidador.setSelectedIndex(i+1);
                 }
             }
@@ -318,56 +320,83 @@ public class DlgRegistrarEspecie extends javax.swing.JDialog {
             ObjectId idHabitat = especie.getIdsHabitatsDondePuedeVivir().get(0);
             for (int i = 0; i < habitats.size(); i++) {
                 if(habitats.get(i).getId().equals(idHabitat)) {
-                    habitat = habitats.get(i);
                     this.comboBoxHabitat.setSelectedIndex(i+1);
                 }
             }
+            return false;
         } else {
             liberarCampos(true);
+            return true;
         }
     }
 
     private boolean validar() {
-//        boolean valido = true;
-//        String errores = "";
-//        if (campoNombreHabitat.getText().equals("")) {
-//            errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca el nombre del hábitat.";
-//            valido = false;
-//        }
-//        if (comboBoxClima.getSelectedIndex() == 0) {
-//            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione un tipo de clima.";
-//            valido = false;
-//        }
-//        if (comboBoxVegetacion.getSelectedIndex() == 0) {
-//            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione un tipo de vegetación.";
-//            valido = false;
-//        }
-//        if (continentesAgregados.isEmpty()) {
-//            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione al menos un continente.";
-//            valido = false;
-//        }
-//
-//        if (!valido) {
-//            JOptionPane.showMessageDialog(this, "Los siguientes campos están sin llenar: \n" + errores, "Aviso", JOptionPane.WARNING_MESSAGE);
-//        }
-//
-//        return valido;
-        return true;
+        boolean valido = true;
+        String errores = "";
+        if (this.campoNombreEspecie.getText().equals("")) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca el nombre común de la especie.";
+            valido = false;
+        }
+        if (this.campoNombreEspecieCientífico.getText().equals("")) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca el nombre científico de la especie.";
+            valido = false;
+        } else {
+            if(control.buscarEspecieCientifico(campoNombreEspecieCientífico.getText())!=null) {
+                errores = errores + (errores.equals("") ? "" : "\n") + "Ya está registrada una especie con ese nombre científico.";
+                valido = false;
+            }
+        }
+        if (this.areaTextoDescripcionEspecie.getText().equals("")) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca la descripción de la especie.";
+            valido = false;
+        }
+        if (this.comboBoxHabitat.getSelectedIndex() == 0) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione un tipo de hábitat.";
+            valido = false;
+        }
+        if (this.comboBoxCuidador.getSelectedIndex() == 0) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Seleccione el cuidador de la especie.";
+            valido = false;
+        }
+        if (animales == null) animales = new ArrayList();
+        if (animales.isEmpty()) {
+            errores = errores + (errores.equals("") ? "" : "\n") + "Agregue al menos un animal.";
+            valido = false;
+        }
+
+        if (!valido) {
+            JOptionPane.showMessageDialog(this, "Hay errores en los siguientes campos: \n" + errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+
+        return valido;
     }
 
     private void guardar() {
-//        if (verificar() && validar()) {
-//            Habitat habitat = new Habitat();
-//            habitat.setNombre(campoNombreHabitat.getText());
-//            habitat.setTipoClima(climas.get(comboBoxClima.getSelectedIndex() - 1));
-//            habitat.setTipoVegetacion(climas.get(comboBoxVegetacion.getSelectedIndex() - 1));
-//            habitat.setContinentesDondeSeEncuentra(continentesAgregados);
-//            if (control.guardar(habitat)) {
-//                JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
-//            } else {
-//                JOptionPane.showMessageDialog(this, "No se ha podido guardar el hábitat.", "ERROR", JOptionPane.ERROR_MESSAGE);
-//            }
-//        }
+        if (verificar() && validar()) {
+            
+            if(especie==null) especie = new Especie();
+            
+            ObjectId id = new ObjectId();
+            especie.setId(id);
+            
+            especie.setNombreEspanol(this.campoNombreEspecie.getText());
+            especie.setNombreCientifico(this.campoNombreEspecieCientífico.getText());
+            especie.setDescripcionGeneral(this.areaTextoDescripcionEspecie.getText());
+            List<ObjectId> habitats = new ArrayList();
+            habitats.add(this.habitats.get(this.comboBoxHabitat.getSelectedIndex() - 1).getId());
+            especie.setIdsHabitatsDondePuedeVivir(habitats);
+            especie.setIdCuidador(this.cuidadores.get(this.comboBoxCuidador.getSelectedIndex() - 1).getId());
+            especie.setAnimales(animales);
+            
+            for (Animal animal : animales) animal.setIdEspecie(especie.getId());
+            
+            if (control.guardar(especie)) {
+                JOptionPane.showMessageDialog(this, "Especie registrada satisfactoriamente.\n"+
+                        "Id: "+id.toString(), "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se ha podido guardar la especie.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

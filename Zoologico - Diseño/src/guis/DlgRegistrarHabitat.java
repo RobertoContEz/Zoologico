@@ -496,7 +496,7 @@ public class DlgRegistrarHabitat extends javax.swing.JDialog {
             Habitat habitat = new Habitat();
             habitat.setNombre(campoNombreHabitat.getText());
             habitat.setTipoClima(climas.get(comboBoxClima.getSelectedIndex() - 1));
-            habitat.setTipoVegetacion(climas.get(comboBoxVegetacion.getSelectedIndex() - 1));
+            habitat.setTipoVegetacion(vegetaciones.get(comboBoxVegetacion.getSelectedIndex() - 1));
             habitat.setContinentesDondeSeEncuentra(continentesAgregados);
             if (control.guardar(habitat)) {
                 JOptionPane.showMessageDialog(this, "Hábitat guardado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);

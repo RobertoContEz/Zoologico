@@ -2,8 +2,13 @@ package guis;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import objetos.Animal;
+import org.bson.types.ObjectId;
 
 /**
  *
@@ -14,10 +19,19 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
 
     FondoPanelEditarAnimales fondo = new FondoPanelEditarAnimales();
     
-    public DlgEditarAnimales(java.awt.Frame parent, boolean modal) {
+    private final List<Animal> animales;
+    
+    public DlgEditarAnimales(java.awt.Frame parent, boolean modal, List<Animal> animales) {
         super(parent, modal);
         this.setContentPane(fondo);
         initComponents();
+        
+        this.grupoSexo.add(rbtMacho);
+        this.grupoSexo.add(rbtHembra);
+        
+        this.animales = animales;
+        
+        actualizarTabla();
     }
 
     /**
@@ -29,6 +43,7 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoSexo = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -36,16 +51,15 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         campoNombreAnimal = new javax.swing.JTextField();
         campoEdadAnimal = new javax.swing.JTextField();
-        checkBoxMacho = new javax.swing.JCheckBox();
-        checkBoxHembra = new javax.swing.JCheckBox();
-        botonGuardarAnimal = new javax.swing.JButton();
-        botonCancelarAnimal = new javax.swing.JButton();
-        botonRegresarAnimal = new javax.swing.JButton();
+        botonAgregarAnimal = new javax.swing.JButton();
+        rbtMacho = new javax.swing.JRadioButton();
+        rbtHembra = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaAnimalesRegistrados = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         botonEliminarAnimal = new javax.swing.JButton();
+        botonRegresarAnimal = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("EDITAR ANIMALES");
@@ -60,25 +74,22 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
         jLabel2.setText("DATOS DEL ANIMAL");
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel3.setText("Edad:");
+        jLabel3.setText("Edad (años):");
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Sexo:");
 
-        checkBoxMacho.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        checkBoxMacho.setText("Macho");
+        botonAgregarAnimal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        botonAgregarAnimal.setText("Agregar");
+        botonAgregarAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAgregarAnimalActionPerformed(evt);
+            }
+        });
 
-        checkBoxHembra.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        checkBoxHembra.setText("Hembra");
+        rbtMacho.setText("Macho");
 
-        botonGuardarAnimal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        botonGuardarAnimal.setText("Guardar");
-
-        botonCancelarAnimal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        botonCancelarAnimal.setText("Cancelar");
-
-        botonRegresarAnimal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        botonRegresarAnimal.setText("Regresar");
+        rbtHembra.setText("Hembra");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,36 +99,30 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(campoNombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(botonGuardarAnimal)
-                                .addGap(31, 31, 31)
-                                .addComponent(botonCancelarAnimal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botonRegresarAnimal))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(campoNombreAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(campoEdadAnimal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                                .addComponent(checkBoxMacho)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(checkBoxHembra)))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addComponent(campoEdadAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbtMacho)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbtHembra))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(botonAgregarAnimal)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,17 +138,14 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(campoEdadAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(checkBoxMacho)
-                    .addComponent(checkBoxHembra))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonGuardarAnimal)
-                    .addComponent(botonCancelarAnimal)
-                    .addComponent(botonRegresarAnimal))
-                .addGap(22, 22, 22))
+                    .addComponent(rbtMacho)
+                    .addComponent(rbtHembra))
+                .addGap(28, 28, 28)
+                .addComponent(botonAgregarAnimal)
+                .addGap(21, 21, 21))
         );
 
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -171,6 +173,11 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
 
         botonEliminarAnimal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         botonEliminarAnimal.setText("Eliminar");
+        botonEliminarAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarAnimalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -201,6 +208,14 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        botonRegresarAnimal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        botonRegresarAnimal.setText("Regresar");
+        botonRegresarAnimal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegresarAnimalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -211,32 +226,153 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
                 .addGap(48, 48, 48)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonRegresarAnimal)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(50, 50, 50))
+                .addGap(18, 18, 18)
+                .addComponent(botonRegresarAnimal)
+                .addContainerGap())
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void botonAgregarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarAnimalActionPerformed
+        agregar();
+    }//GEN-LAST:event_botonAgregarAnimalActionPerformed
 
+    private void botonEliminarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarAnimalActionPerformed
+        eliminar();
+    }//GEN-LAST:event_botonEliminarAnimalActionPerformed
+
+    private void botonRegresarAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarAnimalActionPerformed
+        dispose();
+    }//GEN-LAST:event_botonRegresarAnimalActionPerformed
+
+    private void eliminar() {
+        int indiceFila = this.tablaAnimalesRegistrados.getSelectedRow();
+        if (indiceFila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un animal de la lista eliminarlo.", "Aviso", JOptionPane.WARNING_MESSAGE);
+        } else {
+            animales.remove(indiceFila);
+            actualizarTabla();
+        }
+    }
+    
+    private void agregar() {
+        if(validar()) {
+            Animal animal = new Animal();
+            
+            animal.setId(new ObjectId());
+            animal.setNombre(this.campoNombreAnimal.getText());
+            animal.setEdad(Integer.parseInt(this.campoEdadAnimal.getText()));
+            animal.setSexo(this.rbtHembra.isSelected()?'H':'M');
+            
+            animales.add(animal);
+            actualizarTabla();
+        }
+    }
+    
+    private boolean validar() {
+        boolean valido = true;
+        String vacios = "";
+        String errores = "";
+
+        if (this.campoNombreAnimal.getText().equals("")) {
+            vacios = vacios + (vacios.equals("") ? "" : "\n") + "Introduzca el nombre del animal.";
+            valido = false;
+        } else {
+            if (!verificar()) {
+                errores = errores + (errores.equals("") ? "" : "\n") + "Ya existe un animal distinto con ese nombre.";
+                valido = false;
+            }
+        }
+
+        if (!(this.rbtHembra.isSelected()||this.rbtMacho.isSelected())) {
+            vacios = vacios + (vacios.equals("") ? "" : "\n") + "Seleccione el sexo del animal.";
+            valido = false;
+        }
+        
+        if (this.campoEdadAnimal.getText().equals("")) {
+            vacios = vacios + (vacios.equals("") ? "" : "\n") + "Ingrese la edad del animal.";
+            valido = false;
+        } else {
+            try {
+                int i = Integer.parseInt(campoEdadAnimal.getText());
+                if (i < 0) {
+                    errores = errores + (errores.equals("") ? "" : "\n") + "La edad del animal debe ser mayor a 0.";
+                    valido = false;
+                }
+                if (i > 150) {
+                    errores = errores + (errores.equals("") ? "" : "\n") + "La edad del animal debe ser menor 150.";
+                    valido = false;
+                }
+            } catch (Exception e) {
+                errores = errores + (errores.equals("") ? "" : "\n") + "Introduzca un número entero para la edad.";
+                valido = false;
+            }
+        }
+
+        if (!valido) {
+            vacios = (vacios.equals("") ? "" : "Los siguientes campos están sin llenar: \n" + vacios);
+            errores = (errores.equals("") ? "" : "Hay errores en los siguientes campos: \n" + errores);
+            JOptionPane.showMessageDialog(this, vacios + "\n" + errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+
+        return valido;
+    }
+    
+    private boolean verificar() {
+        for (Animal animal : animales) {
+            if(animal.getNombre().equals(this.campoNombreAnimal.getText())) {
+                JOptionPane.showMessageDialog(this, "Ya existe un animal distinto con ese nombre, elija otro.", 
+                        "Aviso", JOptionPane.WARNING_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void actualizarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel)this.tablaAnimalesRegistrados.getModel();
+        modelo.setRowCount(0);
+        
+        for (Animal animal : animales) {
+            Object[] a = new Object[6];
+            String sexo;
+            
+            switch(animal.getSexo()) {
+                case 'M': case 'm': sexo = "Macho"; break;
+                case 'H': case 'h': sexo = "Hembra";  break;
+                default: sexo = "Otro";
+            }
+            
+            a[0] = animal.getNombre();
+            a[1] = animal.getEdad();
+            a[2] = sexo;
+            modelo.addRow(a);
+        }
+        
+        this.tablaAnimalesRegistrados.setModel(modelo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonCancelarAnimal;
+    private javax.swing.JButton botonAgregarAnimal;
     private javax.swing.JButton botonEliminarAnimal;
-    private javax.swing.JButton botonGuardarAnimal;
     private javax.swing.JButton botonRegresarAnimal;
     private javax.swing.JTextField campoEdadAnimal;
     private javax.swing.JTextField campoNombreAnimal;
-    private javax.swing.JCheckBox checkBoxHembra;
-    private javax.swing.JCheckBox checkBoxMacho;
+    private javax.swing.ButtonGroup grupoSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -245,6 +381,8 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rbtHembra;
+    private javax.swing.JRadioButton rbtMacho;
     private javax.swing.JTable tablaAnimalesRegistrados;
     // End of variables declaration//GEN-END:variables
 

@@ -674,6 +674,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
             Itinerario itinerario = control.buscarItinerario(campoTextoNombreItinerario.getText());
             if (itinerario != null) {
                 errores = errores + (errores.equals("") ? "" : "\n") + "El nombre del itinerario ya está registrado en la base de datos.";
+                valido = false;
             }
         }
 
@@ -761,7 +762,7 @@ public class DlgRegistrarItinerario extends javax.swing.JDialog {
         if (!valido) {
             vacios = (vacios.equals("") ? "" : "Los siguientes campos están sin llenar: \n" + vacios);
             errores = (errores.equals("") ? "" : "Hay errores en los siguientes campos: \n" + errores);
-            JOptionPane.showMessageDialog(this, vacios + errores, "Aviso", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, vacios + "\n" + errores, "Aviso", JOptionPane.WARNING_MESSAGE);
         }
 
         return valido;

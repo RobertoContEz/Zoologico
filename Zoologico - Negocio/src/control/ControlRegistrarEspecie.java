@@ -43,13 +43,30 @@ public class ControlRegistrarEspecie {
      * @param nombre parámetro a buscar en la base de datos.
      * @return retorna la información de la especie en caso de estar registrada, null en caso contrario.
      */
-    public Especie buscarEspecie(String nombre) {
+    public Especie buscarEspecieEspanol(String nombre) {
         IPersistenciaEspecie dao = FabricaDAOs.getEspeciesDAO();
         
         List<Especie> lista = dao.consultarTodos();
         
         for (Especie especie : lista) {
             if(especie.getNombreEspanol().equals(nombre)) return especie;
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Verifica la existencia del nombre cientifico de una especie.
+     * @param nombre parámetro a buscar en la base de datos.
+     * @return retorna la información de la especie en caso de estar registrada, null en caso contrario.
+     */
+    public Especie buscarEspecieCientifico(String nombre) {
+        IPersistenciaEspecie dao = FabricaDAOs.getEspeciesDAO();
+        
+        List<Especie> lista = dao.consultarTodos();
+        
+        for (Especie especie : lista) {
+            if(especie.getNombreCientifico().equals(nombre)) return especie;
         }
         
         return null;
@@ -63,10 +80,6 @@ public class ControlRegistrarEspecie {
     public boolean guardar(Especie especie) {
         IPersistenciaEspecie dao = FabricaDAOs.getEspeciesDAO();
         
-        if (especie.getId()==null) {
-            return dao.agregar(especie);
-        } else {
-            return dao.actualizar(especie);
-        }
+        return dao.agregar(especie);
     }
 }
