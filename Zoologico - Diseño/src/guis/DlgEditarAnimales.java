@@ -264,8 +264,11 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
         if (indiceFila == -1) {
             JOptionPane.showMessageDialog(this, "Seleccione un animal de la lista eliminarlo.", "Aviso", JOptionPane.WARNING_MESSAGE);
         } else {
-            animales.remove(indiceFila);
-            actualizarTabla();
+            int i = JOptionPane.showConfirmDialog(this, "¿Esta seguro de que quiere eliminar este animal?", "Aviso", JOptionPane.WARNING_MESSAGE);
+            if(i==JOptionPane.YES_OPTION) {
+                animales.remove(indiceFila);
+                actualizarTabla();
+            }
         }
     }
     
@@ -280,6 +283,8 @@ public class DlgEditarAnimales extends javax.swing.JDialog {
             
             animales.add(animal);
             actualizarTabla();
+            
+            JOptionPane.showMessageDialog(this, "Animal registrado satisfactoriamente.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     

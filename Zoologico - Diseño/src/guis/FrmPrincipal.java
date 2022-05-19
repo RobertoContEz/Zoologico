@@ -27,6 +27,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        datePicker1 = new com.github.lgooddatepicker.components.DatePicker();
         jPanel1 = new FondoPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -58,7 +59,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         btnRegistrarEspecie.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnRegistrarEspecie.setText("Registro/actualización de especies");
+        btnRegistrarEspecie.setText("Registro de especies");
         btnRegistrarEspecie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarEspecieActionPerformed(evt);
@@ -66,7 +67,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         });
 
         btnRegistrarItinerario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnRegistrarItinerario.setText("Registro/actualización itinerario de recorridos");
+        btnRegistrarItinerario.setText("Registro itinerario de recorridos");
         btnRegistrarItinerario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarItinerarioActionPerformed(evt);
@@ -127,12 +128,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
-                        .addComponent(Lbl_Titulo)))
-                .addGap(0, 192, Short.MAX_VALUE))
+                        .addComponent(Lbl_Titulo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 259, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(378, 378, 378)
                 .addComponent(btnSalir)
@@ -146,11 +147,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(0, 375, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(41, Short.MAX_VALUE)
                         .addComponent(Lbl_Titulo)
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(70, 70, 70)
+                        .addGap(84, 84, 84)
                         .addComponent(btnSalir)))
                 .addContainerGap())
         );
@@ -240,6 +241,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarItinerario;
     private javax.swing.JButton btnRegistrarQueja;
     private javax.swing.JButton btnSalir;
+    private com.github.lgooddatepicker.components.DatePicker datePicker1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
