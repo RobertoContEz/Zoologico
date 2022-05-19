@@ -1,6 +1,7 @@
 package objetos;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import org.bson.types.ObjectId;
@@ -168,6 +169,21 @@ public class Recorrido {
      */
     public void setQuejas(List<Queja> quejas) {
         this.quejas = quejas;
+    }
+
+    /**
+     * Añade una queja a la lista de quejas del recorrido.
+     * 
+     * @param queja la queja nueva.
+     */
+    public void agregaQueja(Queja queja) {
+        if (queja != null) {
+            queja.setIdRecorrido(id);
+        }
+        if (quejas == null) {
+            quejas = new ArrayList();
+        }
+        quejas.add(queja);
     }
 
     @Override

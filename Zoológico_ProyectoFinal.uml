@@ -50687,7 +50687,7 @@
 <XPD:OBJ name="OwnedViews[16]" type="UMLAssociationView" guid="wgVOx6uVy0Gd5S82MLJHaAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">209,643;356,682</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">209,648;356,683</XPD:ATTR>
 <XPD:REF name="Model">RChtxZr9a0qVajdrL3g1mgAA</XPD:REF>
 <XPD:REF name="Head">r+3egAx02ESwhk2UjVcMhgAA</XPD:REF>
 <XPD:REF name="Tail">95LupjAaNUmEunquTWD4uwAA</XPD:REF>
@@ -50774,7 +50774,7 @@
 <XPD:ATTR name="Left" type="integer">64</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">564</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">146</XPD:ATTR>
-<XPD:ATTR name="Height" type="integer">121</XPD:ATTR>
+<XPD:ATTR name="Height" type="integer">134</XPD:ATTR>
 <XPD:REF name="Model">StuvMUMSd0mXSopOezvwFAAA</XPD:REF>
 <XPD:OBJ name="NameCompartment" type="UMLNameCompartmentView" guid="Kg9PyabmXU6RJFgVLIuJOwAA">
 <XPD:OBJ name="NameLabel" type="LabelView" guid="Pm5xFAGQi0q3NSZBSTVBMwAA">
@@ -50886,7 +50886,7 @@
 <XPD:OBJ name="OwnedViews[19]" type="UMLAssociationView" guid="+MZNolZfp0mWtyEiBTP6oAAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">209,594;320,549</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">209,599;320,551</XPD:ATTR>
 <XPD:REF name="Model">jXzLQ8X5sUSxUtHDx46u8gAA</XPD:REF>
 <XPD:REF name="Head">lGmrd30/EE+HMqeE1Cq62wAA</XPD:REF>
 <XPD:REF name="Tail">95LupjAaNUmEunquTWD4uwAA</XPD:REF>
@@ -51914,6 +51914,11 @@
 <XPD:REF name="Views[1]">tEUAmyHECEKDnrhCrjkdpQAA</XPD:REF>
 <XPD:REF name="Views[2]">hFpu8ja+NUW5uk45V+aAzgAA</XPD:REF>
 <XPD:REF name="Views[3]">dQD0kb6RMUi1pwPcZVEFXgAA</XPD:REF>
+<XPD:ATTR name="#Operations" type="integer">1</XPD:ATTR>
+<XPD:OBJ name="Operations[0]" type="UMLOperation" guid="bJWijX0fuk6Q6BhRNK2MFwAA">
+<XPD:ATTR name="Name" type="string">agregaQueja</XPD:ATTR>
+<XPD:REF name="Owner">StuvMUMSd0mXSopOezvwFAAA</XPD:REF>
+</XPD:OBJ>
 <XPD:ATTR name="#Associations" type="integer">3</XPD:ATTR>
 <XPD:REF name="Associations[0]">QxyPV+L2A0yS8yrklgN1QgAA</XPD:REF>
 <XPD:REF name="Associations[1]">xRtkNwKO5EiP8wjm1QwqqQAA</XPD:REF>

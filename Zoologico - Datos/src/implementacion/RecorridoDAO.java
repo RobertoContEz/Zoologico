@@ -82,7 +82,7 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
                 Document entidadActualizada = new Document();
                 entidadActualizada.append("$set", new Document("idItinerario", recorrido.getIdItinerario())
                         .append("idGuia", recorrido.getIdGuia())
-                        .append("fechHora", recorrido.getFechaHora())
+                        .append("fechaHora", recorrido.getFechaHora())
                         .append("numVistitantes", recorrido.getNumVistitantes())
                         .append("quejas", recorrido.getQuejas())
                 );
@@ -181,13 +181,9 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
         try {
             Document filtro = new Document();
             LocalDateTime ultimoMes = LocalDateTime.now().minusDays(30);
-            filtro.append("fechHora", new BasicDBObject("$gt", ultimoMes));
+            filtro.append("fechaHora", new Document("$gt", ultimoMes));
             collection.find(filtro).into(listaRecorrido);
-            if (listaRecorrido.isEmpty()) {
-                return null;
-            } else {
-                return (List<Recorrido>) listaRecorrido.get(0);
-            }
+            return listaRecorrido;
         } catch (PersistenceException ex) {
             System.err.println(ex.getMessage());
             ex.printStackTrace();

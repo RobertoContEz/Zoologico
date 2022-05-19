@@ -104,8 +104,10 @@ public class ControlRegistrarQueja {
      * @return confirmación de la operación
      */
     public boolean guardar(Queja queja) {
-        IPersistenciaQueja dao = FabricaDAOs.getQuejasDAO();
+        IPersistenciaRecorrido dao = FabricaDAOs.getRecorridosDAO();
+        Recorrido recorrido = dao.consultar(queja.getIdRecorrido());
+        recorrido.agregaQueja(queja);
         
-        return dao.agregar(queja);
+        return dao.actualizar(recorrido);
     }
 }

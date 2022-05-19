@@ -284,7 +284,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
     
     private void cargarFechas() {
         int i = this.comboBoxItinerarioQueja.getSelectedIndex();
-        if(i==0) {
+        if(i<=0) {
             liberarCampos(false);
             return;
         }
@@ -304,7 +304,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
                 r.add(recorrido);
                 recorridosPorFecha.put(fecha, r);
             }
-            recorrido = recorrido;
+            this.recorrido = recorrido;
         }
         fechas = new ArrayList(new HashSet(fechas));
         
@@ -332,7 +332,7 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
     
     private void cargarHoras() {
         int i = this.comboBoxFechaRecorridoQueja.getSelectedIndex();
-        if(i==0) {
+        if(i<=0) {
             liberarCampos(false);
             return;
         }
@@ -346,6 +346,17 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
             LocalTime hora = recorrido.getFechaHora().toLocalTime();
             recorridosPorHora.put(hora, recorrido);
             horas.add(hora);
+        }
+        
+        if(horas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Error recuperando las horas de los recoridos de esa fecha.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } else {
+            this.comboBoxHoraRecorridoQueja.removeAllItems();
+            this.comboBoxHoraRecorridoQueja.addItem("Seleccione...");
+            for (LocalTime hora : horas) {
+                this.comboBoxHoraRecorridoQueja.addItem(Conversiones.horaATexto(hora));
+            }
+            this.comboBoxHoraRecorridoQueja.setEnabled(true);
         }
     }
     
@@ -385,13 +396,13 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
             itinerario = itinerarios.get(i-1);
             
             i = this.comboBoxFechaRecorridoQueja.getSelectedIndex();
-            if(i == 0) {
+            if(i <= 0) {
                 errores = errores + (errores.equals("")?"":"\n") + "Seleccione la fecha y la hora del recorrido antes de enviar su queja.";
             } else {
                 fecha = fechas.get(i-1);
                 
-                i = this.comboBoxFechaRecorridoQueja.getSelectedIndex();
-                if(i == 0) {
+                i = this.comboBoxHoraRecorridoQueja.getSelectedIndex();
+                if(i <= 0) {
                     errores = errores + (errores.equals("")?"":"\n") + "Seleccione la hora del recorrido antes de enviar su queja.";
                 } else {
                     hora = horas.get(i-1);

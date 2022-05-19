@@ -59,7 +59,7 @@ public class Conversiones {
             case 7: diaSemana = "Domingo"; break;
         }
         
-        return diaSemana + " " + (dia<10?"0":"")+String.valueOf(dia) + (mes<10?"0":"")+String.valueOf(mes);
+        return diaSemana + " " + (dia<10?"0":"")+String.valueOf(dia) + "/" + (mes<10?"0":"")+String.valueOf(mes);
     }
     
     
