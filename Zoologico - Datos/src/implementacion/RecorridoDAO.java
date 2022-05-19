@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.PersistenceException;
+import objetos.Queja;
 import objetos.Recorrido;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -78,6 +79,11 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
                 MongoCollection<Recorrido> coleccion = this.getCollection();
                 Document filtro = new Document();
                 filtro.append("_id", recorrido.getId());
+                
+                List<Queja> quejas = recorrido.getQuejas();
+                if(quejas!=null) for (Queja queja : quejas) {
+                    if(queja.getId()==null) queja.setId(new ObjectId());
+                }
 
                 Document entidadActualizada = new Document();
                 entidadActualizada.append("$set", new Document("idItinerario", recorrido.getIdItinerario())
