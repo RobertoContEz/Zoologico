@@ -157,6 +157,11 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
 
         btnRegresarQueja.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnRegresarQueja.setText("Regresar");
+        btnRegresarQueja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarQuejaActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("REGISTRO DE QUEJA");
@@ -276,6 +281,10 @@ public class DlgRegistrarQueja extends javax.swing.JDialog {
     private void btnEnviarQuejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarQuejaActionPerformed
         guardar();
     }//GEN-LAST:event_btnEnviarQuejaActionPerformed
+
+    private void btnRegresarQuejaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarQuejaActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnRegresarQuejaActionPerformed
 
     private List<LocalDate> fechas;
     private HashMap<LocalDate,List<Recorrido>> recorridosPorFecha;
