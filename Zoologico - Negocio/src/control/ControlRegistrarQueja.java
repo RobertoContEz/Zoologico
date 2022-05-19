@@ -46,6 +46,7 @@ public class ControlRegistrarQueja {
         IPersistenciaItinerario daoItinerario = FabricaDAOs.getItinerariosDAO();
 
         List<ObjectId> ids = new ArrayList();
+        if(recorridos == null) recorridos = new ArrayList();
         for (Recorrido recorrido : recorridos) {
             ids.add(recorrido.getIdItinerario());
         }
@@ -71,7 +72,7 @@ public class ControlRegistrarQueja {
     public HashMap<Itinerario, List<Recorrido>> ordenarRecorridos(List<Itinerario> itinerarios, List<Recorrido> recorridos) {
         HashMap<Itinerario, List<Recorrido>> mapa = new HashMap();
 
-        for (Itinerario itinerario : itinerarios) {
+        if(itinerarios!=null&&recorridos!=null) for (Itinerario itinerario : itinerarios) {
             List<Recorrido> r = new ArrayList();
             for (Recorrido recorrido : recorridos) {
                 if (recorrido.getIdItinerario().equals(itinerario.getId())) {
@@ -81,7 +82,7 @@ public class ControlRegistrarQueja {
             mapa.put(itinerario, (r.isEmpty() ? null : r));
         }
 
-        return mapa;
+        return mapa.isEmpty() ? null : mapa;
     }
 
     /**
