@@ -55,6 +55,12 @@ public class RecorridoDAO implements IPersistenciaRecorrido {
     public boolean agregar(Recorrido recorrido) {
         try {
             MongoCollection<Recorrido> coleccion = this.getCollection();
+            
+            List<Queja> quejas = recorrido.getQuejas();
+            if(quejas!=null) for (Queja queja : quejas) {
+                if(queja.getId()==null) queja.setId(new ObjectId());
+            }
+
             coleccion.insertOne(recorrido);
             return true;
         } catch (PersistenceException ex) {

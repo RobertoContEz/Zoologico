@@ -8,6 +8,7 @@ import interfaces.IPersistenciaEspecie;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.PersistenceException;
+import objetos.Animal;
 import objetos.Especie;
 import org.bson.Document;
 import org.bson.types.ObjectId;
@@ -50,6 +51,12 @@ public class EspeciesDAO implements IPersistenciaEspecie {
     public boolean agregar(Especie especie) {
         try {
             MongoCollection<Especie> coleccion = this.getCollection();
+            
+            List<Animal> animales = especie.getAnimales();
+            if(animales!=null) for (Animal animal : animales) {
+                if(animal.getId()==null) animal.setId(new ObjectId());
+            }
+
             coleccion.insertOne(especie);
             return true;
         } catch (PersistenceException ex) {
@@ -74,6 +81,11 @@ public class EspeciesDAO implements IPersistenciaEspecie {
                 MongoCollection<Especie> coleccion = this.getCollection();
                 Document filtro = new Document();
                 filtro.append("_id", especie.getId());
+
+                List<Animal> animales = especie.getAnimales();
+                if(animales!=null) for (Animal animal : animales) {
+                    if(animal.getId()==null) animal.setId(new ObjectId());
+                }
 
                 Document entidadActualizada = new Document();
                 entidadActualizada.append("$set", new Document("nombreEspanol", especie.getNombreEspanol())
